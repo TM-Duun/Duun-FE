@@ -54,7 +54,7 @@ export const NavMiddle = styled.div`
 export const NavSearch = styled.input`
     width : 100%;
     height : 100%;
-    margin ; 0;
+    margin : 0;
     padding : 10px 20px;
     box-sizing : border-box;
     display : flex;

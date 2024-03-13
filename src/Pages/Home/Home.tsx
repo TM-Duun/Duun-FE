@@ -1,14 +1,5 @@
-import styled from "styled-components";
-import {Wrapper,Main,Image,Span,NewContainer, New_new,Btns,Btn,Small_img_div,Small_img,Category,Category_img,Category_text,Coupon, Coupon_img, Coupon_download, Voucher, Voucher_1, Voucher_2, Voucher_p, MainImg_text} from "./HomeStyles"
+import {Main,Image,Span,NewContainer, New_new,Btns,Btn,Small_img_div,Small_img,Category,Category_img,Category_text,Coupon, Coupon_img, Coupon_download, Voucher, Voucher_1, Voucher_2, Voucher_p, MainImg_text, HWrapper, Block} from "./HomeStyles"
 
-// const Wrapper = styled.div`
-//     padding-top :8vh;
-//     height : 250vh;
-//     display : flex;
-//     flex-direction: column;
-//     padding-left:200px; 
-//     padding-right: 200px;
-// `;
 const btnItems = ["HOME","NEW","COATS","PANTS","SWEAT"
 ];
 const imgItems=[
@@ -24,8 +15,9 @@ const categoryItems =[
 // 처음 main 화면 페이지
 export default function Home() {
   return (
-    <Wrapper>
+    <HWrapper>
       <Main>
+        <Block></Block>
         <Image src="/main.png"/>
         <MainImg_text></MainImg_text>
       </Main>
@@ -85,6 +77,6 @@ export default function Home() {
           </Voucher>
         </Coupon_download>
       </Coupon>
-    </Wrapper>
+    </HWrapper>
   )
 }

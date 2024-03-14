@@ -3,15 +3,17 @@ import styled from "styled-components";
 
 
 export const Wrapper = styled.div`
-    width : 100%;
+    width : 100vw;
     height : 8vh;
     position : fixed;
-    padding : 10px 200px;
+    padding : 0px 200px;
     box-sizing : border-box;
     margin : 0;
     display : flex;
     align-items : center;
     justify-content : space-evenly;
+    z-index : 100;
+    overflow : hidden;
 `;
 
 export const NavLeft = styled(Link)`
@@ -87,7 +89,7 @@ export const NavRight = styled.div`
     padding : 0;
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled.div`
     height : 100%;
     display : flex;
     flex-direction : column;

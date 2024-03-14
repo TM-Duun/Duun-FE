@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, NavItem, NavLeft, NavMiddle, NavRight, NavSearch, SearchIcon, Wrapper } from "./NavStyles";
+import { Link } from "react-router-dom";
 
 const menuItems = [
   { src: "/cart.svg", name: "장바구니", path: "/cart" },
@@ -33,10 +34,12 @@ export default function Nav() {
       </NavMiddle>
       <NavRight>
         {menuItems.map((item) => (
-          <NavItem key={item.name} to={item.path}>
-            <ItemImg src={item.src} />
-            <ItemName>{item.name}</ItemName>
-          </NavItem>
+          <Link key={item.name} to={item.path} style={{ textDecoration: 'none' }}>
+            <NavItem>
+              <ItemImg src={item.src} />
+              <ItemName>{item.name}</ItemName>
+            </NavItem>
+          </Link>
         ))}
         <LoginItem to="/login">
           Login

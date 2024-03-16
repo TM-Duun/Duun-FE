@@ -1,26 +1,17 @@
 import styled from "styled-components";
 
-export const HWrapper = styled.div`
-    min-height : 250vh;
+export const Wrapper = styled.div`
+    margin-top :8vh;
+    height : 250vh;
     display : flex;
     flex-direction: column;
-    padding : 0px 200px;
+    padding-left:200px; 
+    padding-right: 200px;
     box-sizing: border-box;
 `;
-
 export const Main= styled.div`
-    display : flex;
-    flex-direction: column;
     justify-content: center;
     position: relative;
-`;
-
-export const Block = styled.div`
-    width : 100%;
-    height : 80px;
-    margin : 0;
-    padding : 0;
-    background-color : transparent;
 `;
 export const Image=styled.img`
     object-fit: cover;
@@ -53,6 +44,7 @@ export const New_new=styled.h5`
     margin-top: 0px;
     margin-bottom: 30px;
     white-space: nowrap;
+
 `;
 export const Btns=styled.div`
     padding-top: 30px;
@@ -117,6 +109,7 @@ export const Coupon=styled.div`
 export const Coupon_img=styled.img`
     width: 55%;
     border-radius: 20px 0 0 20px;
+
 `;
 export const Coupon_download=styled.div`
     width: 45%;
@@ -125,13 +118,12 @@ export const Coupon_download=styled.div`
     border-radius: 0 20px 20px 0;
 `;
 export const Voucher=styled.div`
-    width : 100%;
     height: 50%;
     display: flex;
+    flex-direction: row;
 `;
 export const Voucher_1=styled.div`
     width: 80%;
-    height : 100%;
     background-color: #F6F6F6;
     justify-content: left;
     align-items: center;
@@ -140,7 +132,6 @@ export const Voucher_1=styled.div`
 export const Voucher_2=styled.div`
     border-left: 2px dashed white;
     width: 20%;
-    height : 100%;
     background-color: #F6F6F6;
     border-radius: 0 20px 20px 0 ;
 `; 

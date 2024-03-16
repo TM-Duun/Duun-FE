@@ -1,4 +1,4 @@
-import {Main,Image,Span,NewContainer, New_new,Btns,Btn,Small_img_div,Small_img,Category,Category_img,Category_text,Coupon, Coupon_img, Coupon_download, Voucher, Voucher_1, Voucher_2, Voucher_p, MainImg_text, HWrapper, Block} from "./HomeStyles"
+import {Wrapper,Main,Image ,NewContainer,Coupon, MainImg_text, Span, New_new, Btns, Btn, Small_img_div, Small_img, Category, Category_img, Category_text, Coupon_img, Coupon_download, Voucher, Voucher_2, Voucher_1, Voucher_p } from "./HomeStyles"
 
 const btnItems = ["HOME","NEW","COATS","PANTS","SWEAT"
 ];
@@ -15,9 +15,8 @@ const categoryItems =[
 // 처음 main 화면 페이지
 export default function Home() {
   return (
-    <HWrapper>
+    <Wrapper>
       <Main>
-        <Block></Block>
         <Image src="/main.png"/>
         <MainImg_text></MainImg_text>
       </Main>
@@ -77,6 +76,6 @@ export default function Home() {
           </Voucher>
         </Coupon_download>
       </Coupon>
-    </HWrapper>
+    </Wrapper>
   )
 }

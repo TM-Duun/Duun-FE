@@ -1,6 +1,12 @@
+import { Wrapper } from "./MpCompStyles";
+import MpContainer from "./MpContainer/MpContainer";
+import MPContents from "./MpContents/MpContents";
 
 export default function MpComp() {
   return (
-    <div>MpComp</div>
+    <Wrapper>
+      <MPContents />
+      <MpContainer />
+    </Wrapper>
   )
 }

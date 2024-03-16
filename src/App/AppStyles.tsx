@@ -1,10 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 export const AppStyles = createGlobalStyle`
-    * {
-        box-sizing: border-box;
-    }
-    body {
-        font-family : "Poppins", sans-serif;
-    }
+    ${reset};
 `;

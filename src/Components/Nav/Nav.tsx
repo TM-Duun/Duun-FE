@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, NavItem, NavLeft, NavMiddle, NavRight, NavSearch, SearchIcon, Wrapper } from "./NavStyles";
+import { ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, NavContainer, NavItem, NavLeft, NavMiddle, NavRight, NavSearch, SearchIcon, Wrapper } from "./NavStyles";
 import { Link } from "react-router-dom";
 
 const menuItems = [
@@ -19,6 +19,7 @@ export default function Nav() {
 
   return (
     <Wrapper>
+      <NavContainer>
       <NavLeft to="/">
         <LogoImg src="DuunLogo.svg"/>
         <LogoTitle>Duun</LogoTitle>
@@ -26,7 +27,7 @@ export default function Nav() {
       <NavMiddle>
         <NavSearch 
           type="text"
-          placeholder="Search the Items"
+          placeholder="찾으시는 서비스 검색"
           value = { searchValue }
           onChange={onSearchChange}
           />
@@ -45,6 +46,7 @@ export default function Nav() {
           Login
         </LoginItem>
       </NavRight>
+      </NavContainer>
     </Wrapper>
   )
 }

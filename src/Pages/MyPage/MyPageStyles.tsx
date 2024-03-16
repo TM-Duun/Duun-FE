@@ -6,6 +6,8 @@ export const MPWrapper = styled.div`
     height : 100%;
     margin : 0;
     padding : 0;
+    padding-top : 100px;
+    box-sizing : border-box;
     display : flex;
     align-items : center;
     justify-content : center;

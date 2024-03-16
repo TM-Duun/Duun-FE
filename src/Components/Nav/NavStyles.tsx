@@ -3,17 +3,26 @@ import styled from "styled-components";
 
 
 export const Wrapper = styled.div`
-    width : 100vw;
+    width : 100%;
     height : 8vh;
     position : fixed;
-    padding : 0px 200px;
-    box-sizing : border-box;
+    padding : 0;
     margin : 0;
     display : flex;
     align-items : center;
-    justify-content : space-evenly;
+    justify-content : center;
     z-index : 100;
     overflow : hidden;
+`;
+
+export const NavContainer = styled.div`
+    width : 75%;
+    height : 100%;
+    margin : 0;
+    padding : 0;
+    display : flex;
+    align-items : center;
+    justify-content : space-evenly;
 `;
 
 export const NavLeft = styled(Link)`
@@ -55,9 +64,8 @@ export const NavMiddle = styled.div`
 
 export const NavSearch = styled.input`
     width : 100%;
-    height : 100%;
     margin : 0;
-    padding : 10px 20px;
+    padding : 15px 20px;
     box-sizing : border-box;
     display : flex;
     border-radius : 10px;
@@ -72,7 +80,7 @@ export const NavSearch = styled.input`
 
 export const SearchIcon = styled.img`
     position : absolute;
-    top : 25%;
+    top : 30%;
     right : 20px;
     width : 20px;
     height : 20px;

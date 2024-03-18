@@ -35,7 +35,6 @@ export const SharedContainer = styled.div`
     display : flex;
     flex-direction : column;
     justify-content : space-between;
-    border-bottom : 1px solid #ddd;
 `;
 
 export const SharedCircle = styled.img`
@@ -61,9 +60,21 @@ export const SharedScript = styled.p`
     font-family : 'pretendard';
     color : #484545;
 
+    b {
+        font-weight : bold;
+    }
+
     a {
         text-decoration : none;
         color : #484545;
         font-weight : bold;
     }
+`;
+
+export const SharedLine = styled.div`
+    width : 100%;
+    height : 1px;
+    margin : 20px 0 0 0;
+    padding : 0;
+    background-color : #ddd;
 `;

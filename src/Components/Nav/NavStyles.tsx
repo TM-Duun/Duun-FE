@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
     display : flex;
     align-items : center;
     justify-content : space-evenly;
+    z-index: 100;///???
 `;
 
 export const NavLeft = styled(Link)`
@@ -87,7 +88,7 @@ export const NavRight = styled.div`
     padding : 0;
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled(Link)<{$isTarget? : boolean}>`
     height : 100%;
     display : flex;
     flex-direction : column;
@@ -96,13 +97,27 @@ export const NavItem = styled(Link)`
     padding : 0;
     margin : 0;
     text-decoration : none;
-
+    position: ${props => props.$isTarget ? 'relative' :'static'};
     &:hover {
         cursor : pointer;
     }
 `;
 
-export const ItemImg = styled.img `
+export const CartBadge=styled.div`
+    top:-5px;
+    position:absolute;
+    height: 20px;
+    left: 23px;
+    border-radius:10px;
+    width: 20px;
+    text-align: center;
+    background-color: red;
+    color:white;
+    font-size: 12px;
+    line-height: 20px;
+ `;
+
+export const ItemImg = styled.img`
     width : 30px;
     height : 30px;
     margin : 0;
@@ -118,6 +133,7 @@ export const ItemName = styled.p`
     margin : 5px 0 0 0;
     padding : 0;
 `;
+
 
 export const LoginItem = styled(Link)`
     font-size : 24px;

@@ -7,7 +7,7 @@ const MpWrapper = styled.div`
   width : 100vw;
   height : 100vh;
   margin : 0;
-  padding : 0;
+  padding : 50px 0 0 0;
   display : flex;
   flex-direction : column;
   align-items : center;
@@ -24,7 +24,7 @@ export default function MyPage() {
             <ProfileLevel>Lv. Seed</ProfileLevel>
             <ProfileImg src="/seed.svg"/>
           </ProfileLevelContainer>
-          <ProfileSub>다음 등급은 <b>Seed</b>입니다. <br/>남은 구매 금액은 25,000원 입니다.</ProfileSub>
+          <ProfileSub>다음 등급은 <b>Seed</b>입니다. <br/>남은 구매 금액은 <b>25,000원</b> 입니다.</ProfileSub>
         </MpProfileContainer>
         <MpInfoContainer>
           {infoData.map((info, index) => (

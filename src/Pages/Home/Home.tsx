@@ -1,81 +1,162 @@
-import {Wrapper,Main,Image ,NewContainer,Coupon, MainImg_text, Span, New_new, Btns, Btn, Small_img_div, Small_img, Category, Category_img, Category_text, Coupon_img, Coupon_download, Voucher, Voucher_2, Voucher_1, Voucher_p } from "./HomeStyles"
+import { useState,useEffect } from "react";
+import {Main1,MainImg,MainImgText,New,NewText,Main2,Btns,Btn,ImgDiv,Img,Main3,CategoryImg,
+  CategoryText,Main4, CouponImg, Download, Coupon, Coupon1, Coupon2, CouponText, Block,Span1,Span2,Span3,Line, BtnImg, NewDiv, Details, MainImgDiv, 
+  MainDetailBtn, ImgRowDiv, HeartImg, ChatBotIcon, ChatBotDiv, ChatBotText, ScrollToTopBtn} from "./HomeStyles"
+  //????물어보기 
+import styled from "styled-components";
+import ChatBot from "../Chatbot/Chatbot";
 
-const btnItems = ["HOME","NEW","COATS","PANTS","SWEAT"
+const btnItems = [
+  {name:"HOME",src:"/homedata/home.svg"},
+  {name:"NEW",src:"/homedata/new.svg"},
+  {name:"COATS",src:"/homedata/coats.svg"},
+  {name:"PANTS",src:"/homedata/pants.svg"},
+  {name:"SWEAT",src:"/homedata/sweat.svg"},
 ];
+
 const imgItems=[
-  {src:"/small_Img.png"},
-  {src:"/small_Img.png"},
-  {src:"/small_Img.png"},
-  {src:"/small_Img.png"},
+  {src:"/homedata/small_Img.png"},
+  {src:"/homedata/small_Img.png"},
+  {src:"/homedata/small_Img.png"},
+  {src:"/homedata/small_Img.png"},
 ];
+const HWrapper = styled.div`
+    min-height : 250vh;
+    display : flex;
+    flex-direction: column;
+    padding : 0px 200px;
+    box-sizing: border-box;
+`;
 const categoryItems =[
-  {src:"/category.png",name:"BEAUTY"},
-  {src:"/category.png",name:"ACCESSORIES"},
+  {src:"/homedata/category.png",name:"BEAUTY"},
+  {src:"/homedata/category.png",name:"ACCESSORIES"},
 ]
+
+const coupon=[
+  {name:"코트 카테고리", money:"10%", text:"할인!", duedate:"~2024. 12. 31"},
+  {name:"팬츠 카테고리", money:"1000P", text:"할인!", duedate:"~2024. 09. 31"}
+]
+
 // 처음 main 화면 페이지
 export default function Home() {
+  const [isChatbotOpen,setIsChatbotOpen]=useState(false);
+  const handleOpenChatbot=()=>setIsChatbotOpen(true);
+
+  const [ScrollBtn,setScrollBtn]=useState(false);
+
+  useEffect(()=>{
+    const checkScroll=()=>{
+      if(!ScrollBtn && window.scrollY > window.outerHeight* 2 / 3) {
+        setScrollBtn(true);
+    }else if(ScrollBtn && window.scrollY <= window.outerHeight* 2 / 3){
+      setScrollBtn(false);
+    }
+    };
+
+    window.addEventListener("scroll",checkScroll);
+    return ()=>{
+      window.removeEventListener("scroll",checkScroll);
+    }
+  },[ScrollBtn]);
+
+  const scrollToTop=()=>{
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    })
+  };
+
+
   return (
-    <Wrapper>
-      <Main>
-        <Image src="/main.png"/>
-        <MainImg_text></MainImg_text>
-      </Main>
-      <NewContainer>
-        <Span>New</Span>
-        <New_new>이번 달 신상품입니다.</New_new>
+    <div>
+    <HWrapper>
+      <Block></Block>
+      <Main1>
+        <MainImgDiv>
+          <MainImg src="/homedata/main.png"/>
+          <MainImgText>
+            스타일까지 챙긴<br/>
+            <Span3 style={{color:"black", fontSize:"30px",fontWeight:"600"}}>트랜디한 셋업 23/24 FW</Span3><br/>
+            <Span3 style={{color:"black", fontSize:"17px",fontWeight:"500",marginTop:"20px"}}>무료 배송 + ~20% 쿠폰</Span3><br/>
+          </MainImgText>
+          <MainDetailBtn>자세히 보기</MainDetailBtn>
+        </MainImgDiv>
+      </Main1>
+      <Main2>
+        <NewDiv>
+          <div>
+            <New>New</New>
+            <NewText>이번 달 신상품입니다.</NewText>
+          </div>
+          <Details to="/category">
+            자세히 보기
+            <BtnImg style={{width:"30px",height:"30px",marginLeft:"-5px"}} src="/homedata/small_arrow.svg"/>
+          </Details>
+        </NewDiv>
         <Btns>
           {btnItems.map((item,index) =>
-            <Btn key={index}>{item}</Btn>
+            <Btn key={index}>
+              {item.name}
+              <BtnImg src={item.src}/>
+            </Btn>
           )}
-          <Btn style={{marginLeft:"auto", width:"40px",backgroundColor:"#DBE3F8"}}>kk</Btn>
+          <Btn style={{marginLeft:"auto", width:"40px",backgroundColor:"#DBE3F8"}}><BtnImg src="/homedata/down_arrow.svg"/></Btn>
         </Btns>
-        <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between",marginTop:"20px"}}>
+        <ImgRowDiv>
           {imgItems.map((item,index) =>{
             return(
-              <Small_img_div key={index}>
-                <Small_img src={item.src}/>
-              </Small_img_div>
+              <ImgDiv key={index}>
+                <HeartImg src="/heart.svg"/>
+                <Img src={item.src}/>
+              </ImgDiv>
             )
           })}
-        </div>
-      </NewContainer>
-      <Category>
+        </ImgRowDiv>
+      </Main2>
+      <Main3>
         {categoryItems.map((item,index) =>{
           return(
-            <Category_img key={index} src={item.src}>
-              <Category_text>{item.name}</Category_text>
-            </Category_img>
+            <CategoryImg key={index} src={item.src}>
+              <CategoryText>{item.name}</CategoryText>
+            </CategoryImg>
           )
         })}
-      </Category>
-      <Coupon>
-        <Coupon_img src="/coupon.png"/>
-        <Coupon_download>
-          <Voucher>
-            <Voucher_1>
-              <Voucher_p>
-                코트 카테고리<br/>
-                <span style={{color:"red",fontWeight:"700"}}>10%</span>
-                <span style={{fontWeight:"700",position:"relative"}}>할인!</span><br/>
-                <span style={{fontSize:"12px",position:"absolute",color:"#868686"}}>~2024. 12. 31</span>
-              </Voucher_p>
-            </Voucher_1>
-            <Voucher_2></Voucher_2>
-          </Voucher>
-          <span className="line" style={{display:"block", width:"95%",height:"0.5px",backgroundColor:"#AFAFAF"}}></span>
-          <Voucher>
-            <Voucher_1>
-              <Voucher_p>
-                팬츠 카테고리<br/>
-                <span style={{color:"red",fontWeight:"700"}}>1000P</span>
-                <span style={{fontWeight:"700",position:"relative"}}>할인!</span><br/>
-                <span style={{fontSize:"12px",position:"absolute",color:"#868686"}}>~2024. 09. 31</span>
-              </Voucher_p>
-            </Voucher_1>
-            <Voucher_2></Voucher_2>
-          </Voucher>
-        </Coupon_download>
-      </Coupon>
-    </Wrapper>
+      </Main3>
+      <Main4>
+        <CouponImg src="/homedata/coupon.png"/>
+        <Download>
+          {coupon.map((item,index) =>{
+            return(
+              <>
+                <Coupon key={index}>
+                  <Coupon1>
+                    <CouponText>{item.name}<br/>
+                      <Span1>{item.money}</Span1>
+                      <Span2>{item.text}</Span2><br/>
+                      <Span3>{item.duedate}</Span3>
+                    </CouponText>
+                  </Coupon1>
+                  <Coupon2><BtnImg style={{width:"25px",height:"25px"}} src="/homedata/download.svg"/></Coupon2>
+                </Coupon>
+                {index < coupon.length-1 && <Line/>}
+              </>
+            );
+          })}
+        </Download>
+      </Main4>
+    </HWrapper>
+    <ChatBotDiv>
+      <ChatBotIcon onClick={handleOpenChatbot}>
+        <img src="/homedata/chatbot.png"/>
+      </ChatBotIcon>
+      <ChatBot isOpen={isChatbotOpen} onClose={()=>setIsChatbotOpen(false)}></ChatBot>
+      <ChatBotText>드우니 챗봇</ChatBotText>
+    </ChatBotDiv>
+    {ScrollBtn &&(
+      <ScrollToTopBtn onClick={scrollToTop}>
+        <img src="/homedata/up_arrow.svg"/>
+      </ScrollToTopBtn>
+    )}
+    </div>
   )
 }

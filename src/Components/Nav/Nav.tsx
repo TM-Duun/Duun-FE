@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, NavContainer, NavItem, NavLeft, NavMiddle, NavRight, NavSearch, SearchIcon, Wrapper } from "./NavStyles";
-import { Link } from "react-router-dom";
-
+import { CartBadge, ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, NavContainer, NavItem, NavLeft, NavMiddle, NavRight, NavSearch, SearchIcon, Wrapper } from "./NavStyles";
+import useStore from "../../Store/StoreCartBadge";
 const menuItems = [
   { src: "/cart.svg", name: "장바구니", path: "/cart" },
   { src: "/heart.svg", name: "찜", path: "/likes" },
@@ -10,7 +9,7 @@ const menuItems = [
 
 // 메뉴바 컴포넌트
 export default function Nav() {
-
+  const itemCount=useStore(state=>state.itemCount);
   const [searchValue , setSearchValue] = useState("");
 
   const onSearchChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -35,12 +34,14 @@ export default function Nav() {
       </NavMiddle>
       <NavRight>
         {menuItems.map((item) => (
-          <Link key={item.name} to={item.path} style={{ textDecoration: 'none' }}>
-            <NavItem>
-              <ItemImg src={item.src} />
-              <ItemName>{item.name}</ItemName>
-            </NavItem>
-          </Link>
+          <NavItem key={item.name} to={item.path} $isTarget={item.name==="장바구니"}>
+            {item.name === "장바구니" && itemCount > 0 && <CartBadge>{itemCount}</CartBadge>}
+            <ItemImg src={item.src}>
+            </ItemImg>
+            <ItemName>
+              {item.name}
+            </ItemName>
+          </NavItem>
         ))}
         <LoginItem to="/login">
           Login

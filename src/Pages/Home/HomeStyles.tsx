@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -8,44 +9,90 @@ export const Wrapper = styled.div`
     padding-left:200px; 
     padding-right: 200px;
     box-sizing: border-box;
+    font-size: 52px;
+    background-color: black;
 `;
-export const Main= styled.div`
+
+export const Main1= styled.div`
+    width: 100%;
+    display : flex;
+    flex-direction: column;
     justify-content: center;
-    position: relative;
 `;
-export const Image=styled.img`
+
+export const Block = styled.div`
+    width : 100%;
+    height : 80px;
+    margin : 0;
+    padding : 0;
+    background-color : transparent;
+`;
+export const MainImgDiv = styled.div`
+    position:relative;
+`;
+export const MainImg=styled.img`
+>>>>>>> c6cede611a92721624c72ea95cc59a773b56af12
     object-fit: cover;
     border-radius: 0 0 20px 20px;
     height: 100%;
     width: 100%;
+    &:hover {
+        cursor : pointer;
+    }
 `;
-export const MainImg_text=styled.span`
+export const MainImgText=styled.span`
     position: absolute;
     font-family: 'pretendard';
     font-size: 38px;
     font-weight: bold;
-    top: 50%;
-    left: 50%;
+    width: 100%;
+    top: 15%;
+    left: 20%;
+`;
+export const MainDetailBtn=styled.button`
+    position: absolute;
+    top: 70%;
+    left:20%;
+    border: none;
+    border-radius:20px;
+    height: 40px;
+    width: 100px;
+    box-shadow : 0px 0px 20px rgba(0, 0, 0, 0.1);
+    &:hover {
+        cursor : pointer;
+    }
 `;
 
-
-export const NewContainer = styled.div`
-    /* padding-left: 200px;
-    padding-right: 200px; */
+export const Main2 = styled.div`
     font-family: 'Poppins';
     padding-top:60px
 `;
-export const Span=styled.span`
+
+export const NewDiv=styled.div`
+    display:flex;
+    flex-direction: row;
+`;
+
+export const New=styled.span`
     font-weight: 700;
     font-size:60px
 `;
-export const New_new=styled.h5`
+export const NewText=styled.h5`
     font-family: 'pretendard';
     margin-top: 0px;
     margin-bottom: 30px;
     white-space: nowrap;
 
 `;
+export const Details=styled(Link)`
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 10px;
+    text-decoration: none;
+    color:black;
+`;
+
 export const Btns=styled.div`
     padding-top: 30px;
     display: flex;
@@ -58,22 +105,61 @@ export const Btn=styled.button`
     border: none;
     background-color: #F6F6F6;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    &:hover {
+        cursor : pointer;
+    }
+ `;
+
+export const BtnImg = styled.img `
+    width : 20px;
+    height : 20px;
+    margin : 0;
+    object-fit : contain;
 `;
-export const Small_img_div=styled.div`
+
+export const ImgRowDiv = styled.div`
+    display : flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+`;
+
+export const ImgDiv=styled.div`
     margin-top:30px;
     width: 250px;
     height: 300px;
     border-radius: 15px;
     background-color: #F6F6F6;
     display: flex;
-    justify-content: center;//자식 가로방향 가운데
-    align-items: center;//자식 세로방향 가운데
+    justify-content: center;
+    align-items: center;
+    position: relative;
 `;
-export const Small_img=styled.img`
-    width: 160px;
-    height: 260px;
+
+export const Img=styled.img`
+    width: 80%;
+    height: 90%;
+    &:hover {
+        cursor : pointer;
+    }
 `;
-export const Category=styled.div`
+export const HeartImg=styled.img`
+    margin : 0;
+    object-fit : contain;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    top:15px;
+    position: absolute;
+    &:hover {
+        cursor : pointer;
+    }
+`;
+export const Main3=styled.div`
     padding-top: 50px;
     display: flex;
     justify-content: space-between;
@@ -82,7 +168,7 @@ export const Category=styled.div`
 interface CategoryImgProps{
     src:string;
 }
-export const Category_img=styled.div<CategoryImgProps>`
+export const CategoryImg=styled.div<CategoryImgProps>`
     width: 47%;
     height: 300px;
     border-radius: 15px;
@@ -94,51 +180,137 @@ export const Category_img=styled.div<CategoryImgProps>`
     justify-content: center;
     align-items: center;
     font-size: 32px;
+    &:hover {
+        cursor : pointer;
+    }
 `;
-export const Category_text=styled.div`
+export const CategoryText=styled.div`
     font-weight: 600;
-    letter-spacing: 5px;
+    letter-spacing: 10px;
 `;
 
-export const Coupon=styled.div`
+export const Main4=styled.div`
     padding-top: 50px;
     display: flex;
     justify-content: space-between;
     height: 400px;
 `;
-export const Coupon_img=styled.img`
+export const CouponImg=styled.img`
     width: 55%;
     border-radius: 20px 0 0 20px;
 
 `;
-export const Coupon_download=styled.div`
+export const Download=styled.div`
     width: 45%;
     display: flex;
     flex-direction: column;
     border-radius: 0 20px 20px 0;
 `;
-export const Voucher=styled.div`
+export const Coupon=styled.div`
+    width : 100%;
     height: 50%;
     display: flex;
     flex-direction: row;
 `;
-export const Voucher_1=styled.div`
+export const Coupon1=styled.div`
     width: 80%;
     background-color: #F6F6F6;
     justify-content: left;
     align-items: center;
     display: flex;
 `;
-export const Voucher_2=styled.div`
+export const Coupon2=styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-left: 2px dashed white;
     width: 20%;
     background-color: #F6F6F6;
     border-radius: 0 20px 20px 0 ;
+    &:hover {
+        cursor : pointer;
+    }
 `; 
-export const Voucher_p=styled.p`
+export const CouponText=styled.p`
     padding-left: 40px;
     font-family: 'Pretendard';
     font-size: 24px;
     line-height: 40px;
     white-space: nowrap;
+`;
+export const Span1=styled.span`
+    color: red;
+    font-weight: 700;
+`;
+export const Span2=styled.span`
+    font-weight: 700;
+    position: relative;
+`;
+export const Span3=styled.span`
+    font-size: 12px;
+    position: absolute;
+    color: #868686;
+`;
+export const Line=styled.span`
+    display:block;
+    width: 95%;
+    height: 0.5px;
+    background-color:#AFAFAF;
+`;
+
+export const ChatBotDiv=styled.div`
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 80px; 
+    bottom: 40%; 
+    width: 80px; 
+    height: 200px; 
+    justify-content: center;
+    align-items: center;
+`;
+export const ChatBotIcon = styled.div`
+    background-color: #A7BCEF;
+    width: 100%;
+    height: 40%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow : 0px 0px 20px rgba(0, 0, 0, 0.1);
+    &:hover {
+        cursor : pointer;
+    }
+    img{
+        position: absolute;
+        object-fit: contain;
+        width:90%;
+    }
+`;
+export const ChatBotText=styled.span`
+    font-family: 'Pretendard';
+    font-size: 12px;
+    white-space: nowrap;
+`;
+export const ScrollToTopBtn=styled.button`
+    display: flex;
+    position:fixed;
+    right:80px;
+    bottom:10%;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    &:hover {
+        cursor : pointer;
+    }
+    img{
+        position: absolute;
+        object-fit: contain;
+    }
 `;

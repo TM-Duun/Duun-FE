@@ -339,7 +339,3 @@ export const MfCancelBtn = styled.div`
         cursor : pointer;
     }
 `;
-
-
-
-

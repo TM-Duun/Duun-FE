@@ -28,3 +28,18 @@ export const menuItems = [
       ]
     },
   ];
+
+  export const infoData = [
+    {
+        title: '포인트',
+        result : '30,000점'
+    },
+    {
+        title: '주문 / 배송',
+        result : '1개'
+    },
+    {
+        title: '쿠폰',
+        result : '2개'
+    }
+  ]

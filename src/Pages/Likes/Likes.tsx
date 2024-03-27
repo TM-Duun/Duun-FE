@@ -1,12 +1,29 @@
-import LikesComp from "../../Components/LikesComp/LikesComp";
-import { SharedBox, SharedWrapper } from "../../Components/Shared/PagesComp/PagesComp";
+import styled from "styled-components";
+import { LikesBottom, LikesCircle, LikesLine, LikesScript, LikesTitle, LikesTop } from "./LikesStyles";
+
+const LikesWrapper = styled.div`
+  width : 100vw;
+  height : 100vh;
+  margin : 50px 0 0 0;
+  padding : 0;
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+  justify-content : center;
+`;
 
 export default function Likes() {
   return (
-    <SharedWrapper>
-      <SharedBox>
-        <LikesComp />
-      </SharedBox>
-    </SharedWrapper>
+    <LikesWrapper>
+      <LikesTop>
+        <LikesCircle src="/circle.svg"/>
+        <LikesTitle>관심 상품</LikesTitle>
+        <LikesScript>관심 상품에 담은 시점과 구매 시점의 상품 가격 및 할인 정보가 다를 수 있으니 유의해 주시기 바랍니다.</LikesScript>
+        <LikesLine></LikesLine>
+      </LikesTop>
+      <LikesBottom>
+
+      </LikesBottom>
+    </LikesWrapper>
   )
 }

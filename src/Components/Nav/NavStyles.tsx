@@ -5,7 +5,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     width : 100%;
     height : 8vh;
-    position : fixed;
+    position : absolute;
+    top : 0;
+    left : 0;
     padding : 0;
     margin : 0;
     display : flex;

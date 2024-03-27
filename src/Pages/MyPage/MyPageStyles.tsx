@@ -113,12 +113,12 @@ export const MpBottom = styled.div`
 export const MpMenu = styled.div`
     position : relative;
     width : auto;
-    height : 100px;
+    height : 150px;
     margin : 0;
     padding : 0;
     display : flex;
     flex-direction : column;
-    justify-content : center;
+    justify-content : flex-start;
 `;
 
 export const Circle = styled.img`
@@ -134,14 +134,12 @@ export const MenuItemTitle = styled.p`
     font-family : 'pretendard';
     font-weight : bold;
     color : black;
-    margin-bottom : 10px;
+    margin-bottom : 20px;
 `;
 
 export const MpMenuItem = styled.div`
-    width : 100%;
-    height : 100%;
+    margin : 15px 0 0 20px;
     a {
-        margin : 10px 0 0 20px;
         font-size: 16px;
         font-family : 'pretendard';
         font-weight : medium;

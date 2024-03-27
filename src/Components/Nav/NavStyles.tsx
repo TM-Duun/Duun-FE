@@ -24,7 +24,7 @@ export const NavContainer = styled.div`
     padding : 0;
     display : flex;
     align-items : center;
-    justify-content : space-evenly;
+    justify-content : space-between;
     z-index: 100;
 `;
 
@@ -94,7 +94,8 @@ export const NavRight = styled.div`
     flex-grow : 1;
     height : 100%;
     display : flex;
-    justify-content : space-evenly;
+    gap : 30px;
+    justify-content : flex-end;
     align-items : center;
     margin : 0;
     padding : 0;

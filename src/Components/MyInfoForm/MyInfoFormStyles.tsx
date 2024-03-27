@@ -1,44 +1,29 @@
 import styled from "styled-components";
 
 
-
-export const Wrapper = styled.div`
+export const MiContainer = styled.div`
     width : 100%;
-    height : 100%;
+    height : auto;
     margin : 0;
-    padding : 0;
-    display : flex;
-    flex-direction : column;
-    justify-content : center;
-    align-items : center;
-`;
-
-export const MfContainer = styled.div`
-    width : 100%;
-    height : 40%;
-    margin : 0;
-    padding : 30px 80px;
+    padding : 0 80px 10px 80px;
     box-sizing : border-box;
     display : flex;
-    justify-content : flex-start;
-    align-items : center;
+    flex-direction : column;
     border-bottom : 1px solid #C2C2C2;
 `;
 
-export const MfCategoryBox = styled.div`
-    width : 20%;
-    height : 100%;
+export const MiMainBox = styled.div`
+    width : 100%;
+    height : 50px;
     margin : 0;
     padding : 0;
     display : flex;
-    gap : 30px;
-    flex-direction :column;
-    justify-content : space-evenly;
+    align-items : center;
+    justify-content : flex-start;
 
     p {
-        width : 100%;
-        height : 100%;
-        font-size : 18px;
+        width : 20%;
+        font-size : 16px;
         font-family : 'pretendard';
         font-weight : medium;
         color : black;
@@ -49,36 +34,20 @@ export const MfCategoryBox = styled.div`
     }
 `;
 
-export const MfDataBox = styled.div`
-    width : 80%;
-    height : 100%;
-    margin : 0;
-    padding : 0;
+export const MiIdContent = styled.div`
     display : flex;
-    gap : 20px;
-    flex-direction : column;
-    justify-content : center;
-    
-`;
-
-export const MfIdBox = styled.div`
-    width : auto;
-    height : auto;
-    flex-grow : 1;
-    gap : 20px;
-    margin : 0;
-    padding : 0;
-    display : flex;
-    align-items : center;
     justify-content : flex-start;
+    align-items : center;
+    gap : 65px;
+    margin : 0;
+    padding : 0;
 `;
 
 export const ChangeBtn = styled.div`
     width : 100px;
     height : 40px;
     margin : 0;
-    padding : 0 10px;
-    box-sizing : border-box;
+    padding : 0;
     display : flex;
     align-items : center;
     justify-content : center;
@@ -92,36 +61,28 @@ export const ChangeBtn = styled.div`
     }
 `;
 
-export const MfName = styled.p`
-    flex-grow : 1;
-    width : auto;
-    height : auto;
-    margin : 0;
-    padding : 0;
-    display : flex;
-    align-items : center;
-    font-size : 18px;
+export const MiName = styled.p`
+    font-size : 16px;
     font-family : 'pretendard';
     font-weight : medium;
     color : black;
 `;
 
-export const MfExtraContainer = styled.div`
+export const MiExtraContainer = styled.div`
     width : 100%;
-    height : 50%;
+    height : auto;
     margin : 0;
-    padding : 30px 80px;
+    padding : 20px 80px;
     box-sizing : border-box;
     display : flex;
     flex-direction : column;
-    justify-content : center;
     border-bottom : 1px solid #C2C2C2;
-    gap : 20px;
+    justify-content : space-evenly;
 `;
 
 export const ExtraMetaBox = styled.div`
     width : 100%;
-    height : 100%;
+    height : 50px;
     margin : 0;
     padding : 0;
     display : flex;
@@ -131,10 +92,7 @@ export const ExtraMetaBox = styled.div`
     
     p {
         width : 20%;
-        height : 100%;
-        margin : 0;
-        padding : 0;
-        font-size : 18px;
+        font-size : 16px;
         font-family : 'pretendard';
         font-weight : medium;
         color : black;
@@ -171,7 +129,7 @@ export const PhoneDiv = styled.div`
 
 export const ExtraAdMetaBox = styled.div`
     width : 100%;
-    height : 100%;
+    height : 150px;
     margin : 0;
     padding : 0;
     display : flex;
@@ -203,7 +161,7 @@ export const ExtraAddressContainer = styled.div`
 
 export const ExtraAddressBox = styled.div`
     width : 100%;
-    height : 100%;
+    height : 50px;
     margin : 0 0 10px 0;
     padding : 0;
     display : flex;
@@ -226,7 +184,7 @@ export const AddressNum = styled.div`
 `;
 
 export const ExtraAddressContent = styled.div`
-    width : 80%;
+    width : 365px;
     height : 40px;
     margin : 0 0 10px 0;
     padding : 5px 10px;
@@ -286,14 +244,15 @@ export const EmailDiv = styled.div`
     align-items : center;
     border : 0.5px solid #c5c5c5;
     color : black;
+    font-size : 14px;
     font-family : 'pretendard';
     font-weight : medium;
 `;
 
-export const MfCheckContainer = styled.div`
+export const MiCheckContainer = styled.div`
     width : 100%;
     height : 10%;
-    margin : 20px 0 0 0;
+    margin : 10px 0 0 0;
     gap : 20px;
     padding : 0;
     display : flex;
@@ -301,7 +260,7 @@ export const MfCheckContainer = styled.div`
     justify-content : flex-end;
 `;
 
-export const MfSaveBtn = styled.div`
+export const MiSaveBtn = styled.div`
     width : 100px;
     height : 40px;
     margin : 0;
@@ -320,7 +279,7 @@ export const MfSaveBtn = styled.div`
     }
 `;
 
-export const MfCancelBtn = styled.div`
+export const MiCancelBtn = styled.div`
     width : 100px;
     height : 40px;
     margin : 0;

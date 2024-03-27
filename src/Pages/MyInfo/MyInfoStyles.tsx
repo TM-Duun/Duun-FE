@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-
-export const LikesTop = styled.div`
+export const MiTop = styled.div`
     position : relative;
     width : 65vw;
-    height : 20vh;
-    margin : 0 0 0 0;
+    height : 10vh;
+    margin : 50px 0 0 0;
     padding : 0;
     display : flex;
     flex-direction : column;
@@ -13,42 +12,34 @@ export const LikesTop = styled.div`
     justify-content : center;
 `;
 
-export const LikesCircle = styled.img`
+export const MiCircle = styled.img`
     position : absolute;
-    top : 10px;
+    top : 0px;
     left : -10px;
     width : 30px;
     height : 30px;
     object-fit : contain;
 `;
 
-export const LikesTitle = styled.p`
+export const MiTitle = styled.p`
     font-size : 24px;
     font-weight : bold;
     font-family : 'pretendard';
     color : #678EF2;
 `;
 
-export const LikesScript = styled.p`
-    font-size : 14px;
-    font-weight : regular;
-    font-family : 'pretendard';
-    color : #484545;
-`;
-
-export const LikesLine = styled.div`
+export const MiLine = styled.div`
     width : 100%;
     height : 1px;
     background-color : #C2C2C2;
 `;
 
-export const LikesBottom = styled.div`
+export const MiBottom = styled.div`
     width : 65vw;
-    height : 60vh;
+    min-height : 60vh;
     margin : 0;
     padding : 0;
     display : flex;
-    justify-content : center;
+    flex-direction : column;
     align-items : center;
 `;
-

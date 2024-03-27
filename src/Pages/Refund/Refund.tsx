@@ -4,8 +4,8 @@ import { Dash, RfBottom, RfBtn, RfCircle, RfDateInput, RfLine, RfListHeader, RfM
 const RefundWrapper = styled.div`
   width : 100vw;
   min-height : 100vh;
-  margin : 20px 0 0 0;
-  padding : 50px 0 0 0;
+  margin : 30px 0 0 0;
+  padding : 0;
   display : flex;
   flex-direction : column;
   align-items : center;
@@ -17,7 +17,7 @@ export default function Refund() {
     <RefundWrapper>
       <RfTop>
         <RfCircle src="/circle.svg"/>
-        <RfTitle>주문 / 배송 조회</RfTitle>
+        <RfTitle>취소 / 반품 조회</RfTitle>
         <RfScript>주문 내역을 클릭하면 상세 내역을 확인 하실 수 있으며, 주문 상태에 따라 <b>취소/반품 신청이 가능</b>합니다.
           <br/>신청하신 취소/반품 내역은 <a href="/refund">'취소/반품 내역'</a> 메뉴에서 확인 가능합니다.</RfScript>
         <RfLine></RfLine>

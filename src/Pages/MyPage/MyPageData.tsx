@@ -17,7 +17,7 @@ export const menuItems = [
       title: "상태 관리",
       items: [
         { name: "주문 / 배송 조회", link: "/order"},
-        { name: "취소 / 반품 내역", link: "/refund"},
+        { name: "취소 / 반품 조회", link: "/refund"},
       ]
     },
     {

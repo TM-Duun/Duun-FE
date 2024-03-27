@@ -15,8 +15,8 @@ export const FaqTop = styled.div`
 
 export const FaqCircle = styled.img`
     position : absolute;
-    top : 10px;
-    left : -10px;
+    top : 5px;
+    left : -13px;
     width : 30px;
     height : 30px;
     object-fit : contain;
@@ -54,9 +54,12 @@ export const FaqLine = styled.div`
 
 export const FaqBottom = styled.div`
     width : 65vw;
-    min-height : 50vh;
+    height : 60vh;
+    overflow-x : hidden;
+    overflow-y : auto;
     margin : 0;
-    padding : 0;
+    padding : 0 10px;
+    box-sizing : border-box;
     display : flex;
     flex-direction : column;
     justify-content : center;
@@ -78,7 +81,7 @@ export const FaqItemBox = styled.div`
 
     &:hover {
         cursor : pointer;
-        transform : scale(1.02);
+        transform : scale(1.01);
     }
 `;
 

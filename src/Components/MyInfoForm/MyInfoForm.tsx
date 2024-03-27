@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { AddressNum, ChangeBtn, EmailDiv, ExtraAdMetaBox, ExtraAddressBox, ExtraAddressContainer, ExtraAddressContent, ExtraEmailBox, ExtraMetaBox, ExtraPhoneBox, MfCancelBtn, MfCategoryBox, MfCheckContainer, MfContainer, MfDataBox, MfExtraContainer, MfIdBox, MfName, MfSaveBtn, PhoneDiv, Wrapper } from "./MyInfoFormStyles";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { postcodeScriptUrl } from "react-daum-postcode/lib/loadPostcode";
-import { AddressData, AddressObj } from "../../../Types/Address/AddressData";
+import { AddressData, AddressObj } from "../../Types/Address/AddressData";
 import { useNavigate } from "react-router-dom";
+import { AddressNum, ChangeBtn, EmailDiv, ExtraAdMetaBox, ExtraAddressBox, ExtraAddressContainer, ExtraAddressContent, ExtraEmailBox, ExtraMetaBox, ExtraPhoneBox, MiCancelBtn, MiCheckContainer, MiContainer, MiExtraContainer, MiIdContent, MiMainBox, MiName, MiSaveBtn, PhoneDiv } from "./MyInfoFormStyles";
 
 export default function MyInfoForm() {
 
@@ -48,42 +48,44 @@ export default function MyInfoForm() {
   }
 
   return (
-    <Wrapper>
-        <MfContainer>
-          <MfCategoryBox>
-              <p>아이디</p>
-              <p>이름<span>*</span></p>
-              <p>비밀번호</p>                
-          </MfCategoryBox>
-          <MfDataBox>
-            <MfIdBox>
+    <>
+      <MiContainer>
+          <MiMainBox>
+            <p>아이디</p>
+            <MiIdContent>
               <p>duun0123</p>
               <ChangeBtn>아이디 변경</ChangeBtn>
-            </MfIdBox>
-            <MfName>문규리</MfName>
+            </MiIdContent>
+          </MiMainBox>
+          <MiMainBox>
+            <p>이름<span>*</span></p>
+            <MiName>문규리</MiName>
+          </MiMainBox>
+          <MiMainBox>
+            <p>비밀번호</p>              
             <ChangeBtn>비밀번호 변경</ChangeBtn>
-          </MfDataBox>
-        </MfContainer>
-        <MfExtraContainer>
-          <ExtraMetaBox>
-            <p>휴대폰 번호<span>*</span></p>
-            <ExtraPhoneBox>
-              <PhoneDiv>010</PhoneDiv>
-              <PhoneDiv>1234</PhoneDiv>
-              <PhoneDiv>5678</PhoneDiv>
-            </ExtraPhoneBox>
-          </ExtraMetaBox>
-          <ExtraAdMetaBox>
-            <p>주소</p>
-            <ExtraAddressContainer>
-              <ExtraAddressBox>
-                <AddressNum>{addressObj ? addressObj.zoneCode : "12345"}</AddressNum>
-                <ChangeBtn onClick={onHandleClick}>주소지 변경</ChangeBtn>
-              </ExtraAddressBox>
-              <ExtraAddressContent>{addressObj ? addressObj.areaAddress : "201동 1205호" }</ExtraAddressContent>
-              <ExtraAddressContent>{addressObj ? addressObj.townAddress : "인천 연수구 컨벤시아대로 116(송도동, 푸르지오월드마크)" }</ExtraAddressContent>
-            </ExtraAddressContainer>
-          </ExtraAdMetaBox>
+          </MiMainBox>
+      </MiContainer>
+      <MiExtraContainer>
+        <ExtraMetaBox>
+          <p>휴대폰 번호<span>*</span></p>
+          <ExtraPhoneBox>
+            <PhoneDiv>010</PhoneDiv>
+            <PhoneDiv>1234</PhoneDiv>
+            <PhoneDiv>5678</PhoneDiv>
+          </ExtraPhoneBox>
+        </ExtraMetaBox>
+        <ExtraAdMetaBox>
+          <p>주소</p>
+          <ExtraAddressContainer>
+            <ExtraAddressBox>
+              <AddressNum>{addressObj ? addressObj.zoneCode : "12345"}</AddressNum>
+              <ChangeBtn onClick={onHandleClick}>주소지 변경</ChangeBtn>
+            </ExtraAddressBox>
+            <ExtraAddressContent>{addressObj ? addressObj.areaAddress : "201동 1205호" }</ExtraAddressContent>
+            <ExtraAddressContent>{addressObj ? addressObj.townAddress : "인천 연수구 컨벤시아대로 116(송도동, 푸르지오월드마크)" }</ExtraAddressContent>
+          </ExtraAddressContainer>
+        </ExtraAdMetaBox>
           <ExtraMetaBox>
             <p>이메일</p>
             <ExtraEmailBox>
@@ -100,11 +102,11 @@ export default function MyInfoForm() {
               </select>
             </ExtraEmailBox>
           </ExtraMetaBox>
-        </MfExtraContainer>
-        <MfCheckContainer>
-          <MfSaveBtn>변경사항 저장</MfSaveBtn>
-          <MfCancelBtn onClick={onHandleMypage}>취소하기</MfCancelBtn>
-        </MfCheckContainer>
-    </Wrapper>
+        </MiExtraContainer>
+        <MiCheckContainer>
+          <MiSaveBtn>변경사항 저장</MiSaveBtn>
+          <MiCancelBtn onClick={onHandleMypage}>취소하기</MiCancelBtn>
+        </MiCheckContainer>
+    </>
   )
 }

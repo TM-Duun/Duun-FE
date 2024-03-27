@@ -15,7 +15,7 @@ export const CsTop = styled.div`
 
 export const CsCircle = styled.img`
     position : absolute;
-    top : 10px;
+    top : 5px;
     left : -10px;
     width : 30px;
     height : 30px;
@@ -156,7 +156,7 @@ export const CsSubmitInput = styled.input`
 
 export const CsBottom = styled.div`
     width : 65vw;
-    min-height : 50vh;
+    height : 60vh;
     margin : 20px 0 0 0;
     padding : 0;
     display : flex;

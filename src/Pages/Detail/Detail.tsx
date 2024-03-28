@@ -27,7 +27,7 @@ const productsPrice=[
   },
 ]
 // 마이페이지
-export default function MyPage() {
+export default function Detail() {
     return (
       <DWrapper>
         <Block></Block>

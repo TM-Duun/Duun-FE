@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { CsBottom, CsBtn, CsCircle, CsDateInput, CsLine, CsListHeader, CsMenu, CsMiddle, CsPickerContainer, CsScript, CsSelect, CsSubmitInput, CsTitle, CsTop, Dash } from "./CounselStyles";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CounselWrapper = styled.div`
   width : 100vw;
   min-height : 100vh;
-  margin : 30px 0 0 0;
+  margin : 0;
   padding : 0;
   display : flex;
   flex-direction : column;
@@ -12,7 +14,21 @@ const CounselWrapper = styled.div`
   justify-content : center;
 `;
 
+
 export default function Counsel() {
+
+  const [counselPosts, setCounselPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      setCounselPosts(response.data);
+    }
+
+    fetchData();
+  }, []);
+
+  console.log(counselPosts);
   return (
     <CounselWrapper>
       <CsTop>
@@ -48,6 +64,7 @@ export default function Counsel() {
             <p>문의 날짜</p>
             <p>답변 상태</p>
         </CsListHeader>
+        
       </CsBottom>
     </CounselWrapper>
   )

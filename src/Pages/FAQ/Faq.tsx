@@ -4,7 +4,7 @@ import { FaqBottom, FaqCircle, FaqItemBox, FaqLine, FaqScript, FaqTitle, FaqTop,
 const FaqWrapper = styled.div`
   width : 100vw;
   min-height : 100vh;
-  margin : 20px 0 0 0;
+  margin : 0;
   padding : 0;
   display : flex;
   flex-direction : column;

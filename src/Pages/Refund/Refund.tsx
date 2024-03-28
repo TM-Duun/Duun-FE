@@ -4,7 +4,7 @@ import { Dash, RfBottom, RfBtn, RfCircle, RfDateInput, RfLine, RfListHeader, RfM
 const RefundWrapper = styled.div`
   width : 100vw;
   min-height : 100vh;
-  margin : 30px 0 0 0;
+  margin : 0;
   padding : 0;
   display : flex;
   flex-direction : column;

@@ -4,7 +4,7 @@ import { LikesBottom, LikesCircle, LikesLine, LikesScript, LikesTitle, LikesTop 
 const LikesWrapper = styled.div`
   width : 100vw;
   height : 100vh;
-  margin : 50px 0 0 0;
+  margin : 0;
   padding : 0;
   display : flex;
   flex-direction : column;

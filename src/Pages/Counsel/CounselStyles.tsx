@@ -5,7 +5,7 @@ export const CsTop = styled.div`
     position : relative;
     width : 65vw;
     height : 20vh;
-    margin : 0 0 0 0;
+    margin : 80px 0 0 0;
     padding : 0;
     display : flex;
     flex-direction : column;
@@ -181,4 +181,14 @@ export const CsListHeader = styled.div`
         font-family : 'pretendard';
         font-size : 14px;
     }
+`;
+
+export const CsListBottom = styled.div`
+    width : 100%;
+    height : 85%;
+    margin : 0;
+    padding : 10px 50px;
+    box-sizing : border-box;
+    display : flex;
+    align-items : center;
 `;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FaqBottom, FaqCircle, FaqItemBox, FaqLine, FaqScript, FaqTitle, FaqTop, FlContent, FlTitle } from "./FaqStyles";
+import { Bean, FaqBottom, FaqCircle, FaqItemBox, FaqLine, FaqScript, FaqTitle, FaqTop, FlContent, FlTitle } from "./FaqStyles";
 
 const FaqWrapper = styled.div`
   width : 100vw;
@@ -22,21 +22,23 @@ export default function Faq() {
   ]
 
   return (
-    <FaqWrapper>
-      <FaqTop>
-        <FaqCircle src="/circle.svg"/>
-        <FaqTitle>FAQ</FaqTitle>
-        <FaqScript><b>가장 많이 들어오는 질문 리스트들</b>입니다.<br/>참고해보시고, 자세한 문의는 <a href="/counsel">1:1 문의</a> 이용하시기 바랍니다.</FaqScript>
-        <FaqLine></FaqLine>
-      </FaqTop>
-      <FaqBottom>
-      {faqData.map((faq, index) => (
-        <FaqItemBox key={index}>
-            <FlTitle>{faq.title}</FlTitle>
-            <FlContent>{faq.content}</FlContent>
-        </FaqItemBox>  
-      ))}
-      </FaqBottom>
-    </FaqWrapper>
+    <Bean>
+      <FaqWrapper>
+        <FaqTop>
+          <FaqCircle src="/circle.svg"/>
+          <FaqTitle>FAQ</FaqTitle>
+          <FaqScript><b>가장 많이 들어오는 질문 리스트들</b>입니다.<br/>참고해보시고, 자세한 문의는 <a href="/counsel">1:1 문의</a> 이용하시기 바랍니다.</FaqScript>
+          <FaqLine></FaqLine>
+        </FaqTop>
+        <FaqBottom>
+        {faqData.map((faq, index) => (
+          <FaqItemBox key={index}>
+              <FlTitle>{faq.title}</FlTitle>
+              <FlContent>{faq.content}</FlContent>
+          </FaqItemBox>  
+        ))}
+        </FaqBottom>
+      </FaqWrapper>
+    </Bean>
   )
 }

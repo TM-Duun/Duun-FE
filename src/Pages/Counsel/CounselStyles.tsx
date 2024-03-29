@@ -1,7 +1,22 @@
 import styled from "styled-components";
 
+export const Bean = styled.div`
+    margin : 0;
+    padding : 0;
+`;
 
-export const CsTop = styled.div`
+export const CounselWrapper = styled.div`
+  width : 100vw;
+  min-height : 100vh;
+  margin : 0;
+  padding : 0;
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+  justify-content : center;
+`;
+
+export const CounselTop = styled.div`
     position : relative;
     width : 65vw;
     height : 20vh;

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Bean = styled.div`
+    margin : 0;
+    padding : 0;
+`;
 
 export const FaqTop = styled.div`
     position : relative;

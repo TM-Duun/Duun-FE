@@ -1,9 +1,8 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import MyInfoForm from "../../Components/MyInfoForm/MyInfoForm";
-import { MiBottom, MiCircle, MiLine, MiTitle, MiTop } from "./MyInfoStyles";
+import { Bean, MiBottom, MiCircle, MiLine, MiTitle, MiTop } from "./MyInfoStyles";
 
-
-const MiWrapper = styled.div`
+export const MiWrapper = styled.div`
   width : 100vw;
   height : 100vh;
   margin : 0;
@@ -16,15 +15,17 @@ const MiWrapper = styled.div`
 
 export default function MyInfo() {
   return (
-    <MiWrapper>
-      <MiTop>
-        <MiCircle src="/circle.svg"/>
-        <MiTitle>회원정보 수정</MiTitle>
-        <MiLine></MiLine>
-      </MiTop>
-      <MiBottom>
-        <MyInfoForm />
-      </MiBottom>
-    </MiWrapper>
+    <Bean>
+      <MiWrapper>
+        <MiTop>
+          <MiCircle src="/circle.svg"/>
+          <MiTitle>회원정보 수정</MiTitle>
+          <MiLine></MiLine>
+        </MiTop>
+        <MiBottom>
+          <MyInfoForm />
+        </MiBottom>
+      </MiWrapper>
+    </Bean>
   )
 }

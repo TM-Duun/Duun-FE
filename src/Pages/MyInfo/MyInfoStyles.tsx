@@ -70,7 +70,7 @@ export const CIWrapper = styled.div`
     background-color : white;
     display : flex;
     flex-direction : column;
-    justify-content : center;
+    justify-content : space-between;
     margin : 0;
     padding : 20px;
     box-sizing : border-box;
@@ -93,6 +93,7 @@ export const CIForm = styled.form`
     align-items : center;
     border-top : 2px solid #484545;
     border-bottom : 2px solid #484545;
+    margin-bottom : 15px;
 `;
 
 export const CIBox = styled.div`

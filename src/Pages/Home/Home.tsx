@@ -1,10 +1,15 @@
 import { useState,useEffect } from "react";
-import {Main1,MainImg,MainImgText,New,NewText,Main2,Btns,Btn,ImgDiv,Img,Main3,CategoryImg,
+import Carousel from "../../Components/Carousel/Carousel"
+import React from "react";
+import {Main1,New,NewText,Main2,Btns,Btn,Main3,CategoryImg,
   CategoryText,Main4, CouponImg, Download, Coupon, Coupon1, Coupon2, CouponText, Block,Span1,Span2,Span3,Line, BtnImg, NewDiv, Details, MainImgDiv, 
-  MainDetailBtn, ImgRowDiv, HeartImg, ChatBotIcon, ChatBotDiv, ChatBotText, ScrollToTopBtn} from "./HomeStyles"
+  ImgRowDiv, ChatBotIcon, ChatBotDiv, ChatBotText, ScrollToTopBtn} from "./HomeStyles"
   //????물어보기 
+import HomeImg from "../../Components/Shared/HomeImg/HomeImg";
 import styled from "styled-components";
 import ChatBot from "../Chatbot/Chatbot";
+import useStoreHeart from "../../Store/StoreHeartBadge";
+import useStoreHome from "../../Store/StoreHome";
 
 const btnItems = [
   {name:"HOME",src:"/homedata/home.svg"},
@@ -14,19 +19,14 @@ const btnItems = [
   {name:"SWEAT",src:"/homedata/sweat.svg"},
 ];
 
-const imgItems=[
-  {src:"/homedata/small_Img.png"},
-  {src:"/homedata/small_Img.png"},
-  {src:"/homedata/small_Img.png"},
-  {src:"/homedata/small_Img.png"},
-];
 const HWrapper = styled.div`
     min-height : 250vh;
     display : flex;
     flex-direction: column;
+    width: 100%;
     padding : 0px 200px;
-    box-sizing: border-box;
 `;
+
 const categoryItems =[
   {src:"/homedata/category.png",name:"BEAUTY"},
   {src:"/homedata/category.png",name:"ACCESSORIES"},
@@ -39,6 +39,7 @@ const coupon=[
 
 // 처음 main 화면 페이지
 export default function Home() {
+  const { selectedImageSet, setSelectedImageSet } = useStoreHome();
   const [isChatbotOpen,setIsChatbotOpen]=useState(false);
   const handleOpenChatbot=()=>setIsChatbotOpen(true);
 
@@ -65,21 +66,15 @@ export default function Home() {
       behavior:"smooth"
     })
   };
-
+  const {likedItems}=useStoreHeart();
 
   return (
-    <div>
+
     <HWrapper>
       <Block></Block>
       <Main1>
         <MainImgDiv>
-          <MainImg src="/homedata/main.png"/>
-          <MainImgText>
-            스타일까지 챙긴<br/>
-            <Span3 style={{color:"black", fontSize:"30px",fontWeight:"600"}}>트랜디한 셋업 23/24 FW</Span3><br/>
-            <Span3 style={{color:"black", fontSize:"17px",fontWeight:"500",marginTop:"20px"}}>무료 배송 + ~20% 쿠폰</Span3><br/>
-          </MainImgText>
-          <MainDetailBtn>자세히 보기</MainDetailBtn>
+          <Carousel/>
         </MainImgDiv>
       </Main1>
       <Main2>
@@ -94,22 +89,27 @@ export default function Home() {
           </Details>
         </NewDiv>
         <Btns>
-          {btnItems.map((item,index) =>
-            <Btn key={index}>
+          {btnItems.map((item,index) =>{
+            return(
+            <Btn key={index} onClick={() => setSelectedImageSet(index)}>
               {item.name}
               <BtnImg src={item.src}/>
             </Btn>
           )}
+          )}
           <Btn style={{marginLeft:"auto", width:"40px",backgroundColor:"#DBE3F8"}}><BtnImg src="/homedata/down_arrow.svg"/></Btn>
         </Btns>
         <ImgRowDiv>
-          {imgItems.map((item,index) =>{
-            return(
-              <ImgDiv key={index}>
-                <HeartImg src="/heart.svg"/>
-                <Img src={item.src}/>
-              </ImgDiv>
-            )
+          {selectedImageSet.map((src,index) =>{
+              const isLiked = likedItems.includes(index);
+              return(
+                <HomeImg
+                  key={index}
+                  index={index}
+                  isLiked={isLiked}
+                  Image={src}
+                  />
+              )
           })}
         </ImgRowDiv>
       </Main2>
@@ -127,8 +127,8 @@ export default function Home() {
         <Download>
           {coupon.map((item,index) =>{
             return(
-              <>
-                <Coupon key={index}>
+              <React.Fragment key={index}>
+                <Coupon>
                   <Coupon1>
                     <CouponText>{item.name}<br/>
                       <Span1>{item.money}</Span1>
@@ -139,24 +139,23 @@ export default function Home() {
                   <Coupon2><BtnImg style={{width:"25px",height:"25px"}} src="/homedata/download.svg"/></Coupon2>
                 </Coupon>
                 {index < coupon.length-1 && <Line/>}
-              </>
+              </React.Fragment>
             );
           })}
         </Download>
       </Main4>
-    </HWrapper>
-    <ChatBotDiv>
-      <ChatBotIcon onClick={handleOpenChatbot}>
+    <ChatBotDiv onClick={handleOpenChatbot}>
+      <ChatBotIcon>
         <img src="/homedata/chatbot.png"/>
       </ChatBotIcon>
-      <ChatBot isOpen={isChatbotOpen} onClose={()=>setIsChatbotOpen(false)}></ChatBot>
       <ChatBotText>드우니 챗봇</ChatBotText>
     </ChatBotDiv>
+    <ChatBot isOpen={isChatbotOpen} onClose={()=>setIsChatbotOpen(false)}/>
     {ScrollBtn &&(
       <ScrollToTopBtn onClick={scrollToTop}>
         <img src="/homedata/up_arrow.svg"/>
       </ScrollToTopBtn>
     )}
-    </div>
+  </HWrapper>
   )
 }

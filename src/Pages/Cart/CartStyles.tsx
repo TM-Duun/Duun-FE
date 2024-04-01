@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
-export const CartWrapper=styled.div`
-    min-height : 250vh;
-    display : flex;
-    flex-direction: column;
-    padding : 0px 200px;
-    box-sizing: border-box;
-`;
+// export const CartWrapper=styled.div`
+//     min-height : 250vh;
+//     display : flex;
+//     flex-direction: column;
+//     padding : 0px 200px;
+//     box-sizing: border-box;
+// `;
 export const Block = styled.div`
-    width : 100%;
+    /* width : 100%; */
     height : 50px;
     margin : 0;
     padding : 0;
     background-color : transparent;
 `;
 export const CartHeader = styled.div`
+    margin-left: 20px;
     margin-top: 100px;
     font-size: 36px;
     font-weight: bold;
@@ -48,7 +49,7 @@ export const CartGrid = styled.div`
     grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
     margin-bottom: 70px;
     gap:60px;
-    width: 100%;
+    /* width: 100%; */
 `;
 
 export const Image=styled.img`

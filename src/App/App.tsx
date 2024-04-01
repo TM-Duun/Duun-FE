@@ -1,8 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { AppStyles } from './AppStyles'
 import { Layout } from '../Routes/Layout'
 import { routers } from '../Routes/Routers'
 import styled from 'styled-components'
-import { AppStyles } from './AppStyles'
+import ReactModal from 'react-modal'
+
+ReactModal.setAppElement('#root');//앱 로드될 때 실행
 
 const Wrapper = styled.div`
   width : 100%;

@@ -1,11 +1,12 @@
 import styled from "styled-components"
-import { Back, Block, BtnTotalDiv, DeatailHeader, InfoTextDiv, ItemDiv, ItemInfo, PriceInfo, ProductsInfo, PurchaseBtn, RecommendedItemDiv, Total } from "./DetailStyles";
+import { Back, Block, BtnTotalDiv, DeatailHeader, InfoTextDiv, ItemDiv, ItemInfo, Info, ProductDiv, ProductsInfo, PurchaseBtn, RecommendedItemDiv, Total } from "./DetailStyles";
 
 const DWrapper=styled.div`
   display : flex;
   flex-direction: column;
   padding : 0px 200px;
   box-sizing: border-box;
+  min-height: 250vh;
 `;
 
 const productsInfo=[
@@ -23,11 +24,12 @@ const productsPrice=[
     discount:"none",
     coupon:"none",
     event:"none",
-    total:"3,9000"
+    total:"39,000"
   },
 ]
+
 // 마이페이지
-export default function Detail() {
+export default function MyPage() {
     return (
       <DWrapper>
         <Block></Block>
@@ -38,57 +40,60 @@ export default function Detail() {
         <ItemDiv>
           <img src="/detaildata/Item_big.png"/>
           <ItemInfo>
-            Product Info
+            <Info style={{marginTop:0}}>Product Info</Info>
             {productsInfo.map((item,index)=>
             <InfoTextDiv key={index}>
-              <ProductsInfo style={{width:'100%',fontSize:'32px',marginBottom:'15px'}}>{item.name}</ProductsInfo>
-              <div style={{display:"flex"}}>
+              <ProductsInfo style={{fontSize:'32px',marginBottom:'20px'}}>{item.name}</ProductsInfo>
                 <ProductsInfo>
-                  Color <br/>
-                  Size <br/>
-                  Gender <br/>
-                  Likes
+                  <span>Color</span>
+                 <ProductDiv>{item.color}</ProductDiv>
                 </ProductsInfo>
-                <ProductsInfo style={{textAlign:"center"}}>
-                  {item.color}<br/>
-                  {item.size}<br/>
-                  {item.gender}<br/>
-                  {item.likes}
+                <ProductsInfo>
+                  <span>Size</span>
+                  <ProductDiv>{item.size}</ProductDiv>
                 </ProductsInfo>
-              </div>
+                <ProductsInfo>
+                  <span>Gender</span>
+                  <ProductDiv>{item.gender}</ProductDiv>
+                </ProductsInfo>
+                <ProductsInfo style={{marginBottom:'30px'}}>
+                  <span style={{display:'flex',alignItems:'center'}}>
+                    Likes 
+                    <img  style={{height:'16px',width:'16px',marginLeft:'5px'}} src="/categorydata/pull_heart.svg"/>
+                  </span>
+                  <ProductDiv>{item.likes}</ProductDiv>
+                </ProductsInfo>
             </InfoTextDiv>
             )}
-            <PriceInfo>
-            Price Info
-          </PriceInfo>
+          <Info>Price Info</Info>
           {productsPrice.map((item,index)=>
-            <InfoTextDiv key={index} style={{height:'40%',border:'none'}}>
-              <div style={{display:"flex"}}>
-                <ProductsInfo >
-                  Discount <br/>
-                  Coupon <br/>
-                  Event
+            <InfoTextDiv key={index} style={{border:'none'}}>
+                <ProductsInfo>
+                  <span>Discount</span>
+                 <ProductDiv>{item.discount}</ProductDiv>
                 </ProductsInfo>
                 <ProductsInfo>
-                  {item.discount}<br/>
-                  {item.coupon}<br/>
-                  {item.event}
+                  <span>Coupon</span>
+                  <ProductDiv>{item.coupon}</ProductDiv>
                 </ProductsInfo>
-              </div>
+                <ProductsInfo>
+                  <span>Event</span>
+                  <ProductDiv>{item.event}</ProductDiv>
+                </ProductsInfo>
               <BtnTotalDiv>
-                <PurchaseBtn>구매 하기</PurchaseBtn>    
+                <PurchaseBtn>장바구니</PurchaseBtn>    
                 <Total>
-                  <ProductsInfo style={{fontSize:'16px',margin:0,color:'#626262'}}>Total</ProductsInfo>
-                    {item.total}
+                  <Info style={{fontSize:'16px',margin:0,color:'#626262'}}>Total</Info>
+                    {item.total}원
                 </Total>
               </BtnTotalDiv>
             </InfoTextDiv>
             )}
           </ItemInfo>
         </ItemDiv>
-        <RecommendedItemDiv>
-          여기 추천상품
-        </RecommendedItemDiv>
+         <RecommendedItemDiv>
+          
+         </RecommendedItemDiv>
       </DWrapper>
     )
   }

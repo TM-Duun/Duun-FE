@@ -54,42 +54,6 @@ export const LogoTitle = styled.p`
     color : #7C9DEF;
 `;
 
-export const NavMiddle = styled.div`
-    position : relative;
-    flex-grow : 1;
-    height : 100%;
-    padding : 0;
-    margin : 0 20px 0 0;
-    display : flex;
-    align-items : center;
-    justify-content : center;
-`;
-
-export const NavSearch = styled.input`
-    width : 100%;
-    margin : 0;
-    padding : 15px 20px;
-    box-sizing : border-box;
-    display : flex;
-    border-radius : 10px;
-    border : none;
-    outline : none;
-    background-color : #F8F8F7;
-
-    &::placeholder {
-        color : #ccc;
-    }
-`;
-
-export const SearchIcon = styled.img`
-    position : absolute;
-    top : 30%;
-    right : 20px;
-    width : 20px;
-    height : 20px;
-    object-fit : contain;
-`;
-
 export const NavRight = styled.div`
     flex-grow : 1;
     height : 100%;

@@ -1,7 +1,6 @@
 import { Bean, CounselTop, CounselWrapper, CsBottom, CsBtn, CsCircle, CsDateInput, CsLine, CsListHeader, CsMenu, CsMiddle, CsPickerContainer, CsScript, CsSelect, CsSubmitInput, CsTitle, Dash } from "./CounselStyles";
 
 export default function Counsel() {
-
   return (
     <Bean>
       <CounselWrapper>

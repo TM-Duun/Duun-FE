@@ -3,80 +3,72 @@ import { Link } from "react-router-dom";
 
 
 export const Wrapper = styled.div`
-width: 100%;
-height: 100vh; /* 전체 뷰포트 높이를 차지하도록 변경 */
-display: flex;
-justify-content: center;
-align-items: center; 
-flex-direction: column;
-  
-
+  width: 100%;
+  height: 100vh; /* 전체 뷰포트 높이를 차지하도록 변경 */
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
 `;
 
 export const Title = styled.h1`
-color: #7c9def;
-font-family: "Poppins-ExtraBold", sans-serif;
-font-size: 30px; 
-font-weight: 800;
-display: flex;
-justify-content: center;
-
-margin: 0;
+  color: #7c9def;
+  font-family: "Poppins-ExtraBold", sans-serif;
+  font-size: 30px; 
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  margin: 0;
 `;
 
 export const Step = styled.div`
-display: flex;
-justify-content: center;
-width: 100%;
-height: 100px;
-align-items: center;
-padding-top:10px;
-margin-bottom:-10px;
-
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  padding-top:10px;
+  margin-bottom:-10px;
 `;
 
 export const One = styled.div`
-flex-direction: column;
-margin-right:10px;
-
+  flex-direction: column;
+  margin-right:10px;
 `;
 
 
 export const CheckCircle= styled.p`
-border-radius: 50%;
-width: 40px;
-height: 40px; 
-background: #A7BCEF;
-box-shadow: 0px 0px 15px 0px rgba(31, 31, 31, 0.2);
-position: absolute;
-margin:0px ;
- 
+  border-radius: 50%;
+  width: 40px;
+  height: 40px; 
+  background: #A7BCEF;
+  box-shadow: 0px 0px 15px 0px rgba(31, 31, 31, 0.2);
+  position: absolute;
+  margin:0px ;
 `;
 
 export const Check= styled.img`
-position: relative;
-color: #FFFFFF;
-width:25px;
-height:25px;
-border-radius: 50%;
-margin: 6px 12px 33px 7px;
-padding-bottom:1px;
+  position: relative;
+  color: #FFFFFF;
+  width:25px;
+  height:25px;
+  border-radius: 50%;
+  margin: 6px 12px 33px 7px;
+  padding-bottom:1px;
 `;
 
 export const Two = styled.div`
-margin:0 10px;
-
+  margin:0 10px;
 `;
 
 export const BlueCircle= styled.p`
-border-radius: 50%;
-width: 40px;
-height: 40px; 
-background: #7C9DEF;
-box-shadow: 0px 0px 15px 0px rgba(31, 31, 31, 0.2);
-position: absolute;
-margin:0 0px 0 10px;
- 
+  border-radius: 50%;
+  width: 40px;
+  height: 40px; 
+  background: #7C9DEF;
+  box-shadow: 0px 0px 15px 0px rgba(31, 31, 31, 0.2);
+  position: absolute;
+  margin:0 0px 0 10px;
 `;
 
 

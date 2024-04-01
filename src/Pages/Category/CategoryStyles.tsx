@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const CWrapper=styled.div`
     min-height : 250vh;
+    width: 100%;
     display : flex;
     flex-direction: column;
     padding : 0px 200px;
@@ -27,6 +28,7 @@ export const Sidebar = styled.div`
     flex-direction: column;
     width : 20%;
     height: 100%;
+    margin-left: 20px;
 `;
 export const SidebarCategory = styled.div`
     margin-top: 30px;
@@ -62,10 +64,11 @@ export const GridHeader = styled.div`
     }
 `;
 export const BtnsDiv=styled.div`
-    display: flex;
+    /* display: flex; */
+    /* width: 100%; */
     margin-left: auto;
-    font-size: 16px;
-   button{
+    /* font-size: 16px; */
+   /* button{
         height: 36px;
         width: 36px;
         border-radius: 10px;
@@ -74,7 +77,7 @@ export const BtnsDiv=styled.div`
         &:hover {
         cursor : pointer;
         }
-    }
+    } */
     img{
         width : 20px;
         height : 20px;
@@ -95,6 +98,44 @@ export const BtnDropDown = styled.ul`
             background-color: #7C9DEF;
         }
     }
+`;
+
+export const NavMiddle = styled.div`
+    position : relative;
+    flex-grow : 1;
+    height : 100%;
+    padding : 0;
+    margin : 0 20px 0 0;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    margin-left: 20px;
+`;
+
+export const NavSearch = styled.input`
+    width : 80%;
+    height : 100%;
+    margin : 0;
+    padding : 10px 20px;
+    box-sizing : border-box;
+    display : flex;
+    border-radius : 10px;
+    border : none;
+    outline : none;
+    background-color : #F8F8F7;
+
+    &::placeholder {
+        color : #ccc;
+    }
+`;
+
+export const SearchIcon = styled.img`
+    position : absolute;
+    top : 25%;
+    right : 65px;
+    width : 20px;
+    height : 20px;
+    object-fit : contain;
 `;
 
 export const Gridmain=styled.div`
@@ -131,8 +172,8 @@ export const GridHeart=styled.img`
     margin : 0;
     object-fit : contain;
     right: 15px;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     top:15px;
     position: absolute;
     z-index: 4;
@@ -154,10 +195,10 @@ export const GridSpan=styled.div`
     width: 80%;
     height: 100%;
     font-size: 12px;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-left: 10px;
     font-weight: bold;
-    line-height: 10px;
+    line-height: 22px;
     p{
         font-size: 17px;
     }

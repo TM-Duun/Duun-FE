@@ -9,8 +9,6 @@ export const Wrapper = styled.div`
     padding-left:200px; 
     padding-right: 200px;
     box-sizing: border-box;
-    font-size: 52px;
-    background-color: black;
 `;
 
 export const Main1= styled.div`
@@ -30,6 +28,7 @@ export const Block = styled.div`
 export const MainImgDiv = styled.div`
     position:relative;
 `;
+
 export const MainImg=styled.img`
 >>>>>>> c6cede611a92721624c72ea95cc59a773b56af12
     object-fit: cover;
@@ -111,6 +110,8 @@ export const Btn=styled.button`
     gap: 10px;
     &:hover {
         cursor : pointer;
+        color: #3D5AF1;
+        background-color: #A4B9EF;
     }
  `;
 
@@ -125,7 +126,11 @@ export const ImgRowDiv = styled.div`
     display : flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+    margin-top: 40px;
+    gap: 50px;
+    /* border: 1px solid black; */
 `;
 
 export const ImgDiv=styled.div`
@@ -210,7 +215,11 @@ export const Coupon=styled.div`
     width : 100%;
     height: 50%;
     display: flex;
+<<<<<<< HEAD
     flex-direction: row;
+=======
+
+>>>>>>> 27313218777125add9fe653474cf022e0d71ad1f
 `;
 export const Coupon1=styled.div`
     width: 80%;
@@ -264,26 +273,23 @@ export const ChatBotDiv=styled.div`
     position: fixed;
     right: 80px; 
     bottom: 40%; 
-    width: 80px; 
-    height: 200px; 
     justify-content: center;
     align-items: center;
+    &:hover{
+        cursor: pointer;
+    }
 `;
 export const ChatBotIcon = styled.div`
     background-color: #A7BCEF;
-    width: 100%;
-    height: 40%;
+    width: 90px;
+    height: 90px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow : 0px 0px 20px rgba(0, 0, 0, 0.1);
-    &:hover {
-        cursor : pointer;
-    }
     img{
-        position: absolute;
-        object-fit: contain;
+        height: auto;
         width:90%;
     }
 `;
@@ -297,8 +303,8 @@ export const ScrollToTopBtn=styled.button`
     position:fixed;
     right:80px;
     bottom:10%;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: none;
@@ -308,9 +314,5 @@ export const ScrollToTopBtn=styled.button`
     z-index: 200;
     &:hover {
         cursor : pointer;
-    }
-    img{
-        position: absolute;
-        object-fit: contain;
     }
 `;

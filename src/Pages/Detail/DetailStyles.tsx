@@ -28,10 +28,12 @@ export const Back=styled.span`
 `;
 
 export const ItemDiv=styled.div`
+    white-space: nowrap;
     margin-top: 20px;
     width: 100%;
     display: flex;
     img{
+        height: 100%;
         width : 40%;
         object-fit : contain;
     }
@@ -43,40 +45,43 @@ export const ItemInfo = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 24px;
-    padding:5px 60px;
-
+    padding-left: 60px;
 `;
 
 export const InfoTextDiv=styled.div`
-    height:40%;
     font-size: 16px;
     border-bottom: 1px solid #474747;
-    padding-top: 20px;
+    margin-top: 20px;
 `;
 export const ProductsInfo = styled.div`
-    margin-left: 10px;
-    width:100%;
+    display: flex;
     line-height: 40px;
-    text-align : left;
-    `;
-export const PriceInfo = styled.span`
-    margin-top: 20px;
-    font-size:24px;
+    span{
+        color: #474747;
+        width: 70px;
+    }
+`;
 
+export const ProductDiv=styled.div`
+    margin-left: 80px;
+`;
+
+export const Info = styled.span`
+    margin-top: 30px;
+    color: #3F3F3F;
 `;
 
 export const BtnTotalDiv = styled.div`
-    width: 100%;
-    height: 50%;
+    margin-top: 10px;
+    height: 45%;
     display: flex;
-    justify-content: center;
     align-items: center;
 `;
 
 export const PurchaseBtn=styled.button`
-    width: 45%;
+    width: 40%;
     font-family: 'pretendard';
-    font-size: 36px;
+    font-size: 32px;
     border:none;
     height: 70%;
     color: white;
@@ -87,16 +92,18 @@ export const PurchaseBtn=styled.button`
     }
 `;
 export const Total = styled.div`
-    width: 30%;
-    height: 80%;
+    display: flex;
+    flex-direction: column;
     font-size: 40px;
-    color: #626262;
     margin-left: auto;
     color:black;
+    font-weight: 500;
 `;
 
 export const RecommendedItemDiv=styled.div`
     margin-top: 40px;
-    justify-content: center;
-    background-color: blue;
+    /* border:1px solid red; */
+    /* justify-content: center; */
+    /* background-color: blue; */
+    /* display: flex; */
 `

@@ -7,8 +7,6 @@ export const HWrapper = styled.div`
     flex-direction: column;
     padding : 0px 200px;
     box-sizing: border-box;
-    font-size: 52px;
-    background-color: black;
 `;
 
 export const Main1= styled.div`
@@ -27,37 +25,6 @@ export const Block = styled.div`
 `;
 export const MainImgDiv = styled.div`
     position:relative;
-`;
-export const MainImg=styled.img`
-    object-fit: cover;
-    border-radius: 0 0 20px 20px;
-    height: 100%;
-    width: 100%;
-    &:hover {
-        cursor : pointer;
-    }
-`;
-export const MainImgText=styled.span`
-    position: absolute;
-    font-family: 'pretendard';
-    font-size: 38px;
-    font-weight: bold;
-    width: 100%;
-    top: 15%;
-    left: 20%;
-`;
-export const MainDetailBtn=styled.button`
-    position: absolute;
-    top: 70%;
-    left:20%;
-    border: none;
-    border-radius:20px;
-    height: 40px;
-    width: 100px;
-    box-shadow : 0px 0px 20px rgba(0, 0, 0, 0.1);
-    &:hover {
-        cursor : pointer;
-    }
 `;
 
 export const Main2 = styled.div`
@@ -107,6 +74,8 @@ export const Btn=styled.button`
     gap: 10px;
     &:hover {
         cursor : pointer;
+        color: #3D5AF1;
+        background-color: #A4B9EF;
     }
  `;
 
@@ -121,7 +90,11 @@ export const ImgRowDiv = styled.div`
     display : flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+    margin-top: 40px;
+    gap: 50px;
+    /* border: 1px solid black; */
 `;
 
 export const ImgDiv=styled.div`
@@ -205,6 +178,7 @@ export const Coupon=styled.div`
     width : 100%;
     height: 50%;
     display: flex;
+
 `;
 export const Coupon1=styled.div`
     width: 80%;
@@ -260,26 +234,23 @@ export const ChatBotDiv=styled.div`
     position: fixed;
     right: 80px; 
     bottom: 40%; 
-    width: 80px; 
-    height: 200px; 
     justify-content: center;
     align-items: center;
+    &:hover{
+        cursor: pointer;
+    }
 `;
 export const ChatBotIcon = styled.div`
     background-color: #A7BCEF;
-    width: 100%;
-    height: 40%;
+    width: 90px;
+    height: 90px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow : 0px 0px 20px rgba(0, 0, 0, 0.1);
-    &:hover {
-        cursor : pointer;
-    }
     img{
-        position: absolute;
-        object-fit: contain;
+        height: auto;
         width:90%;
     }
 `;
@@ -293,8 +264,8 @@ export const ScrollToTopBtn=styled.button`
     position:fixed;
     right:80px;
     bottom:10%;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: none;
@@ -304,9 +275,5 @@ export const ScrollToTopBtn=styled.button`
     z-index: 200;
     &:hover {
         cursor : pointer;
-    }
-    img{
-        position: absolute;
-        object-fit: contain;
     }
 `;

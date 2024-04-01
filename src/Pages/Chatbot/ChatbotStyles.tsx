@@ -14,11 +14,22 @@ export const CloseBtn = styled.button`
         cursor: pointer;
     }
 `;
-export const ChatWrapper=styled.div`
-    height: auto;
-    font-family:'pretendard';
-    padding-left: 10px;
+
+export const Chatwrapper1= styled.div`
+  overflow-y: auto; //메세지 많아지면 스크롤 
+  height: 600px;
+  line-height: 20px;
+  font-size: 14px;
+
 `;
+
+export const ChatWrapper=styled.div`
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    font-family:'pretendard';
+`;
+
 export const HelpDuun=styled.div`
     margin-top: 60%;
     display: flex;
@@ -34,6 +45,7 @@ export const DuunText=styled.span`
     margin-top: auto;
     color: black;
     font-size: 20px;
+    font-weight: bold;
 `;
 export const DuunImg=styled.img`
     height: 75px;
@@ -43,7 +55,7 @@ export const FnqDiv=styled.div`
     margin-top: 20px;
 `;
 export const FnqBtn=styled.button`
-    box-shadow : 0px 0px 20px rgba(0, 0, 0, 0.15);
+    box-shadow : 0px 0px 10px rgba(0, 0, 0, 0.1);
     background-color: white;
     border: none;
     border-radius: 15px;
@@ -55,28 +67,38 @@ export const FnqBtn=styled.button`
         cursor : pointer;
     }
 `;
-export const ChatDiv=styled.div`
-    margin-top: 45%;
+
+export const Chatbotdiv=styled.div`
+    height: 8%;
+`;
+export const ChatForm=styled.form`
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 10px;
 `;
 export const Chat=styled.input`
     background-color: #F8F8F7;
     border: none;
     height: 30px;
+    width: 100%;
     border-radius: 53px;
-    width: 55%;
     padding-left: 20px;
-    position: relative;
+    /* position: relative; */
+    margin-left: 10px;
+
     ::placeholder{
         color: #AAAAAA;
     }
 `;
 export const SendBtn=styled.button`
-    position: absolute;
-    left:85%;
+    /* position: absolute; */
+    /* left:85%; */
+    /* margin-left: auto; */
+    margin-left: 10px;
     display: flex;
+    margin-right:10px;
     justify-content: center;
     align-items: center;
     background-color: white;

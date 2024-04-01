@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { CartBadge, ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, NavItem, NavLeft, NavMiddle, NavRight, NavSearch, SearchIcon, Wrapper } from "./NavStyles";
+// import { useState } from "react";
+import { CartBadge, ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, NavItem, NavLeft, NavRight, Wrapper } from "./NavStyles";
 import useStore from "../../Store/StoreCartBadge";
+import  useStoreHeart from "../../Store/StoreHeartBadge"
+
 const menuItems = [
   { src: "/cart.svg", name: "장바구니", path: "/cart" },
   { src: "/heart.svg", name: "찜", path: "/likes" },
@@ -9,12 +11,10 @@ const menuItems = [
 
 // 메뉴바 컴포넌트
 export default function Nav() {
-  const itemCount=useStore(state=>state.itemCount);
-  const [searchValue , setSearchValue] = useState("");
 
-  const onSearchChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setSearchValue(e.currentTarget.value);
-  };
+  const itemCount=useStore(state=>state.itemCount);
+  const {likedItems}=useStoreHeart();
+  const likesCount=likedItems.length;
 
   return (
     <Wrapper>
@@ -22,19 +22,11 @@ export default function Nav() {
         <LogoImg src="DuunLogo.svg"/>
         <LogoTitle>Duun</LogoTitle>
       </NavLeft>
-      <NavMiddle>
-        <NavSearch 
-          type="text"
-          placeholder="Search the Items"
-          value = { searchValue }
-          onChange={onSearchChange}
-          />
-        <SearchIcon src="/searchIcon.svg"/>
-      </NavMiddle>
       <NavRight>
         {menuItems.map((item) => (
-          <NavItem key={item.name} to={item.path} $isTarget={item.name==="장바구니"}>
+          <NavItem key={item.name} to={item.path} $isTarget={item.name==="장바구니" || item.name==="찜"}>
             {item.name === "장바구니" && itemCount > 0 && <CartBadge>{itemCount}</CartBadge>}
+            {item.name === "찜" && likesCount > 0 && <CartBadge>{likesCount}</CartBadge>}
             <ItemImg src={item.src}>
             </ItemImg>
             <ItemName>

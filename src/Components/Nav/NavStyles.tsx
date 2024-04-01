@@ -12,7 +12,19 @@ export const Wrapper = styled.div`
     display : flex;
     align-items : center;
     justify-content : space-evenly;
-    z-index: 100;///???
+    z-index: 100;
+
+`;
+
+export const NavContainer = styled.div`
+    width : 75%;
+    height : 100%;
+    margin : 0;
+    padding : 0;
+    display : flex;
+    align-items : center;
+    justify-content : space-between;
+    z-index: 100;
 `;
 
 export const NavLeft = styled(Link)`
@@ -41,48 +53,48 @@ export const LogoTitle = styled.p`
     color : #7C9DEF;
 `;
 
-export const NavMiddle = styled.div`
-    position : relative;
-    flex-grow : 1;
-    height : 100%;
-    padding : 0;
-    margin : 0 20px 0 0;
-    display : flex;
-    align-items : center;
-    justify-content : center;
-`;
+// export const NavMiddle = styled.div`
+//     position : relative;
+//     flex-grow : 1;
+//     height : 100%;
+//     padding : 0;
+//     margin : 0 20px 0 0;
+//     display : flex;
+//     align-items : center;
+//     justify-content : center;
+// `;
+// export const NavSearch = styled.input`
+//     width : 100%;
+//     height : 100%;
+//     margin : 0;
+//     padding : 10px 20px;
+//     box-sizing : border-box;
+//     display : flex;
+//     border-radius : 10px;
+//     border : none;
+//     outline : none;
+//     background-color : #F8F8F7;
 
-export const NavSearch = styled.input`
-    width : 100%;
-    height : 100%;
-    margin : 0;
-    padding : 10px 20px;
-    box-sizing : border-box;
-    display : flex;
-    border-radius : 10px;
-    border : none;
-    outline : none;
-    background-color : #F8F8F7;
+//     &::placeholder {
+//         color : #ccc;
+//     }
+// `;
 
-    &::placeholder {
-        color : #ccc;
-    }
-`;
-
-export const SearchIcon = styled.img`
-    position : absolute;
-    top : 25%;
-    right : 20px;
-    width : 20px;
-    height : 20px;
-    object-fit : contain;
-`;
+// export const SearchIcon = styled.img`
+//     position : absolute;
+//     top : 25%;
+//     right : 20px;
+//     width : 20px;
+//     height : 20px;
+//     object-fit : contain;
+// `;
 
 export const NavRight = styled.div`
     flex-grow : 1;
     height : 100%;
     display : flex;
-    justify-content : space-evenly;
+    gap : 30px;
+    justify-content : flex-end;
     align-items : center;
     margin : 0;
     padding : 0;

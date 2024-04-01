@@ -297,11 +297,12 @@ export const ChatBotText=styled.span`
     font-family: 'Pretendard';
     font-size: 12px;
     white-space: nowrap;
+    margin : 10px 0 0 0;
 `;
 export const ScrollToTopBtn=styled.button`
     display: flex;
     position:fixed;
-    right:80px;
+    right:95px;
     bottom:10%;
     width: 60px;
     height: 60px;

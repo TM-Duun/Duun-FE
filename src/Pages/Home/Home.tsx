@@ -45,6 +45,7 @@ export default function Home() {
 
   const [ScrollBtn,setScrollBtn]=useState(false);
 
+  // scroll Y 좌표를 통한 맨 위로 보내는 버튼
   useEffect(()=>{
     const checkScroll=()=>{
       if(!ScrollBtn && window.scrollY > window.outerHeight* 2 / 3) {

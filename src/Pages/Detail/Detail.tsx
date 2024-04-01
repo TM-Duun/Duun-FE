@@ -7,6 +7,7 @@ const DWrapper=styled.div`
   padding : 0px 200px;
   box-sizing: border-box;
   min-height: 250vh;
+  margin : 30px 0 0 0;
 `;
 
 const productsInfo=[

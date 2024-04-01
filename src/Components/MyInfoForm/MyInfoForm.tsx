@@ -5,7 +5,12 @@ import { AddressData, AddressObj } from "../../Types/Address/AddressData";
 import { useNavigate } from "react-router-dom";
 import { AddressNum, ChangeBtn, EmailDiv, ExtraAdMetaBox, ExtraAddressBox, ExtraAddressContainer, ExtraAddressContent, ExtraEmailBox, ExtraMetaBox, ExtraPhoneBox, MiCancelBtn, MiCheckContainer, MiContainer, MiExtraContainer, MiIdContent, MiMainBox, MiName, MiSaveBtn, PhoneDiv } from "./MyInfoFormStyles";
 
-export default function MyInfoForm({}) {
+interface InFormProps {
+  onIdChange: () => void;
+  onPwdChange: () => void;
+}
+
+export const MyInfoForm: React.FC<InFormProps> = ({ onIdChange, onPwdChange }) => {
 
   const [ selectEmail, setSelectEmail ] = useState("naver.com");
   const open = useDaumPostcodePopup(postcodeScriptUrl);
@@ -54,7 +59,7 @@ export default function MyInfoForm({}) {
             <p>아이디</p>
             <MiIdContent>
               <p>duun0123</p>
-              <ChangeBtn>아이디 변경</ChangeBtn>
+              <ChangeBtn onClick={onIdChange}>아이디 변경</ChangeBtn>
             </MiIdContent>
           </MiMainBox>
           <MiMainBox>
@@ -63,7 +68,7 @@ export default function MyInfoForm({}) {
           </MiMainBox>
           <MiMainBox>
             <p>비밀번호</p>              
-            <ChangeBtn>비밀번호 변경</ChangeBtn>
+            <ChangeBtn onClick={onPwdChange}>비밀번호 변경</ChangeBtn>
           </MiMainBox>
       </MiContainer>
       <MiExtraContainer>
@@ -110,3 +115,5 @@ export default function MyInfoForm({}) {
     </>
   )
 }
+
+export default MyInfoForm;

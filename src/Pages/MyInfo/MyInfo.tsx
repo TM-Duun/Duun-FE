@@ -1,6 +1,8 @@
 import { useState } from "react";
 import MyInfoForm from "../../Components/MyInfoForm/MyInfoForm";
-import { Bean, MiBottom, MiCircle, MiLine, MiTitle, MiTop, MiWrapper } from "./MyInfoStyles";
+import { Bean, CIForm, CITitle, CIWrapper, CurrentId, CIBox, MiBottom, MiCircle, MiLine, MiTitle, MiTop, MiWrapper, CIInfo } from "./MyInfoStyles";
+import { Overlay } from "../../Components/Shared/Overlay/Overlay";
+import './MyInfoScss.scss';
 
 export default function MyInfo() {
 
@@ -24,20 +26,61 @@ export default function MyInfo() {
           <MiLine></MiLine>
         </MiTop>
         <MiBottom>
-          <MyInfoForm changeId={changeId} changePwd={changePwd} onIdChange={toggleChangeId} onPwdChange={toggleChangePwd}/>
+          <MyInfoForm onIdChange={toggleChangeId} onPwdChange={toggleChangePwd}/>
         </MiBottom>
       </MiWrapper>
       {changeId ? (
-        <CIWrapper>
-          
-        </CIWrapper>
+        <>
+          <div className="overlay"></div>
+          <CIWrapper>
+            <CITitle>아이디 변경</CITitle>
+            <CIForm>
+              <CIBox>
+                <CIInfo>현재 아이디 : </CIInfo>
+                <CurrentId>duun0123</CurrentId>
+              </CIBox>
+              <CIBox>
+                <CIInfo>변경 아이디 : </CIInfo>
+                <input
+                  className="newIdInput"
+                  type="text"
+                  placeholder="변경할 아이디 입력" />
+              </CIBox>
+            </CIForm>
+            <div className="btnBox">
+              <div className="CPcheckBtn">변경하기</div>
+              <div className="CPcancelBtn" onClick={toggleChangeId}>취소하기</div>
+            </div>
+          </CIWrapper>
+        </>
       ) : (
         null
       )}
       {changePwd ? (
-        <CPWrapper>
-
-        </CPWrapper>
+        <>
+          <div className="overlay"></div>
+          <div className="CPWrapper">
+            <div className="CPTitle">비밀번호 변경</div>
+            <form className="CPForm">
+              <div className="CPBox">
+                <p className="CPInfo">현재 비밀번호 : </p>
+                <input className="CPInput" type="password" placeholder="현재 비밀번호 입력" />
+              </div>
+              <div className="NPBox">
+                <p className="CPInfo">변경 비밀번호 : </p>
+                <input className="CPInput" type="password" placeholder="변경할 비밀번호 입력" />
+              </div>
+              <div className="NPConfirm">
+                <p className="CPInfo">비밀번호 확인 : </p>
+                <input className="CPInput" type="password" placeholder="변경할 비밀번호 입력" />
+              </div>
+            </form>
+            <div className="btnBox">
+              <div className="CPcheckBtn">변경하기</div>
+              <div className="CPcancelBtn" onClick={toggleChangePwd}>취소하기</div>
+            </div>
+          </div>
+        </>
       ) : (
         null
       )}

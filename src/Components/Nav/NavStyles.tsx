@@ -81,7 +81,7 @@ export const NavItem = styled(Link)<{$isTarget? : boolean}>`
 `;
 
 export const CartBadge=styled.div`
-    top:-5px;
+    top: 0;
     position:absolute;
     height: 20px;
     left: 23px;

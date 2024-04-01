@@ -59,3 +59,65 @@ export const MiBottom = styled.div`
     flex-direction : column;
     align-items : center;
 `;
+
+export const CIWrapper = styled.div`
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+    width : 500px;
+    height : 350px;
+    background-color : white;
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    margin : 0;
+    padding : 20px;
+    box-sizing : border-box;
+`;
+
+export const CITitle = styled.h1`
+    font-size : 36px;
+    font-weight : 600;
+    font-family : 'pretendard';
+    color : #678fe2;
+    margin-bottom : 20px;
+`;
+
+export const CIForm = styled.form`
+    width : 100%;
+    height : 200px;
+    display : flex;
+    flex-direction : column;
+    justify-content : space-between;
+    align-items : center;
+    border-top : 2px solid #484545;
+    border-bottom : 2px solid #484545;
+`;
+
+export const CIBox = styled.div`
+    width : 100%;
+    height : 100px;
+    display : flex;
+    align-items : center;
+    justify-content : flex-start;
+    gap : 30px;
+    margin : 0;
+    padding : 0;
+    border-bottom : 1px solid #c9c9c9;
+`;
+
+export const CIInfo = styled.p`
+    font-size : 20px;
+    font-weight : 500;
+    font-family : 'pretendard';
+    color : #678EF2;
+`;
+
+export const CurrentId = styled.p`
+    font-size : 18px;
+    font-weight : 600;
+    font-family : 'pretendard;
+    color : black;
+`;
+

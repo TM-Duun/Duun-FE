@@ -6,7 +6,6 @@ import  useStoreHeart from "../../Store/StoreHeartBadge"
 import CategoryDropDown from "../../Components/DropDown/DropDown"
 import ShareGridImg from "../../Components/Shared/GridImg/ShareGridImg";
 import useCategoryStore from "../../Store/StoreCategory";
-import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 
 
 const CWrapper=styled.div`
@@ -25,21 +24,21 @@ const categoryItems=[
   {name:"Jeans"},
   {name:"Paddings"},
 ]
-const gridItems = [
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-  {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-]
+// const gridItems = [
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
+// ]
 // 카테고리 페이지
 export default function Category(){
   const { selectCategory, images } = useCategoryStore();
@@ -93,7 +92,6 @@ export default function Category(){
                     <ShareGridImg
                       image={item}
                       key={index}
-                      // item={item}
                       index={index}
                       isLiked={isLiked}
                       />

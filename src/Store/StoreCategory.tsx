@@ -1,6 +1,5 @@
 import {create} from 'zustand';
 
-// 각 카테고리에 대한 이미지 세트를 정의합니다.
 const categoryImages = {
   "T-shirt": [
     "/categorydata/grid_img.png",
@@ -17,7 +16,7 @@ const categoryImages = {
   "/categorydata/grid_img.png",
   "/categorydata/grid_img.png",
   "/categorydata/grid_img.png",
-  "/categorydata/grid_img.png",], // T-shirt 카테고리에 해당하는 이미지 배열
+  "/categorydata/grid_img.png",],
   "Sweatshirt": [
     "/categorydata/grid_img1.png",
     "/categorydata/grid_img1.png",
@@ -31,7 +30,7 @@ const categoryImages = {
     "/categorydata/grid_img1.png",
     "/categorydata/grid_img1.png",
     "/categorydata/grid_img1.png",
-    "/categorydata/grid_img1.png",], // Sweatshirt 카테고리에 해당하는 이미지 배열
+    "/categorydata/grid_img1.png",], 
   "Coats": [
     "/categorydata/grid_img2.png",
     "/categorydata/grid_img2.png",

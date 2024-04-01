@@ -8,7 +8,7 @@ export const Bean = styled.div`
 export const CounselWrapper = styled.div`
   width : 100vw;
   min-height : 100vh;
-  margin : 0;
+  margin : 30px 0 0 0;
   padding : 0;
   display : flex;
   flex-direction : column;
@@ -20,7 +20,7 @@ export const CounselTop = styled.div`
     position : relative;
     width : 65vw;
     height : 20vh;
-    margin : 80px 0 0 0;
+    margin : 0;
     padding : 0;
     display : flex;
     flex-direction : column;
@@ -30,7 +30,7 @@ export const CounselTop = styled.div`
 
 export const CsCircle = styled.img`
     position : absolute;
-    top : 5px;
+    top : 10px;
     left : -10px;
     width : 30px;
     height : 30px;

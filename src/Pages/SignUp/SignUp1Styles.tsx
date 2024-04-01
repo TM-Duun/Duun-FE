@@ -41,25 +41,24 @@ margin-right:10px;
 
 `;
 export const BlueCircle= styled.p`
-border-radius: 50%;
-width: 40px;
-height: 40px; 
-background: #7c9def;
-box-shadow: 0px 0px 15px 0px rgba(31, 31, 31, 0.2);
-position: absolute;
-margin:0 0px 0 0px;
- 
+  border-radius: 50%;
+  width: 40px;
+  height: 40px; 
+  background: #7c9def;
+  box-shadow: 0px 0px 15px 0px rgba(31, 31, 31, 0.2);
+  position: absolute;
+  margin:0 0px 0 0px;
 `;
 
 export const Numone= styled.p`
-position: relative;
-color: #FFFFFF;
-text-align: center;
-font-family: "Pretendard-Regular", sans-serif;
-font-size: 24px;
-font-weight: 400;
-border-radius: 50%;
-margin: 5px 0px 15px 0;
+  position: relative;
+  color: #FFFFFF;
+  text-align: center;
+  font-family: "Pretendard-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  border-radius: 50%;
+  margin: 5px 0px 15px 0;
 `;
 export const Stepname = styled.span`
 color: #7c9def;

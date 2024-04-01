@@ -5,7 +5,7 @@ import { AddressData, AddressObj } from "../../Types/Address/AddressData";
 import { useNavigate } from "react-router-dom";
 import { AddressNum, ChangeBtn, EmailDiv, ExtraAdMetaBox, ExtraAddressBox, ExtraAddressContainer, ExtraAddressContent, ExtraEmailBox, ExtraMetaBox, ExtraPhoneBox, MiCancelBtn, MiCheckContainer, MiContainer, MiExtraContainer, MiIdContent, MiMainBox, MiName, MiSaveBtn, PhoneDiv } from "./MyInfoFormStyles";
 
-export default function MyInfoForm() {
+export default function MyInfoForm({}) {
 
   const [ selectEmail, setSelectEmail ] = useState("naver.com");
   const open = useDaumPostcodePopup(postcodeScriptUrl);
@@ -92,8 +92,8 @@ export default function MyInfoForm() {
               <EmailDiv>duun0126</EmailDiv>
               @
               <label htmlFor="email">{selectEmail}</label>
-              <select name="email" id="email" onChange={onChangeEmail}>
-                <option value="naver.com" selected>naver.com</option>
+              <select name="email" id="email" onChange={onChangeEmail} value={selectEmail}>
+                <option value="naver.com">naver.com</option>
                 <option value="gmail.com">gmail.com</option>
                 <option value="yahoo.com">yahoo.com</option>
                 <option value="hotmail.com">hotmail.com</option>

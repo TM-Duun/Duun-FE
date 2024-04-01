@@ -10,13 +10,16 @@ const REACT_APP_KAKAO_KEY='7c36cadb741b7df9fa562525463eb78c';
 
 // 카카오 객체에 대한 타입 정의 확장
 declare global {
-  interface Window { Kakao: any; }
+  interface Window { 
+    Kakao: any;
+  }
 }
 
 // 로그인 성공 및 실패에 대한 인터페이스 정의 
 interface AuthSuccessResponse {
   access_token: string;
 }
+
 interface AuthFailResponse {
   error: string;
   error_description: string;
@@ -88,6 +91,7 @@ function handleLogin() {
     return;
   }
 
+  // 카카오 로그인 팝업창
   window.Kakao.Auth.login({
     success: (response: AuthSuccessResponse) => {
       console.log('로그인 성공', response);
@@ -96,7 +100,7 @@ function handleLogin() {
       // 사용자 정보 가져오기
       window.Kakao.API.request({
         url: '/v2/user/me',
-        success: (res: any) => { 
+        success: (res: AuthSuccessResponse) => { 
           console.log('사용자 정보', res);
         },
         fail: (error: AuthFailResponse) => {

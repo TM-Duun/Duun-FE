@@ -1,19 +1,20 @@
-import styled from "styled-components";
+import { useState } from "react";
 import MyInfoForm from "../../Components/MyInfoForm/MyInfoForm";
-import { Bean, MiBottom, MiCircle, MiLine, MiTitle, MiTop } from "./MyInfoStyles";
-
-export const MiWrapper = styled.div`
-  width : 100vw;
-  height : 100vh;
-  margin : 0;
-  padding : 0;
-  display : flex;
-  flex-direction : column;
-  align-items : center;
-  justify-content : center;
-`;
+import { Bean, MiBottom, MiCircle, MiLine, MiTitle, MiTop, MiWrapper } from "./MyInfoStyles";
 
 export default function MyInfo() {
+
+  const [changeId, setChangeId] = useState(false);
+  const [changePwd, setChangePwd] = useState(false);
+
+  const toggleChangeId = () => {
+    setChangeId(prev => !prev);
+  };
+
+  const toggleChangePwd = () => {
+    setChangePwd(prev =>!prev);
+  };
+
   return (
     <Bean>
       <MiWrapper>
@@ -23,9 +24,23 @@ export default function MyInfo() {
           <MiLine></MiLine>
         </MiTop>
         <MiBottom>
-          <MyInfoForm />
+          <MyInfoForm changeId={changeId} changePwd={changePwd} onIdChange={toggleChangeId} onPwdChange={toggleChangePwd}/>
         </MiBottom>
       </MiWrapper>
+      {changeId ? (
+        <CIWrapper>
+          
+        </CIWrapper>
+      ) : (
+        null
+      )}
+      {changePwd ? (
+        <CPWrapper>
+
+        </CPWrapper>
+      ) : (
+        null
+      )}
     </Bean>
   )
 }

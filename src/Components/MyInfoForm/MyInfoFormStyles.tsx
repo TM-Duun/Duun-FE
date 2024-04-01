@@ -42,7 +42,7 @@ export const MiIdContent = styled.div`
     display : flex;
     justify-content : flex-start;
     align-items : center;
-    gap : 65px;
+    gap : 60px;
     margin : 0;
     padding : 0;
 `;

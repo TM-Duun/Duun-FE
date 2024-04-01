@@ -5,6 +5,17 @@ export const Bean = styled.div`
     padding : 0;
 `;
 
+export const FaqWrapper = styled.div`
+  width : 100vw;
+  min-height : 100vh;
+  margin : 80px 0 0 0;
+  padding : 0;
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+  justify-content : center;
+`;
+
 export const FaqTop = styled.div`
     position : relative;
     width : 65vw;
@@ -19,7 +30,7 @@ export const FaqTop = styled.div`
 
 export const FaqCircle = styled.img`
     position : absolute;
-    top : 5px;
+    top : 10px;
     left : -13px;
     width : 30px;
     height : 30px;
@@ -58,7 +69,7 @@ export const FaqLine = styled.div`
 
 export const FaqBottom = styled.div`
     width : 65vw;
-    height : 60vh;
+    min-height : 60vh;
     overflow-x : hidden;
     overflow-y : auto;
     margin : 0;
@@ -66,15 +77,15 @@ export const FaqBottom = styled.div`
     box-sizing : border-box;
     display : flex;
     flex-direction : column;
-    justify-content : center;
+    justify-content : flex-start;
     align-items : center;
 `;
 
 export const FaqItemBox = styled.div`
     width : 100%;
-    height : 100px;
+    height : 150px;
     margin : 0 0 20px 0;
-    padding : 0 20px;
+    padding : 20px 20px;
     box-sizing : border-box;
     display : flex;
     flex-direction : column;

@@ -1,21 +1,7 @@
 import { Bean, CounselTop, CounselWrapper, CsBottom, CsBtn, CsCircle, CsDateInput, CsLine, CsListHeader, CsMenu, CsMiddle, CsPickerContainer, CsScript, CsSelect, CsSubmitInput, CsTitle, Dash } from "./CounselStyles";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 export default function Counsel() {
 
-  const [counselPosts, setCounselPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
-      setCounselPosts(response.data);
-    }
-
-    fetchData();
-  }, []);
-
-  console.log(counselPosts);
   return (
     <Bean>
       <CounselWrapper>

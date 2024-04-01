@@ -5,6 +5,17 @@ export const Bean = styled.div`
     padding : 0;
 `;
 
+export const LikesWrapper = styled.div`
+  width : 100vw;
+  height : 100vh;
+  margin : 0;
+  padding : 0;
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+  justify-content : center;
+`;
+
 export const LikesTop = styled.div`
     position : relative;
     width : 65vw;
@@ -19,7 +30,7 @@ export const LikesTop = styled.div`
 
 export const LikesCircle = styled.img`
     position : absolute;
-    top : 10px;
+    top : 15px;
     left : -10px;
     width : 30px;
     height : 30px;

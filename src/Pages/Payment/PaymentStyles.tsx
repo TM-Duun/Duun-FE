@@ -9,7 +9,7 @@ export const PtTop = styled.div`
     position : relative;
     width : 65vw;
     height : 20vh;
-    margin : 0 0 0 0;
+    margin : 50px 0 0 0;
     padding : 0;
     display : flex;
     flex-direction : column;
@@ -19,7 +19,7 @@ export const PtTop = styled.div`
 
 export const PtCircle = styled.img`
     position : absolute;
-    top : 5px;
+    top : 10px;
     left : -10px;
     width : 30px;
     height : 30px;

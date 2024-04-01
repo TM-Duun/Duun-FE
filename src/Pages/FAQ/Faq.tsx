@@ -1,25 +1,31 @@
-import styled from "styled-components";
-import { Bean, FaqBottom, FaqCircle, FaqItemBox, FaqLine, FaqScript, FaqTitle, FaqTop, FlContent, FlTitle } from "./FaqStyles";
+import { Bean, FaqBottom, FaqCircle, FaqItemBox, FaqLine, FaqScript, FaqTitle, FaqTop, FaqWrapper, FlContent, FlTitle } from "./FaqStyles";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Pagination } from "../../Components/Pagination/Pagination";
 
-const FaqWrapper = styled.div`
-  width : 100vw;
-  min-height : 100vh;
-  margin : 0;
-  padding : 0;
-  display : flex;
-  flex-direction : column;
-  align-items : center;
-  justify-content : center;
-`;
+interface counselData {
+  title : string;
+  body : string;
+}
 
 export default function Faq() {
 
-  const faqData = [
-    { title: '배송 및 반품 안내', content: '배송 관련하여 본 서비스는 어떠한 책임도 묻지 않으며, 알아서 처리하시길 바랍니다'},
-    { title: '배송 및 반품 안내', content: '배송 관련하여 본 서비스는 어떠한 책임도 묻지 않으며, 알아서 처리하시길 바랍니다'},
-    { title: '배송 및 반품 안내', content: '배송 관련하여 본 서비스는 어떠한 책임도 묻지 않으며, 알아서 처리하시길 바랍니다'},
-    { title: '배송 및 반품 안내', content: '배송 관련하여 본 서비스는 어떠한 책임도 묻지 않으며, 알아서 처리하시길 바랍니다'},
-  ]
+  const [counselPosts, setCounselPosts] = useState<counselData[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(5);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      setCounselPosts(response.data);
+    }
+
+    fetchData();
+  }, []);
+
+  const firstPost = (currentPage - 1) * postsPerPage;
+  const lastPost = firstPost + postsPerPage;
+  const currentPosts = counselPosts.slice(firstPost, lastPost);
 
   return (
     <Bean>
@@ -31,13 +37,18 @@ export default function Faq() {
           <FaqLine></FaqLine>
         </FaqTop>
         <FaqBottom>
-        {faqData.map((faq, index) => (
+        {currentPosts.map((counselPost, index) => (
           <FaqItemBox key={index}>
-              <FlTitle>{faq.title}</FlTitle>
-              <FlContent>{faq.content}</FlContent>
+              <FlTitle>{counselPost.title}</FlTitle>
+              <FlContent>{counselPost.body}</FlContent>
           </FaqItemBox>  
         ))}
         </FaqBottom>
+        <Pagination 
+          totalPage={Math.ceil(counselPosts.length / postsPerPage)}
+          limit={postsPerPage}
+          page={currentPage}
+          setPage={setCurrentPage}/>
       </FaqWrapper>
     </Bean>
   )

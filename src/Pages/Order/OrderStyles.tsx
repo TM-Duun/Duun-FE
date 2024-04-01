@@ -8,7 +8,7 @@ export const Bean = styled.div`
 export const OrderWrapper = styled.div`
   width : 100vw;
   min-height : 100vh;
-  margin : 0;
+  margin : 30px 0 0 0;
   padding : 0;
   display : flex;
   flex-direction : column;
@@ -30,7 +30,7 @@ export const OdTop = styled.div`
 
 export const OdCircle = styled.img`
     position : absolute;
-    top : 5px;
+    top : 10px;
     left : -10px;
     width : 30px;
     height : 30px;

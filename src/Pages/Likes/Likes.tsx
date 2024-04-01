@@ -1,16 +1,4 @@
-import styled from "styled-components";
-import { Bean, LikesBottom, LikesCircle, LikesLine, LikesScript, LikesTitle, LikesTop } from "./LikesStyles";
-
-const LikesWrapper = styled.div`
-  width : 100vw;
-  height : 100vh;
-  margin : 0;
-  padding : 0;
-  display : flex;
-  flex-direction : column;
-  align-items : center;
-  justify-content : center;
-`;
+import { Bean, LikesBottom, LikesCircle, LikesLine, LikesScript, LikesTitle, LikesTop, LikesWrapper } from "./LikesStyles";
 
 export default function Likes() {
   return (

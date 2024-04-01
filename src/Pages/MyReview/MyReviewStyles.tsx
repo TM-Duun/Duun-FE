@@ -30,7 +30,7 @@ export const MrTop = styled.div`
 
 export const MrCircle = styled.img`
     position : absolute;
-    top : 15px;
+    top : 20px;
     left : -10px;
     width : 30px;
     height : 30px;

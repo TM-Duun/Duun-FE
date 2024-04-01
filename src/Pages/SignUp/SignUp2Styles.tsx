@@ -27,8 +27,8 @@ margin: 0;
 export const Step = styled.div`
 display: flex;
 justify-content: center;
-width:100%;
-height:100px;
+width: 100%;
+height: 100px;
 align-items: center;
 padding-top:10px;
 margin-bottom:-10px;
@@ -143,8 +143,8 @@ width: 4px;
 height: 4px;
 box-shadow: 0px 0px 15px 0px rgba(31, 31, 31, 0.2);
 margin: 0  3px 30px 2px;
-
 `;
+
 export const Gray = styled.h3`
 background: #D9D9D9;
 border-radius: 50%;

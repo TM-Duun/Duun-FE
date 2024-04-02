@@ -72,6 +72,8 @@
     margin : 0;
     padding : 20px;
     box-sizing : border-box;
+    animation : upAnime 0.3s ease;
+    transition : all 0.3s ease;
 }
 
 .CPTitle {
@@ -175,5 +177,15 @@
         border : 1px solid #ccc;
         border-radius : 10px;
         outline : none;
+    }
+}
+
+@keyframes upAnime {
+    0% {
+        opacity : 0;
+    }
+
+    100% {
+        opacity : 1;
     }
 }

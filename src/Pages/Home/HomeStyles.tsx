@@ -30,7 +30,6 @@ export const MainImgDiv = styled.div`
 `;
 
 export const MainImg=styled.img`
->>>>>>> c6cede611a92721624c72ea95cc59a773b56af12
     object-fit: cover;
     border-radius: 0 0 20px 20px;
     height: 100%;

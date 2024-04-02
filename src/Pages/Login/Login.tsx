@@ -1,9 +1,10 @@
 import { useState,useEffect } from "react";
 import{ GlobalStyle} from'../../Components/Login/InputFocus';
-import { Wrapper,Title,Signin,Idpw,Input,Eye,Signup,Question,Signupbtn,Signinbtn,Loginbtn,Kakaobtn,Kakaoicon } from "./LoginStyles";
+import { Wrapper,Title,Signin,Idpw,Eye,Signup,Question,Signupbtn,Signinbtn,Loginbtn,Kakaobtn,Kakaoicon, SiInput, KakaoName } from "./LoginStyles";
 import kakaoicon from '/kakaoicon.svg';
 import { useNavigate } from 'react-router-dom';
 import  useScrollToTop  from '../../Hooks/Scroll/useScrollToTop';
+import useStoreLoginInfo from '../../Store/StoreLoginInfo';
 
 const REACT_APP_KAKAO_KEY='7c36cadb741b7df9fa562525463eb78c';
 
@@ -34,32 +35,22 @@ export default function Login() {
   const [sdkReady, setSdkReady] = useState(false);
   const navigate = useNavigate(); // useNavigate 훅 사용
 
+  // 로그인시 zustand에 id정보 저장
+  const setUserId = useStoreLoginInfo(state => state.setUserId);
+
   //const [error, setError] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      //변경을 받아들인다.
-      const {
-          target: { name, value },
-        } = e;
-       if (name === "id") {
-          setID(value);
-        } else if (name === "password") {
-          setPassword(value);
-        }
-      };
-//  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
- 
-    //  e.preventDefault();
-      //setError("");
-
-   //   try{
-      //계정을 생성하고 
-      //유저의 이름 지정             
- //     }catch (e){
-      //에러    
- //     }
-
- // };
+    //변경을 받아들인다.
+    const {
+        target: { name, value },
+      } = e;
+     if (name === "id") {
+        setID(value);
+      } else if (name === "password") {
+        setPassword(value);
+    }
+  };
 
  useEffect(() => {
   // 카카오 SDK 로드 및 초기화 함수
@@ -84,8 +75,20 @@ export default function Login() {
   loadKakaoSDK();
 }, []);
 
+const onHandleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  try {
+    // 여기에 로그인에 대한 post 요청
+    setUserId(id);
+  } catch (error) {
+    console.log(error);
+  }
+
+  navigate("/");
+};
+
 // 카카오 로그인 처리 함수
-function handleLogin() {
+function kakaoHandleLogin() {
   if (!sdkReady) {
     console.log('Kakao SDK is not ready yet.');
     return;
@@ -112,47 +115,44 @@ function handleLogin() {
       console.error(err);
     },
   });
-}
+};
 
  
 return (
-<Wrapper>
-<GlobalStyle /> 
-  <Signin>
-  <Title>Duun</Title>
-    <Idpw>아이디</Idpw>
-      <Input
-      onChange={onChange}
-      name="id" 
-      value={id}
-      placeholder="아이디를 입력하세요"       
-      type="text"
-      required/>
+  <Wrapper>
+  <GlobalStyle /> 
+    <Signin onSubmit={onHandleLogin}>
+      <Title>Duun</Title>
+      <Idpw>아이디</Idpw>
+      <SiInput
+        onChange={onChange}
+        name="id" 
+        value={id}
+        placeholder="아이디를 입력하세요"       
+        type="text"
+        required/>
       <Idpw>비밀번호</Idpw>
-      <Input
-      onChange={onChange}
-      name="password" 
-      value={password}
-      placeholder="비밀번호를 입력하세요"       
-      type="password"
-      required>
-       </Input>
-       <Eye src="/eye.svg" />   
-
-      </Signin>
-
-  <Signup>
-    <Question> 계정이 없으세요? </Question>
-    <Signupbtn to="/SignUp1">
-      회원가입
-    </Signupbtn>
+      <SiInput
+        onChange={onChange}
+        name="password" 
+        value={password}
+        placeholder="비밀번호를 입력하세요"       
+        type="password"
+        required />
+      <Eye src="/eye.svg" />   
+    </Signin>
+    <Signup>
+      <Question>계정이 없으세요?</Question>
+      <Signupbtn to="/SignUp1">회원가입</Signupbtn>
     </Signup>
 
-  <Signinbtn>
-    <Loginbtn to="/LoginComplete"> 로그인 </Loginbtn>
-    <Kakaobtn onClick={handleLogin} disabled={!sdkReady}> 카카오 로그인 </Kakaobtn>
-    <Kakaoicon src={kakaoicon}/>
-  </Signinbtn>
+    <Signinbtn>
+      <Loginbtn type="submit" value="로그인" />
+      <Kakaobtn onClick={kakaoHandleLogin} disabled={!sdkReady}>
+        <Kakaoicon src={kakaoicon}/>
+        <KakaoName>카카오 로그인</KakaoName>
+      </Kakaobtn>
+    </Signinbtn>
   </Wrapper>
 )
 }

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Bean = styled.div`
     margin : 0;
@@ -6,14 +6,14 @@ export const Bean = styled.div`
 `;
 
 export const MiWrapper = styled.div`
-  width : 100vw;
-  height : 100vh;
-  margin : 0;
-  padding : 0;
-  display : flex;
-  flex-direction : column;
-  align-items : center;
-  justify-content : center;
+    width : 100vw;
+    height : 100vh;
+    margin : 0;
+    padding : 0;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : center;
 `;
 
 export const MiTop = styled.div`
@@ -60,6 +60,16 @@ export const MiBottom = styled.div`
     align-items : center;
 `;
 
+const upAnime = keyframes`
+    0% {
+        opacity : 0;
+    }
+
+    100% {
+        opacity : 1;
+    }
+`;
+
 export const CIWrapper = styled.div`
     position : absolute;
     top : 50%;
@@ -74,6 +84,8 @@ export const CIWrapper = styled.div`
     margin : 0;
     padding : 20px;
     box-sizing : border-box;
+    animation : ${upAnime} 0.3s ease;
+    transition : all 0.3s ease;
 `;
 
 export const CITitle = styled.h1`

@@ -30,7 +30,6 @@ export const MainImgDiv = styled.div`
 `;
 
 export const MainImg=styled.img`
->>>>>>> c6cede611a92721624c72ea95cc59a773b56af12
     object-fit: cover;
     border-radius: 0 0 20px 20px;
     height: 100%;
@@ -215,11 +214,8 @@ export const Coupon=styled.div`
     width : 100%;
     height: 50%;
     display: flex;
-<<<<<<< HEAD
-    flex-direction: row;
-=======
+    /* flex-direction: row; */
 
->>>>>>> 27313218777125add9fe653474cf022e0d71ad1f
 `;
 export const Coupon1=styled.div`
     width: 80%;

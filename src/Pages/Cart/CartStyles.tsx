@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-// export const CartWrapper=styled.div`
-//     min-height : 250vh;
-//     display : flex;
-//     flex-direction: column;
-//     padding : 0px 200px;
-//     box-sizing: border-box;
-// `;
 export const Block = styled.div`
     /* width : 100%; */
     height : 50px;

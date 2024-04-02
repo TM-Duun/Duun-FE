@@ -4,7 +4,7 @@ import React from "react";
 import {Main1,New,NewText,Main2,Btns,Btn,Main3,CategoryImg,
   CategoryText,Main4, CouponImg, Download, Coupon, Coupon1, Coupon2, CouponText, Block,Span1,Span2,Span3,Line, BtnImg, NewDiv, Details, MainImgDiv, 
   ImgRowDiv, ChatBotIcon, ChatBotDiv, ChatBotText, ScrollToTopBtn} from "./HomeStyles"
-  //????물어보기 
+
 import HomeImg from "../../Components/Shared/HomeImg/HomeImg";
 import styled from "styled-components";
 import ChatBot from "../Chatbot/Chatbot";
@@ -36,13 +36,19 @@ const coupon=[
   {name:"코트 카테고리", money:"10%", text:"할인!", duedate:"~2024. 12. 31"},
   {name:"팬츠 카테고리", money:"1000P", text:"할인!", duedate:"~2024. 09. 31"}
 ]
+const Maintext=[
+  [''],
+  ['이달의 신상'],
+  ['오늘의 코트'],
+  ['오늘의 팬츠'],
+  ['오늘의 스웨터']
+]
 
 // 처음 main 화면 페이지
 export default function Home() {
   const { selectedImageSet, setSelectedImageSet } = useStoreHome();
   const [isChatbotOpen,setIsChatbotOpen]=useState(false);
   const handleOpenChatbot=()=>setIsChatbotOpen(true);
-
   const [ScrollBtn,setScrollBtn]=useState(false);
 
   // scroll Y 좌표를 통한 맨 위로 보내는 버튼
@@ -68,6 +74,8 @@ export default function Home() {
     })
   };
   const {likedItems}=useStoreHeart();
+  const [selectedButton, setSelectedButton] = useState<number>(1);
+  const [selectedName, setSelectedName] = useState('');
 
   return (
 
@@ -81,8 +89,8 @@ export default function Home() {
       <Main2>
         <NewDiv>
           <div>
-            <New>New</New>
-            <NewText>이번 달 신상품입니다.</NewText>
+            <New>{selectedName || 'New'}</New>
+            <NewText>{Maintext[selectedButton]}</NewText>
           </div>
           <Details to="/category">
             자세히 보기
@@ -92,16 +100,24 @@ export default function Home() {
         <Btns>
           {btnItems.map((item,index) =>{
             return(
-            <Btn key={index} onClick={() => setSelectedImageSet(index)}>
+            <Btn 
+              key={index} 
+              style={selectedButton ===index ?{backgroundColor:'#A4B9EF',color:'#3D5AF1'}:{}}
+              onClick={() =>{ 
+                setSelectedImageSet(index);
+                setSelectedButton(index);
+                setSelectedName(item.name);
+              }}
+            >
               {item.name}
               <BtnImg src={item.src}/>
             </Btn>
-          )}
+            )}
           )}
           <Btn style={{marginLeft:"auto", width:"40px",backgroundColor:"#DBE3F8"}}><BtnImg src="/homedata/down_arrow.svg"/></Btn>
         </Btns>
         <ImgRowDiv>
-          {selectedImageSet.map((src,index) =>{
+          {selectedImageSet.map((src:string,index:number) =>{
               const isLiked = likedItems.includes(index);
               return(
                 <HomeImg

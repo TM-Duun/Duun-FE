@@ -39,6 +39,9 @@ export default function Cart() {
     setTotalPrice(total);
   },[checkedItems])
 
+  const totalCount=cartItems.reduce((acc,item) =>{
+    return acc+parseInt(item.count);
+  },0);
 
   //맨위 체크박스 눌렀을 때를 감지하는 useState
   const [selectAll,setSelectAll]=useState(true);
@@ -66,7 +69,7 @@ export default function Cart() {
         <CartHeader>
           <img src="/cartdata/circle.svg"/>
           <HeaderText>장바구니</HeaderText>
-          <Counter>0</Counter>
+          <Counter>{totalCount}</Counter>
         </CartHeader>
         <CartContainer>
           <CartGrid>

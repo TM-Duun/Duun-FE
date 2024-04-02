@@ -17,9 +17,8 @@ const CWrapper=styled.div`
 `;
 
 const categoryItems=[
-
   {name:"T-shirt"},
-  {name:"Sweatshirt"},
+  {name:"Sweat"},
   {name:"Coats"},
   {name:"Jeans"},
   {name:"Paddings"},
@@ -49,6 +48,10 @@ export default function Category(){
   };
 
   const {likedItems}=useStoreHeart();
+
+  const [selectedButton, setSelectedButton] = useState<number>(1);
+  const [selectedName, setSelectedName] = useState('');
+
   return (
     <CWrapper>
         <Block></Block>
@@ -59,7 +62,15 @@ export default function Category(){
             <ul style={{ marginBottom: "20px" ,padding:"0",marginLeft:"10px"}}>
               {categoryItems.map((item, index) =>
                 <li style={{ listStyleType: "none", marginBottom: "20px" }} key={index}>
-                  <SidebarText key={index} to="#" onClick={()=>selectCategory(item.name)} >
+                  <SidebarText 
+                      key={index} 
+                      to="#" 
+                      style={{color:selectedButton===index? 'black': ''}}
+                      onClick={()=>{
+                        selectCategory(item.name);
+                        setSelectedButton(index);
+                        setSelectedName(item.name);
+                      }}>
                     {item.name}
                   </SidebarText>
                 </li>
@@ -69,7 +80,7 @@ export default function Category(){
           </Sidebar>
           <GridDiv>
             <GridHeader>
-              <span>Sweatshirt</span>
+              <span style={{width:'20%'}}>{selectedName || 'Sweat'}</span>
               <NavMiddle>
                 <NavSearch
                   type="text"
@@ -90,13 +101,14 @@ export default function Category(){
                   const isLiked = likedItems.includes(index);
                   return(
                     <ShareGridImg
-                      image={item}
+                      image={item.src}
                       key={index}
                       index={index}
                       isLiked={isLiked}
+                      name={item.name}
+                      price={item.price}
                       />
-                  )
-                })}
+                  )})}
               </>
             </Gridmain>
           </GridDiv>

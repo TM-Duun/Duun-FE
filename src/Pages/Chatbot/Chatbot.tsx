@@ -39,12 +39,13 @@ export default function ChatBot({isOpen, onClose}:ChatBotProps){
     const [messages, setMessages] = useState<Message[]>([]);
 
     const addMessage = (text: string, sender: 'user' | 'bot') => {
-    const newMessage: Message = {
-        id: messages.length + 1, // 단순 예시를 위한 ID 할당
-        text,
-        sender
-    };
-    setMessages(prevMessages => [...prevMessages, newMessage]);
+
+        const newMessage: Message = {
+            id: messages.length + 1,//뭘로 하지?
+            text,
+            sender
+        };
+        setMessages(prevMessages => [...prevMessages, newMessage]);
     };
 
     const customStyles = {
@@ -69,9 +70,9 @@ export default function ChatBot({isOpen, onClose}:ChatBotProps){
     const chatWrapperRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-    if(chatWrapperRef.current) {
-        chatWrapperRef.current.scrollTop = chatWrapperRef.current.scrollHeight;
-    }
+        if(chatWrapperRef.current) {
+            chatWrapperRef.current.scrollTop = chatWrapperRef.current.scrollHeight;
+        }
     }, [messages]); // 메시지 상태가 변경될 때마다 실행
     return(
         <Modal
@@ -108,16 +109,32 @@ export default function ChatBot({isOpen, onClose}:ChatBotProps){
                 {!showFAQ &&(
 
                     <Chatwrapper1 ref={chatWrapperRef}>
-                    {messages.map((message) => (
-                        <div key={message.id} style={{ display: 'flex', justifyContent: message.sender === 'user' ? 'flex-end' : 'flex-start', alignItems: 'center', margin: '10px 0' }}>
-                        {message.sender === 'bot' && (
-                            <img src="/homedata/chatbot.png" alt="Bot Profile" style={{ width: '40px', height: '40px', borderRadius: '20px', marginRight: '10px' ,objectFit:'contain',backgroundColor:'#7C9DEF'}} />
-                        )}
-                        <div style={{ maxWidth: '70%', padding: '10px', borderRadius: '20px', backgroundColor: message.sender === 'user' ? '#7C9DEF' : '#f0f0f0', color: message.sender === 'user' ? 'white' : 'black' }}>
-                            <p>{message.text}</p>
-                        </div>
-                        </div>
-                    ))}
+                        {messages.map((message) => (
+                            <div key={message.id} style={{ display: 'flex', justifyContent: message.sender === 'user' ? 'flex-end' : 'flex-start', alignItems: 'center', margin: '10px 0' }}>
+                                {message.sender === 'bot' && (
+                                    <img src="/homedata/chatbot.png" alt="Bot Profile" style={{ width: '40px', height: '40px', borderRadius: '20px', marginRight: '10px' ,objectFit:'contain',backgroundColor:'#7C9DEF'}} />
+                                )}
+                                <div style={{maxWidth: '70%', padding: '10px', borderRadius: '20px', backgroundColor: message.sender === 'user' ? '#7C9DEF' : '#f0f0f0', color: message.sender === 'user' ? 'white' : 'black' }}>
+                                    <p>{message.text}</p>
+
+                                    {message.sender==='bot'&&(
+                                         <div>
+                                         <FnqDiv>
+                                             <FnqBtn onClick={() => handleFaqClick("반품은 어디서 하나요?", "반품은 마이페이지>상태관리>취소/반품 조회에서 확인할 수 있습니다.")}>
+                                                반품은 어디서 하나요?
+                                             </FnqBtn>
+                                             <FnqBtn onClick={() => handleFaqClick("주문 취소시 며칠 내에 환불 처리 되나요?", "3~5일 내에 환불 처리 됩니다.")}>
+                                                 주문 취소시 며칠 내에 환불 처리 되나요?</FnqBtn>
+                                             <FnqBtn onClick={() => handleFaqClick("주문 취소는 어디서 하나요?", "마이페이지>상품 내역>결제 내역에서 취소할 수 있습니다.")}>
+                                                주문 취소는 어디서 하나요?</FnqBtn>
+                                             <FnqBtn onClick={() => handleFaqClick("결제 방법", "카드 및 무통장 가능합니다.")}>
+                                                결제 방법</FnqBtn> 
+                                         </FnqDiv>
+                                     </div>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
                     </Chatwrapper1>
 
                 )}

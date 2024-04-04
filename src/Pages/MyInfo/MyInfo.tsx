@@ -1,23 +1,23 @@
 import { useState } from "react";
 import MyInfoForm from "../../Components/MyInfoForm/MyInfoForm";
 import { Bean, CIForm, CITitle, CIWrapper, CurrentId, CIBox, MiBottom, MiCircle, MiLine, MiTitle, MiTop, MiWrapper, CIInfo } from "./MyInfoStyles";
-import { Overlay } from "../../Components/Shared/Overlay/Overlay";
 import './MyInfoScss.scss';
 
 export default function MyInfo() {
 
-  const [changeId, setChangeId] = useState(false);
-  const [changePwd, setChangePwd] = useState(false);
+  const [changeIdPopup, setChangeIdPopup] = useState(false);
+  const [changePwdPopup, setChangePwdPopup] = useState(false);
 
-  const toggleChangeId = () => {
-    setChangeId(prev => !prev);
+
+  const toggleChangeIdPopup = () => {
+    setChangeIdPopup(prev => !prev);
   };
 
-  const toggleChangePwd = () => {
-    setChangePwd(prev =>!prev);
+  const toggleChangePwdPopup = () => {
+    setChangePwdPopup(prev =>!prev);
   };
 
-  return (
+  return (    
     <Bean>
       <MiWrapper>
         <MiTop>
@@ -26,10 +26,10 @@ export default function MyInfo() {
           <MiLine></MiLine>
         </MiTop>
         <MiBottom>
-          <MyInfoForm onIdChange={toggleChangeId} onPwdChange={toggleChangePwd}/>
+          <MyInfoForm onIdChangePopup={toggleChangeIdPopup} onPwdChangePopup={toggleChangePwdPopup}/>
         </MiBottom>
       </MiWrapper>
-      {changeId ? (
+      {changeIdPopup ? (
         <>
           <div className="overlay"></div>
           <CIWrapper>
@@ -49,14 +49,14 @@ export default function MyInfo() {
             </CIForm>
             <div className="btnBox">
               <div className="CPcheckBtn">변경하기</div>
-              <div className="CPcancelBtn" onClick={toggleChangeId}>취소하기</div>
+              <div className="CPcancelBtn" onClick={toggleChangeIdPopup}>취소하기</div>
             </div>
           </CIWrapper>
         </>
       ) : (
         null
       )}
-      {changePwd ? (
+      {changePwdPopup ? (
         <>
           <div className="overlay"></div>
           <div className="CPWrapper">
@@ -64,7 +64,11 @@ export default function MyInfo() {
             <form className="CPForm">
               <div className="CPBox">
                 <p className="CPInfo">현재 비밀번호 : </p>
-                <input className="CPInput" type="password" placeholder="현재 비밀번호 입력" />
+                <input 
+                  className="CPInput" 
+                  type="password" 
+                  placeholder="현재 비밀번호 입력"
+                   />
               </div>
               <div className="NPBox">
                 <p className="CPInfo">변경 비밀번호 : </p>
@@ -77,7 +81,7 @@ export default function MyInfo() {
             </form>
             <div className="btnBox">
               <div className="CPcheckBtn">변경하기</div>
-              <div className="CPcancelBtn" onClick={toggleChangePwd}>취소하기</div>
+              <div className="CPcancelBtn" onClick={toggleChangePwdPopup}>취소하기</div>
             </div>
           </div>
         </>

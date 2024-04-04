@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import {Block,GridDiv,Sidebar,Cmain, SidebarCategory, GridHeader, BtnsDiv, Gridmain,
    SidebarText,NavMiddle, NavSearch, SearchIcon} from "./CategoryStyles";
-import { useState } from "react";
-import  useStoreHeart from "../../Store/StoreHeartBadge"
+import { useEffect, useState } from "react";
 import CategoryDropDown from "../../Components/DropDown/DropDown"
 import ShareGridImg from "../../Components/Shared/GridImg/ShareGridImg";
-import useCategoryStore from "../../Store/StoreCategory";
+// import useCategoryStore from "../../Store/StoreCategory";
+import axios from "axios";
 
 
 const CWrapper=styled.div`
@@ -23,41 +23,50 @@ const categoryItems=[
   {name:"Jeans"},
   {name:"Paddings"},
 ]
-// const gridItems = [
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-//   {name:"Lounded wide Sweat Shirt", cost:"$ 36.50"},
-// ]
-// 카테고리 페이지
+
+interface Product {
+  id: number;
+  title: string;
+  price: string;
+  category: string;
+  image: string;
+}
+
+
 export default function Category(){
-  const { selectCategory, images } = useCategoryStore();
+
+  // const { selectCategory, images } = useCategoryStore();
 
   const [searchValue , setSearchValue] = useState("");
   const onSearchChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearchValue(e.currentTarget.value);
   };
-
-  const {likedItems}=useStoreHeart();
-
   const [selectedButton, setSelectedButton] = useState<number>(1);
   const [selectedName, setSelectedName] = useState('');
+  const [products, setProducts] = useState<Product[]>([]); // 상품 데이터를 저장할 상태
 
+  useEffect(() => {
+    // 상품 데이터를 가져오는 함수
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get<Product[]>('https://fakestoreapi.com/products');
+        const filteredProducts = response.data.filter(product => (
+          product.category === "men's clothing" || product.category === "women's clothing"
+         )
+        );
+        setProducts(filteredProducts);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    fetchProducts();
+  }, []);
   return (
     <CWrapper>
         <Block></Block>
         <Cmain>
           <Sidebar>
-            <span style={{fontSize:"24px",fontWeight:"bold",marginTop:"80px"}}>Category</span>
+            <span style={{fontSize:"24px",fontWeight:"bold"}}>Category</span>
             <SidebarCategory>
             <ul style={{ marginBottom: "20px" ,padding:"0",marginLeft:"10px"}}>
               {categoryItems.map((item, index) =>
@@ -67,7 +76,6 @@ export default function Category(){
                       to="#" 
                       style={{color:selectedButton===index? 'black': ''}}
                       onClick={()=>{
-                        selectCategory(item.name);
                         setSelectedButton(index);
                         setSelectedName(item.name);
                       }}>
@@ -96,16 +104,13 @@ export default function Category(){
             </GridHeader>
             <Gridmain>
               <>
-                {images.map((item,index) =>{
-                  console.log(images)
-                  const isLiked = likedItems.includes(index);
+                {products.map((item,index) =>{
                   return(
                     <ShareGridImg
-                      image={item.src}
+                      image={item.image}
                       key={index}
-                      index={index}
-                      isLiked={isLiked}
-                      name={item.name}
+                      index={item.id}
+                      name={item.title}
                       price={item.price}
                       />
                   )})}

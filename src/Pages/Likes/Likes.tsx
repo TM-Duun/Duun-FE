@@ -1,6 +1,10 @@
-import { Bean, LikesBottom, LikesCircle, LikesLine, LikesScript, LikesTitle, LikesTop, LikesWrapper } from "./LikesStyles";
+import { Bean, LikesBottom, LikesCircle, LikesGrid, LikesLine, LikesScript, LikesTitle, LikesTop, LikesWrapper } from "./LikesStyles";
+import  useStoreHeart from "../../Store/StoreHeartBadge"
+import ShareGridImg from "../../Components/Shared/GridImg/ShareGridImg";
 
 export default function Likes() {
+  const {likedItems}=useStoreHeart();
+  
   return (
     <Bean>
       <LikesWrapper>
@@ -11,7 +15,19 @@ export default function Likes() {
           <LikesLine></LikesLine>
         </LikesTop>
         <LikesBottom>
-
+        <LikesGrid>
+            {likedItems.map((item) => {
+              return(
+                <ShareGridImg
+                      image={item.image}
+                      key={item.index}
+                      index={item.index}
+                      name={item.name}
+                      price={item.price}
+                      />
+              )
+            })}
+          </LikesGrid>
         </LikesBottom>
       </LikesWrapper>
     </Bean>

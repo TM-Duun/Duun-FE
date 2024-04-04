@@ -17,9 +17,8 @@ export const Block = styled.div`
     background-color : transparent;
 `;
 export const Cmain=styled.div`
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
-    flex-direction: row;
     width: 100%;
     height: 100%;
 `;
@@ -56,7 +55,6 @@ export const GridDiv = styled.div`
 `;
 export const GridHeader = styled.div`
     display: flex;
-    margin-top: 80px;
     span{
         font-size: 40px;
         color: #678EF2;
@@ -64,20 +62,7 @@ export const GridHeader = styled.div`
     }
 `;
 export const BtnsDiv=styled.div`
-    /* display: flex; */
-    /* width: 100%; */
     margin-left: auto;
-    /* font-size: 16px; */
-   /* button{
-        height: 36px;
-        width: 36px;
-        border-radius: 10px;
-        border: 0.5px solid #7C9DEF;
-        background-color: white;
-        &:hover {
-        cursor : pointer;
-        }
-    } */
     img{
         width : 20px;
         height : 20px;
@@ -143,6 +128,7 @@ export const Gridmain=styled.div`
     grid-template-columns: repeat(4, 1fr); 
     gap: 20px; 
     padding-top: 20px;
+    width: 100%;
 `;
 export const GridImg=styled.div`
     width : 200px;

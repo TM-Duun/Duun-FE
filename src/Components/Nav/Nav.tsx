@@ -1,7 +1,8 @@
 // import { useState } from "react";
-import { CartBadge, ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, NavContainer, NavItem, NavLeft, NavRight, Wrapper } from "./NavStyles";
+import { CartBadge, ItemImg, ItemName, LoginItem, LogoImg, LogoTitle, LogoutItem, NavContainer, NavItem, NavLeft, NavRight, Wrapper } from "./NavStyles";
 import useStore from "../../Store/StoreCartBadge";
 import  useStoreHeart from "../../Store/StoreHeartBadge"
+import StoreLoginInfo from "../../Store/StoreLoginInfo";
 
 const menuItems = [
   { src: "/cart.svg", name: "장바구니", path: "/cart" },
@@ -14,6 +15,11 @@ export default function Nav() {
   const itemCount=useStore(state=>state.itemCount);
   const {likedItems}=useStoreHeart();
   const likesCount=likedItems.length;
+  const { userId, setUserId } = StoreLoginInfo();
+
+  const handleLogout = () => {
+    setUserId("");
+  };
 
   return (
     <Wrapper>
@@ -34,9 +40,13 @@ export default function Nav() {
             </ItemName>
           </NavItem>
         ))}
-        <LoginItem to="/login">
-          Login
-        </LoginItem>
+        {userId ? (
+          <LogoutItem onClick={handleLogout}>Logout</LogoutItem>
+        ) : (
+          <LoginItem to="/login">
+            Login
+          </LoginItem>
+        )}
       </NavRight>
       </NavContainer>
     </Wrapper>

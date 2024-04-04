@@ -3,18 +3,20 @@ import styled from "styled-components";
 
 export const ImgContainer=styled(Link)`
     position:absolute;
-    /* border:1px solid red; */
     width: 100%;
-    height: 75%;
+    height:75%;
     border-radius: 20px 20px 0 0;
-    background-color:#F4F2F2;
+    /* background-color:#F4F2F2; */
+    background-color:inherit;
 `;
 
 export const GridInImg=styled.img`
     position: absolute;
-    /* border:1px solid blue; */
-    width:100%;
-    height: 100%;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width:90%;
+    height: 75%;
     object-fit: contain;
 `;
 
@@ -24,7 +26,7 @@ export const GridHeart=styled.img`
     right: 12%;
     width: 12%;
     height: 12%;
-    top:8%;
+    top:5%;
     position: absolute;
     z-index: 4;
     &:hover {
@@ -40,10 +42,18 @@ export const GridTextDiv=styled.div`
     bottom: 0px;
     display: flex;
     flex-direction: row;
+    border-top: 1px solid #E5E5E5;
+`;
+export const NameCost=styled.div`
+    width : 100%;
+    white-space: nowrap; 
+    overflow: hidden; 
 `;
 export const GridSpan=styled.div`
     width:auto;
     height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 12px;
     margin-top: 8px;
     margin-left: 10px;
@@ -55,7 +65,9 @@ export const GridSpan=styled.div`
 `;
 
 export const GridCart=styled.div`
-    width: 20%;
+    margin-left: auto;
+    margin-right: 10px;
+    width:auto;
     height: 100%;
     img{
         margin-top: 25px;

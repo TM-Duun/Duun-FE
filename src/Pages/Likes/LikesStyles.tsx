@@ -7,9 +7,11 @@ export const Bean = styled.div`
 
 export const LikesWrapper = styled.div`
   width : 100vw;
-  height : 100vh;
+  min-height : 100vh;
+  height: auto;
   margin : 0;
-  padding : 0;
+  padding : 50px 0 0 0 ;
+  //위에 패딩을 넣어도 아이템이 많이 추가되면 LikesTop이 위로 올라감. 어떻게 해결~~~?
   display : flex;
   flex-direction : column;
   align-items : center;
@@ -51,6 +53,14 @@ export const LikesScript = styled.p`
     color : #484545;
 `;
 
+export const LikesGrid=styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 40px; 
+    padding-top: 20px;
+    width: 100%;
+`;
+
 export const LikesLine = styled.div`
     width : 100%;
     height : 1px;
@@ -59,11 +69,9 @@ export const LikesLine = styled.div`
 
 export const LikesBottom = styled.div`
     width : 65vw;
-    height : 60vh;
+    min-height : 60vh;
+    height: auto;
     margin : 0;
     padding : 0;
-    display : flex;
-    justify-content : center;
-    align-items : center;
 `;
 

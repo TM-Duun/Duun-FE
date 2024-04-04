@@ -111,7 +111,6 @@ export const ItemName = styled.p`
     padding : 0;
 `;
 
-
 export const LoginItem = styled(Link)`
     font-size : 24px;
     font-weight : 550;
@@ -121,4 +120,11 @@ export const LoginItem = styled(Link)`
     &:hover {
         cursor : pointer;
     }
+`;
+
+export const LogoutItem = styled.div`
+    font-size : 24px;
+    font-weight : 550;
+    color : #7C9DEF;
+    text-decoration : none;
 `;

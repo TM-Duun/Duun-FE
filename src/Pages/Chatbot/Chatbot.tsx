@@ -17,7 +17,11 @@ interface Message {
 
 
 export default function ChatBot({isOpen, onClose}:ChatBotProps){
-
+    const handleClose=()=>{
+        setMessages([]);
+        setShowFAQ(true);
+        onClose();
+    }
     const [inputValue,setValue]=useState('')
 
     const handleValue=(event:React.ChangeEvent<HTMLInputElement>)=>{
@@ -41,7 +45,7 @@ export default function ChatBot({isOpen, onClose}:ChatBotProps){
     const addMessage = (text: string, sender: 'user' | 'bot') => {
 
         const newMessage: Message = {
-            id: messages.length + 1,//뭘로 하지?
+            id: messages.length + 1,//id 설정해야함.
             text,
             sender
         };
@@ -58,6 +62,7 @@ export default function ChatBot({isOpen, onClose}:ChatBotProps){
             borderRadius: '30px',
             border:'1px solid #7C9DEF',
             overflowY: 'hidden',
+            padding:'15px'
         },
         overlay: {
             zIndex:'100',
@@ -74,6 +79,7 @@ export default function ChatBot({isOpen, onClose}:ChatBotProps){
             chatWrapperRef.current.scrollTop = chatWrapperRef.current.scrollHeight;
         }
     }, [messages]); // 메시지 상태가 변경될 때마다 실행
+    
     return(
         <Modal
                 isOpen={isOpen}
@@ -82,7 +88,7 @@ export default function ChatBot({isOpen, onClose}:ChatBotProps){
                 style={customStyles}
             >
             <Header>
-                <CloseBtn onClick={onClose}>&times;</CloseBtn>
+                <CloseBtn onClick={handleClose}>&times;</CloseBtn>
             </Header>
             <ChatWrapper>
                 {showFAQ &&(
@@ -107,7 +113,6 @@ export default function ChatBot({isOpen, onClose}:ChatBotProps){
                     </div>
                 )}
                 {!showFAQ &&(
-
                     <Chatwrapper1 ref={chatWrapperRef}>
                         {messages.map((message) => (
                             <div key={message.id} style={{ display: 'flex', justifyContent: message.sender === 'user' ? 'flex-end' : 'flex-start', alignItems: 'center', margin: '10px 0' }}>

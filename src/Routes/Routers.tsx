@@ -20,6 +20,7 @@ import Order from "../Pages/Order/Order";
 import Refund from "../Pages/Refund/Refund";
 import MyInfo from "../Pages/MyInfo/MyInfo";
 import Detail from "../Pages/Detail/Detail";
+import Coupon from "../Pages/Coupon/Coupon";
 
 // Router path경로 지정 파일, 필요시 params도 넣을것
 export const routers = [
@@ -110,5 +111,9 @@ export const routers = [
     {
         path: "/myinfo",
         Element: <MyInfo />
+    },
+    {
+        path: "/coupon",
+        Element: <Coupon />
     }
 ]

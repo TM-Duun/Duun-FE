@@ -19,7 +19,13 @@ export default function MyPage() {
             {infoData.map((info, index) => (
               <InfoBox key={index}>
                 <InfoTitle>{info.title}</InfoTitle>
-                <InfoItem>{info.result}</InfoItem>
+                {info.title === '쿠폰' ? (
+                  <Link to="/coupon" style={{ textDecoration : 'none' }}>
+                    <InfoItem>{info.result}</InfoItem>
+                  </Link>
+                ) : (
+                  <InfoItem>{info.result}</InfoItem>
+                )}
               </InfoBox>
             ))}
           </MpInfoContainer>

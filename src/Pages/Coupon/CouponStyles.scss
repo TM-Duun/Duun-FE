@@ -1,0 +1,139 @@
+.couponWrapper {
+    width : 100vw;
+    height : 100vh;
+    margin : 0;
+    padding : 0;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : center;
+}
+
+.couponTop {
+    position : relative;
+    width : 65vw;
+    height : 20vh;
+    margin : 0 0 0 0;
+    padding : 0;
+    display : flex;
+    flex-direction : column;
+    gap : 20px;
+    justify-content : center;
+
+    img {
+        position : absolute;
+        top : 10px;
+        left : -10px;
+        width : 30px;
+        height : 30px;
+        object-fit : contain;
+    }
+}
+
+.couponTitle {
+    font-size : 24px;
+    font-weight : bold;
+    font-family : 'pretendard';
+    color : #678EF2;
+}
+
+.couponScript {
+    font-size : 14px;
+    font-weight : regular;
+    font-family : 'pretendard';
+    color : #484545;
+
+    span {
+        color : #999;
+    }
+}
+
+.couponLine {
+    width : 100%;
+    height : 1px;
+    background-color : #C2C2C2;
+}
+
+.couponBottom {
+    width : 65vw;
+    height : 60vh;
+    margin : 0;
+    padding : 0;
+    display : grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+}
+
+.couponContent {
+    position : relative;
+    width : 300px;
+    height : 220px;
+    margin : 0;
+    padding : 0;
+
+    .polygon-2 {
+        position : absolute;
+        top : 0;
+        left : 0;
+        width: 300px;
+        height: 220px;
+        object-fit: cover;
+    }
+}
+
+.couponDetails {
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+    width : 100%;
+    height : 100%;
+    margin : 0;
+    padding : 0 20px;
+    box-sizing: border-box;
+    display : flex;
+    flex-direction: column;
+    gap : 10px;
+    justify-content : center;
+    z-index : 10;
+
+    .couponAmount {
+        font-size : 24px;
+        font-weight : bold;
+        font-family : 'pretendard';
+        color : black;
+    }
+
+    .couponInfo {
+        font-size : 16px;
+        font-weight : medium;
+        font-family : 'pretendard';
+        color : black;
+    }
+
+    .couponSubInfo {
+        font-size : 12px;
+        font-weight : medium;
+        color : #999;
+    }
+
+    .couponButton {
+        margin : 20px 0 0 0;
+        width : 100px;
+        height : 40px;
+        border : none;
+        outline : none;
+        border-radius : 30px;
+        border : 1px solid #678fe2;
+        background-color : #fff;
+        color : #678fe2;
+        cursor : pointer;
+        transition : all 0.3s ease;
+
+        &:hover {
+            cursor: pointer;
+            background-color : #678fe2;
+            color : white;
+        }
+    }
+}

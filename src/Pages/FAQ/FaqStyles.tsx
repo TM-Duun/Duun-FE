@@ -84,7 +84,7 @@ export const FaqBottom = styled.div`
 export const FaqItemBox = styled.div`
     width : 100%;
     height : 150px;
-    margin : 0 0 20px 0;
+    margin : 10px 0 20px 0;
     padding : 20px 20px;
     box-sizing : border-box;
     display : flex;

@@ -214,12 +214,9 @@ export const Coupon=styled.div`
     width : 100%;
     height: 50%;
     display: flex;
-<<<<<<< HEAD
     flex-direction: row;
-=======
-
->>>>>>> 27313218777125add9fe653474cf022e0d71ad1f
 `;
+
 export const Coupon1=styled.div`
     width: 80%;
     background-color: #F6F6F6;

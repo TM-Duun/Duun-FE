@@ -1,5 +1,3 @@
-
-
 export interface AddressData {
     address : string;
     addressType : string;

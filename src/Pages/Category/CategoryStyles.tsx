@@ -9,6 +9,7 @@ export const CWrapper=styled.div`
     padding : 0px 200px;
     box-sizing: border-box;
 `;
+
 export const Block = styled.div`
     width : 100%;
     height : 80px;
@@ -16,6 +17,7 @@ export const Block = styled.div`
     padding : 0;
     background-color : transparent;
 `;
+
 export const Cmain=styled.div`
     margin-top: 50px;
     display: flex;
@@ -23,6 +25,7 @@ export const Cmain=styled.div`
     width: 100%;
     height: 100%;
 `;
+
 export const Sidebar = styled.div`
     display: flex;
     flex-direction: column;
@@ -30,6 +33,7 @@ export const Sidebar = styled.div`
     height: 100%;
     margin-left: 20px;
 `;
+
 export const SidebarCategory = styled.div`
     margin-top: 30px;
     margin-left: 20px;
@@ -54,6 +58,7 @@ export const GridDiv = styled.div`
     flex-direction: column;
     margin-left: 20px;
 `;
+
 export const GridHeader = styled.div`
     display: flex;
     margin-top: 80px;
@@ -63,6 +68,7 @@ export const GridHeader = styled.div`
         font-weight: bold;
     }
 `;
+
 export const BtnsDiv=styled.div`
     /* display: flex; */
     /* width: 100%; */
@@ -85,6 +91,7 @@ export const BtnsDiv=styled.div`
         object-fit : contain;
     }
 `;
+
 export const BtnDropDown = styled.ul`
     position:absolute;
     background-color:white;
@@ -144,6 +151,7 @@ export const Gridmain=styled.div`
     gap: 20px; 
     padding-top: 20px;
 `;
+
 export const GridImg=styled.div`
     width : 200px;
     height: 250px;
@@ -181,6 +189,7 @@ export const GridHeart=styled.img`
         cursor : pointer;
     }
 `;
+
 export const GridTextDiv=styled.div`
     position: absolute;
     width: 100%;
@@ -191,6 +200,7 @@ export const GridTextDiv=styled.div`
     display: flex;
     flex-direction: row;
 `;
+
 export const GridSpan=styled.div`
     width: 80%;
     height: 100%;

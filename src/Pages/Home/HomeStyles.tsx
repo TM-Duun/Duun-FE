@@ -112,13 +112,25 @@ export const Btn=styled.button`
         color: #3D5AF1;
         background-color: #A4B9EF;
     }
+    img{
+        width: 20px;
+        height: 20px;
+    }
  `;
 
-export const BtnImg = styled.img `
+ interface BtnImgProps{
+    URL:string;
+ }
+
+export const BtnImg = styled.div<BtnImgProps>`
     width : 20px;
     height : 20px;
     margin : 0;
-    object-fit : contain;
+    background-color: black; /* 마스크 아이콘 색상 */
+    -webkit-mask-image: url(${props => props.URL});
+    mask-image: url(${props => props.URL});
+    -webkit-mask-size: cover;
+    mask-size: cover;
 `;
 
 export const ImgRowDiv = styled.div`

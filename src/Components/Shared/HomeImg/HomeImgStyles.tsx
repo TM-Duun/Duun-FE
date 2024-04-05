@@ -8,16 +8,20 @@ export const ImgContainer=styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 20px 20px 0 0;
-    background-color:#F4F2F2;
+    background-color:inherit
     /* border:1px solid red; */
+    border: 2px solid #F4F2F2;
+    overflow: hidden;
 `;
 
 export const GridInImg=styled.img`
     position: absolute;
     /* border:1px solid blue; */
-    width:100%;
-    height: 90%;
-    margin-top: 20px;
+    width:90%;
+    height: 75%;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
     object-fit: contain;
 
 `;

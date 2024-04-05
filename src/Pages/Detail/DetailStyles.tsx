@@ -28,14 +28,14 @@ export const Back=styled.span`
 `;
 
 export const ItemDiv=styled.div`
-    white-space: nowrap;
     margin-top: 20px;
     width: 100%;
     display: flex;
+    height: 100vh;
     img{
-        height: 100%;
-        width : 40%;
-        object-fit : contain;
+        height:100%;
+        width : 100%;
+        object-fit: contain;
     }
 `;
 
@@ -46,16 +46,20 @@ export const ItemInfo = styled.div`
     flex-direction: column;
     font-size: 24px;
     padding-left: 60px;
+    height: 100%;
 `;
 
 export const InfoTextDiv=styled.div`
     font-size: 16px;
-    border-bottom: 1px solid #474747;
+    border-bottom: 1px solid #BEBEBE;
     margin-top: 20px;
+    height: 40%;
 `;
+
 export const ProductsInfo = styled.div`
     display: flex;
     line-height: 40px;
+
     span{
         color: #474747;
         width: 70px;
@@ -72,8 +76,8 @@ export const Info = styled.span`
 `;
 
 export const BtnTotalDiv = styled.div`
-    margin-top: 10px;
-    height: 45%;
+    margin-top: 40px;
+    height: 35%;
     display: flex;
     align-items: center;
 `;

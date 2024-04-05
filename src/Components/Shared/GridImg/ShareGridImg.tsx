@@ -31,11 +31,11 @@ export default function ShareGridImg({ index,image,name,price}: ShareGridImgProp
         const product={index,name,image,price};
         // const isAlreadyLiked=likedItems.includes(index);
         // const isAlreadyLiked = likedItems.some((item) => item.index === index);
-            if (isLiked) {
-                removeLike(product);
-            } else {
-            addLike(product);
-            }
+        if (isLiked) {
+            removeLike(product);
+        } else {
+        addLike(product);
+        }
         console.log(likedItems)
       }
 

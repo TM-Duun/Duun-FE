@@ -130,7 +130,6 @@ export const CIInfo = styled.p`
 export const CurrentId = styled.p`
     font-size : 18px;
     font-weight : 600;
-    font-family : 'pretendard;
+    font-family : 'pretendard';
     color : black;
 `;
-

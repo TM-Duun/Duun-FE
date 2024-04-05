@@ -25,7 +25,7 @@ export default function Nav() {
     <Wrapper>
       <NavContainer>
       <NavLeft to="/">
-        <LogoImg src="DuunLogo.svg"/>
+        <LogoImg src="/DuunLogo.svg"/>
         <LogoTitle>Duun</LogoTitle>
       </NavLeft>
       <NavRight>

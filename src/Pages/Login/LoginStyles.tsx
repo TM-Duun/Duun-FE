@@ -44,16 +44,13 @@ export const SiInput= styled.input`
   border : 1px solid #b4b4b4;
   width: 400px;
   height: 40px;
-
-  color: #black;
+  color: black;
   text-align: left;
   font-family: "Pretendard-Light", sans-serif;
   font-size: 12px;
   font-weight: 300;
   padding-left:10px;
 `;
-
-
 
 export const Signup = styled.div`
   width : 400px;

@@ -77,7 +77,7 @@ export const routers = [
         Element: <Cart />
     },
     {
-        path:"/detail",
+        path:"/detail/:id",
         Element: <Detail />
     },
     {

@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Back, Block, BtnTotalDiv, DeatailHeader, InfoTextDiv, ItemDiv, ItemInfo, Info, ProductDiv, ProductsInfo, PurchaseBtn, RecommendedItemDiv, Total } from "./DetailStyles";
+import { useNavigate } from "react-router-dom";
 
 const DWrapper=styled.div`
   display : flex;
@@ -31,10 +32,17 @@ const productsPrice=[
 
 // 마이페이지
 export default function MyPage() {
+
+  const navigate = useNavigate();
+
+  const toHandleBack = () => {
+    navigate(-1);
+  };
+
     return (
       <DWrapper>
         <Block></Block>
-        <DeatailHeader to="/category">
+        <DeatailHeader onClick={toHandleBack}>
           <img src="/detaildata/back_arrow.svg"/>
           <Back>돌아가기</Back>
         </DeatailHeader>

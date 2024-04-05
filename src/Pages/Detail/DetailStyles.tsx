@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Block = styled.div`
@@ -8,7 +7,7 @@ export const Block = styled.div`
     padding : 0;
     background-color : transparent;
 `;
-export const DeatailHeader = styled(Link)`
+export const DeatailHeader = styled.div`
     margin-top: 40px;
     display: flex;
     width : 100%;
@@ -17,9 +16,12 @@ export const DeatailHeader = styled(Link)`
         width: 18px;
         height: 6px;
     }
-    text-decoration: none;
     color: black;
     font-family: 'pretendard';
+
+    &:hover {
+        cursor: pointer;
+    }
 
 `;
 export const Back=styled.span`

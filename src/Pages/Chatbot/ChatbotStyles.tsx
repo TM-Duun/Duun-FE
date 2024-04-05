@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Header = styled.div`
     display: flex;
-    margin-top: -20px;
+    margin-top: -15px;
 `;
 
 export const CloseBtn = styled.button`
@@ -21,7 +21,6 @@ export const Chatwrapper1= styled.div`
   height: 600px;
   line-height: 20px;
   font-size: 14px;
-
 `;
 
 export const ChatWrapper=styled.div`
@@ -67,7 +66,8 @@ export const FnqBtn=styled.button`
     border-radius: 15px;
     font-size: 12px;
     padding:0 15px;
-    height: 20px;
+    height:auto;
+    min-height: 20px;
     margin: 0 15px 15px 0;
     
     &:hover{

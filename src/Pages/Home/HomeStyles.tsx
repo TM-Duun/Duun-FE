@@ -224,6 +224,7 @@ export const Coupon1=styled.div`
     align-items: center;
     display: flex;
 `;
+
 export const Coupon2=styled.div`
     display: flex;
     align-items: center;

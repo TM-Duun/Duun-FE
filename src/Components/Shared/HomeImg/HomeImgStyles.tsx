@@ -8,7 +8,7 @@ export const ImgContainer=styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 20px 20px 0 0;
-    background-color:inherit
+    background-color:inherit;
     /* border:1px solid red; */
     border: 2px solid #F4F2F2;
     overflow: hidden;

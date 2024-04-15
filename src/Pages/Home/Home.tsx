@@ -169,9 +169,9 @@ export default function Home() {
               return(
                 <HomeImg
                   key={index}
-                  index={item.id}
+                  id={item.id}
                   image={item.image}
-                  name={item.title}
+                  title={item.title}
                   price={item.price}
                   />
               )

@@ -1,10 +1,27 @@
 import styled from "styled-components";
-import {Block,GridDiv,Sidebar,Cmain, SidebarCategory, GridHeader, BtnsDiv, Gridmain,
+import {Block,GridDiv,Sidebar,Cmain, SidebarCategory, GridHeader, BtnsDiv,
    SidebarText,NavMiddle, NavSearch, SearchIcon} from "./CategoryStyles";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import CategoryDropDown from "../../Components/DropDown/DropDown"
-import ShareGridImg from "../../Components/Shared/GridImg/ShareGridImg";
-import axios from "axios";
+import _ from 'lodash';
+import LoaderComponent from "../../Components/Loader/CircleLoader";
+import ProductsComponent from "../../Components/ProductComp/ProductComp";
+import { fetchProductsByCategory } from "../../Hooks/FetchProduct/FetchProduct";
+
+
+interface Product {
+  id: number;
+  title: string;
+  price: string;
+  category: string;
+  image: string;
+  // index: number;
+}
+
+interface CategoryItem {
+  name: string;
+  endpoint: string;
+}
 
 const CWrapper=styled.div`
     min-height : 250vh;
@@ -14,60 +31,91 @@ const CWrapper=styled.div`
     width: 100%;
 `;
 
-const categoryItems=[
-  {name:"T-shirt", endpoint: ["women's clothing"]},
-  {name:"Sweat", endpoint: ["jewelery"]},
-  {name:"Coats",endpoint: ["electronics"]},
-  {name:"Jeans",endpoint: ["jewelery"]},
-  {name:"Paddings",endpoint: ["men's clothing"]},
-]
 
-interface Product {
-  id: number;
-  title: string;
-  price: string;
-  // category: string;
-  image: string;
-}
+const categoryItems: CategoryItem[]=[
+  {name:"T-shirt", endpoint: "women's clothing"},
+  {name:"Sweat", endpoint: "jewelery"},
+  {name:"Coats",endpoint: "electronics"},
+  {name:"Jeans",endpoint: "jewelery"},
+  {name:"Paddings",endpoint: "men's clothing"},
+]
 
 export default function Category(){
 
-  // const { selectCategory, images } = useCategoryStore();
   const [selectedCategory, setSelectedCategory] = useState<string>('Sweat');
-  const [searchValue , setSearchValue] = useState("");
-  const onSearchChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setSearchValue(e.currentTarget.value);
-  };
-
-  const [selectedName, setSelectedName] = useState('Sweat');
+  const [searchValue , setSearchValue] = useState<string>("");
   const [products, setProducts] = useState<Product[]>([]); // 상품 데이터를 저장할 상태
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]); // 검색 결과를 저장할 상태
+  const [isLoading, setIsLoading] = useState(false);
 
+  //선택된 카테고리 이름으로 가져올 카테고리 endpoint찾기
+  const categoryEndpoints = categoryItems.find(item => item.name === selectedCategory)?.endpoint || "";
+
+  // 상품 데이터를 가져오는 함수
   useEffect(() => {
-    // 상품 데이터를 가져오는 함수
-    const fetchProducts = async () => {
-
-      try {
-
-        const selectedEndpoints = categoryItems.find(item => item.name === selectedCategory)?.endpoint || [];
-        const requests = selectedEndpoints.map(endpoint =>
-          axios.get<Product[]>(`https://fakestoreapi.com/products/category/${encodeURIComponent(endpoint)}`)
-        );
-
-        const responses = await Promise.all(requests);
-        const fetchedProducts = responses.flatMap(response => response.data);
-        setProducts(fetchedProducts);
-      } catch (error) {
+  if (categoryEndpoints) {
+    setIsLoading(true);  
+    fetchProductsByCategory(categoryEndpoints)
+      .then(data => {
+        setIsLoading(false);
+        setProducts(data);
+      })
+      .catch(error => {
         console.error('Error fetching products:', error);
-      }
-    };
-    fetchProducts();
-  }, [selectedCategory]);
+      });
+  }
+  }, [categoryEndpoints]); 
 
+  
   const handleCategoryClick = (index: number) => {
     const category = categoryItems[index];
     setSelectedCategory(category.name);
-    setSelectedName(category.name);
   };
+
+
+  // Debounce를 적용한 검색 로직
+  useEffect(() => {
+    const debouncedSearch = _.debounce(() => {
+      const searchResults = products.filter(product =>
+        product.title.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setFilteredProducts(searchResults);
+    }, 500);
+
+    if (searchValue.trim()) {
+      debouncedSearch();
+    } else {
+      setFilteredProducts(products); // 검색어가 비어있을 때 모든 상품을 보여줌
+    }
+    // 컴포넌트 언마운트 시 디바운스 함수 취소
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchValue, products]);
+
+  const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+
+
+  //장바구니 중복 알림창 상태
+  const [data, setData] = useState(false);
+
+  const handleDataChange = (newData:boolean) => {
+      setData(newData);
+  };
+  useEffect(() => {
+    if (data) {
+      setTimeout(() => {
+        setData(false);//3초 후 숨김
+      }, 500);
+    }
+  }, [data]); 
+
+  if (isLoading) {
+    return <LoaderComponent />;  // 로딩 중 로더 컴포넌트 표시
+  }
 
   return (
     <CWrapper>
@@ -82,10 +130,8 @@ export default function Category(){
                   <SidebarText 
                       key={index} 
                       to="#" 
-                      style={{color: selectedName === item.name ? 'black' : '' }}
-                      onClick={()=>{
-                        setSelectedName(item.name);
-                      }}>
+                      style={{color: selectedCategory === item.name ? 'black' : '' }}
+                      >
                     {item.name}
                   </SidebarText>
                 </li>
@@ -95,7 +141,7 @@ export default function Category(){
           </Sidebar>
           <GridDiv>
             <GridHeader>
-              <span style={{width:'20%'}}>{selectedName || 'Sweat'}</span>
+              <span style={{width:'20%'}}>{selectedCategory || 'Sweat'}</span>
               <NavMiddle>
                 <NavSearch
                   type="text"
@@ -109,20 +155,10 @@ export default function Category(){
                 <CategoryDropDown/>
               </BtnsDiv>
             </GridHeader>
-            <Gridmain>
-              <>
-                {products.map((item,index) =>{
-                  return(
-                    <ShareGridImg
-                      image={item.image}
-                      key={index}
-                      index={item.id}
-                      name={item.title}
-                      price={item.price}
-                      />
-                  )})}
-              </>
-            </Gridmain>
+              {/* <Suspense fallback={<LoaderComponent/>}> */}
+                <ProductsComponent filteredProducts={filteredProducts} showalert={handleDataChange}/>
+                {data&&<div style={{color:'white',position:'absolute',top:'70%',left:'50%',transform: 'translate(-50%, -50%)',backgroundColor:'#3D5AF1',fontWeight:'bold',padding:'10px',borderRadius:'20px'}}>이미 장바구니에 담겼습니다.</div>}
+              {/* </Suspense> */}
           </GridDiv>
         </Cmain>
     </CWrapper>

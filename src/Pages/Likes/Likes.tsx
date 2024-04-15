@@ -16,13 +16,13 @@ export default function Likes() {
         </LikesTop>
         <LikesBottom>
         <LikesGrid>
-            {likedItems.map((item) => {
+            {likedItems.map((item,index) => {
               return(
                 <ShareGridImg
                       image={item.image}
-                      key={item.index}
-                      index={item.index}
-                      name={item.name}
+                      key={index}
+                      id={item.id}
+                      title={item.title}
                       price={item.price}
                       />
               )

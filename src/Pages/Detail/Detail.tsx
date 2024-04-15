@@ -1,28 +1,22 @@
 import styled from "styled-components"
-import { Back, Block, BtnTotalDiv, DeatailHeader, InfoTextDiv, ItemDiv, ItemInfo, Info, ProductDiv, ProductsInfo, PurchaseBtn, RecommendedItemDiv, Total } from "./DetailStyles";
+import { Back, Block, BtnTotalDiv, DeatailHeader, InfoTextDiv, ItemDiv, ItemInfo, Info, ProductDiv, ProductsInfo, PurchaseBtn, RecommendedItemDiv, Total, ItemImage } from "./DetailStyles";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import LoaderComponent from "../../Components/Loader/CircleLoader";
+import useStoreCart from "../../Store/StoreCart";
+import useStore from "../../Store/StoreCartBadge";
+import DetailSliderComp from "../../Components/DetailSliderComp/DetailSliderComp"
 
 const DWrapper=styled.div`
   display : flex;
   flex-direction: column;
   padding : 0px 200px;
-  /* box-sizing: border-box; */
   min-height:100vh;
   margin : 30px 0 0 0;
   width: 100%;
 `;
 
-// const productsInfo=[
-//  {
-//   name:"[Acne] Straight Casual Jeans",
-//   color:"Dark Blue",
-//   size:"Free",
-//   gender:"Men",
-//   likes:"12"
-//  },
-// ]
 
 const productsPrice=[
   {
@@ -34,33 +28,65 @@ const productsPrice=[
 ]
 
 interface Product {
-  id: number;
+  id:number;
+  // id: string;
   title: string;
   price: string;
-  // category: string;
+  category: string;
   image: string;
 }
 
 // 마이페이지
-export default function MyPage() {
-  const { id } = useParams();
+export default function Detail() {
+  const { index } = useParams();
+  const numericIndex = index ? Number(index) : null; 
   const [product, setProduct] = useState<Product | null>(null);
+  const {cartItems,addCart}=useStoreCart();
+  const addItem=useStore(state=>state.addItem);
+  const isClicked=cartItems.some(item => item.id === numericIndex);
+
 
   useEffect(() => {
+
+    if (numericIndex === null) {
+      console.error("Invalid product index.");
+      return; // `index`가 유효하지 않으면, 데이터를 불러오지 않고 종료
+    }
+    
     const fetchProduct = async () => {
       try {
-        const response = await axios.get<Product>(`https://fakestoreapi.com/products/${id}`);
+        const response = await axios.get<Product>(`https://fakestoreapi.com/products/${numericIndex}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
       }
     };
     fetchProduct();
-  }, [id]);
+  }, [numericIndex]);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return(
+        <>
+          <Block></Block>        
+          <LoaderComponent/>
+        </>
+    );
   }
+
+  const handleCartClick=()=>{
+    const Item=product;
+    console.log(isClicked)
+    if(isClicked){
+      console.log('이미 장바구니에 담겼습니다.')
+    }
+    else{
+      addCart(Item);
+      addItem();
+    }
+  }
+
+  const selectedCategory=product.category;
+  
 
     return (
       <DWrapper>
@@ -70,12 +96,11 @@ export default function MyPage() {
           <Back>돌아가기</Back>
         </DeatailHeader>
         <ItemDiv>
-          <div style={{height:'100%',width:'40%'}}>
-            <img src={product.image}/>
+          <div style={{height:'600px',width:'40%',display:'flex',justifyContent:'center'}}>
+            <ItemImage src={product.image}/>
           </div>
           <ItemInfo>
             <Info style={{marginTop:0}}>Product Info</Info>
-            {/* {productsInfo.map((item,index)=> */}
             <InfoTextDiv key={product.id}>
               <ProductsInfo style={{fontSize:'32px',marginBottom:'20px'}}>{product.title}</ProductsInfo>
                 <ProductsInfo>
@@ -98,10 +123,10 @@ export default function MyPage() {
                   <ProductDiv>{product.id}</ProductDiv>
                 </ProductsInfo>
             </InfoTextDiv>
-            {/* )} */}
-          <Info style={{marginTop:'50px'}}>Price Info</Info>
+
+          <Info style={{marginTop:'30px'}}>Price Info</Info>
           {productsPrice.map((item,index)=>
-            <InfoTextDiv key={index} style={{height:'50%',border:'none'}}>
+            <InfoTextDiv key={index} style={{border:'none',height:'40%'}}>
                 <ProductsInfo>
                   <span>Discount</span>
                  <ProductDiv>{item.discount}</ProductDiv>
@@ -115,7 +140,7 @@ export default function MyPage() {
                   <ProductDiv>{item.event}</ProductDiv>
                 </ProductsInfo>
               <BtnTotalDiv>
-                <PurchaseBtn>장바구니</PurchaseBtn>    
+                <PurchaseBtn onClick={handleCartClick}>장바구니</PurchaseBtn>    
                 <Total>
                   <Info style={{fontSize:'16px',margin:0,color:'#626262'}}>Total</Info>
                     {product.price}원
@@ -126,7 +151,7 @@ export default function MyPage() {
           </ItemInfo>
         </ItemDiv>
          <RecommendedItemDiv>
-          
+          <DetailSliderComp categoryprops={selectedCategory}/>
          </RecommendedItemDiv>
       </DWrapper>
     )

@@ -1,8 +1,8 @@
 import {create} from "zustand";
 
 interface Product {
-  index: number;
-  name: string;
+  id: number;
+  title: string;
   image: string;
   price: string;
 }
@@ -18,7 +18,7 @@ const useStoreHeart = create<HeartState>(set => ({
   likedItems: [],
   addLike: (product) => set(state => ({ likedItems: [...state.likedItems, product] })),
   removeLike: (item) => set(state => ({ 
-    likedItems: state.likedItems.filter(product => product.index !== item.index) })),
+    likedItems: state.likedItems.filter(product => product.id !== item.id)})),
 }));
 
 

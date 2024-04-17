@@ -9,9 +9,6 @@ import SignUp1 from "../Pages/SignUp/SignUp1";
 import SignUp2 from "../Pages/SignUp/SignUp2";
 import SignUp3 from "../Pages/SignUp/SignUp3";
 import SignUpComplete from "../Pages/SignUp/SignUpComplete";
-import Term1 from "../Pages/Term/Term1";
-import Term2 from "../Pages/Term/Term2";
-import Term3 from "../Pages/Term/Term3";
 import Cart from "../Pages/Cart/Cart";
 import Category from "../Pages/Category/Category";
 import Payment from "../Pages/Payment/Payment";
@@ -37,32 +34,20 @@ export const routers = [
         Element: <LoginComplete />
     },
     {
-        path:"/signup1",
+        path:"/signup/1",
         Element: <SignUp1 />
     },
     {
-        path:"/signup2",
+        path:"/signup/2",
         Element: <SignUp2 />
     },
     {
-        path:"/signup3",
+        path:"/signup/3",
         Element: <SignUp3 />
     },
     {
         path:"/signUpComplete",
         Element: <SignUpComplete />
-    },
-    
-    {
-        path:"/Term1",
-        Element: <Term1 />
-    },
-    {
-        path:"/Term2",
-        Element: <Term2 />
-    },    {
-        path:"/Term3",
-        Element: <Term3 />
     },
     {
         path: "/mypage",

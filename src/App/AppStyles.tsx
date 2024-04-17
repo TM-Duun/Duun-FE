@@ -9,5 +9,6 @@ export const AppStyles = createGlobalStyle`
 
     body {
         overflow-x: hidden;
+        
     }
 `;

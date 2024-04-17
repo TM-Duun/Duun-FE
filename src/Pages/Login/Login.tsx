@@ -1,10 +1,10 @@
 import { useState,useEffect } from "react";
-import{ GlobalStyle} from'../../Components/Login/InputFocus';
 import { Wrapper,Title,Signin,Idpw,Eye,Signup,Question,Signupbtn,Signinbtn,Loginbtn,Kakaobtn,Kakaoicon, SiInput, KakaoName } from "./LoginStyles";
 import kakaoicon from '/kakaoicon.svg';
 import { useNavigate } from 'react-router-dom';
 import  useScrollToTop  from '../../Hooks/Scroll/useScrollToTop';
 import useStoreLoginInfo from '../../Store/StoreLoginInfo';
+import axios from "axios";
 
 const REACT_APP_KAKAO_KEY='7c36cadb741b7df9fa562525463eb78c';
 
@@ -75,16 +75,22 @@ export default function Login() {
   loadKakaoSDK();
 }, []);
 
-const onHandleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+const onHandleLogin = async (e: React.MouseEvent) => {
   e.preventDefault();
+  const userLogin = {
+    userId: id,
+    password: password,
+  };
+
   try {
+    const result = await axios.post('http://3.35.52.219:8080/users/login', userLogin);
+    console.log(result.data);
+    navigate("/");
     // 여기에 로그인에 대한 post 요청
     setUserId(id);
   } catch (error) {
     console.log(error);
   }
-
-  navigate("/");
 };
 
 // 카카오 로그인 처리 함수
@@ -115,13 +121,12 @@ function kakaoHandleLogin() {
       console.error(err);
     },
   });
-};
+}
 
  
 return (
   <Wrapper>
-  <GlobalStyle /> 
-    <Signin onSubmit={onHandleLogin}>
+    <Signin>
       <Title>Duun</Title>
       <Idpw>아이디</Idpw>
       <SiInput
@@ -143,11 +148,11 @@ return (
     </Signin>
     <Signup>
       <Question>계정이 없으세요?</Question>
-      <Signupbtn to="/SignUp1">회원가입</Signupbtn>
+      <Signupbtn to="/signup/1">회원가입</Signupbtn>
     </Signup>
 
     <Signinbtn>
-      <Loginbtn type="submit" value="로그인" />
+      <Loginbtn onClick={(e) => onHandleLogin(e)} >로그인</Loginbtn>
       <Kakaobtn onClick={kakaoHandleLogin} disabled={!sdkReady}>
         <Kakaoicon src={kakaoicon}/>
         <KakaoName>카카오 로그인</KakaoName>

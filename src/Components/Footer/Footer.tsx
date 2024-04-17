@@ -1,6 +1,12 @@
 import { FooterContainer, FooterContent, FooterDesContainer, FooterDesRights, FooterLink, FooterLinkContainer, FooterLinkContent, FooterLinkTitle, HorizonBox } from "./FooterStyles";
+import { useLocation } from 'react-router-dom';
 
 export default function Footer() {
+
+    const location = useLocation();
+    if(location.pathname.includes('/detail')){
+        return null;
+    }
   return (
     <FooterContainer>
         <FooterContent>

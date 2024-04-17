@@ -69,17 +69,17 @@ export default function SignUp3() {
 
     const userAllInfo = {
       userId: userSiId,
-      userName: userSiname,
       password: siPassword,
+      username: userSiname,
+      phone: completePhone,
       email: completeEmail,
-      phoneNumber: completePhone,
       address: fullAddress
     };
 
     console.log(userAllInfo);
 
     try {
-      const result = await axios.post('http://54.180.145.158:8080/users', userAllInfo);
+      const result = await axios.post('http://15.164.220.84:8080/users/save', userAllInfo);
       console.log(result.data);
       resetUserInfo();
       navigate('/SignUpComplete');

@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { Block, CartContainer, CartGrid, CartHeader, Counter, HeaderText, Name, Image,Option, Price, Discount, Count, Btn, BtnDiv, Total, InvisibleSpace } from "./CartStyles";
+import { Block, CartContainer, CartGrid, CartHeader, Counter, HeaderText, Name, Image,Option, Price, Discount, Count, Btn, BtnDiv, Total, InvisibleSpace, DeleteBtn } from "./CartStyles";
 import React, { useEffect, useState } from "react";
+import useStoreCart from "../../Store/StoreCart";
+import useStore from "../../Store/StoreCartBadge";
 
 const CartWrapper=styled.div`
     display : flex;
@@ -10,20 +12,9 @@ const CartWrapper=styled.div`
     font-family: 'pretendard';
 `;
 
-const cartItems =[
-  {name: "[Nike] Speed Runner rx212345j",price:"139,000",
-    discount:"0",count:"1",
-    src:'/cartdata/cart_image1.png',
-    option:"레드/270"
-  },
-  {name:"[Acne] Deep long jean hx12222",
-  price:"69,000",discount:"0",count:"1",
-  src:'/cartdata/cart_image2.png',
-  option:"레드/270"
-}
-]
-// 장바구니
 export default function Cart() {
+  const {cartItems,removeCart}=useStoreCart();
+  const {removeItem}=useStore();
 
   // 모든 항목을 처음에는 체크된 상태로 초기화
   const [checkedItems, setCheckedItems] = useState(new Array(cartItems.length).fill(true)); 
@@ -32,16 +23,14 @@ export default function Cart() {
   //checkItems에 따라 가격 변화
   useEffect(() => {
     const total=cartItems.reduce((acc, item,index) =>{
-      const price=parseInt(item.price.replace(/,/g, ''), 10); 
-      // 쉼표를 제거하고 정수로 변환
+      const price=parseFloat(item.price); 
       return acc + (checkedItems[index] ? price : 0);
     },0);
-    setTotalPrice(total);
-  },[checkedItems])
+    const formattedTotal = parseFloat(total.toFixed(2));
+    setTotalPrice(formattedTotal);
+  },[checkedItems,cartItems])
 
-  const totalCount=cartItems.reduce((acc,item) =>{
-    return acc+parseInt(item.count);
-  },0);
+  const totalCount=cartItems.length;
 
   //맨위 체크박스 눌렀을 때를 감지하는 useState
   const [selectAll,setSelectAll]=useState(true);
@@ -85,17 +74,18 @@ export default function Cart() {
                 <input type="checkbox" checked={checkedItems[index]} onChange={ (e)=>handleCheckboxChange(index)(e)} />
               </div>
               <div style={{display:'flex'}}>
-                <Image src={item.src}></Image>
+                  <Image src={item.image}></Image>
                 <Name>
-                  {item.name}<br/>
+                  {item.title}<br/>
                   <Option>
-                    옵션: {item.option}
+                    옵션: {item.id}
                   </Option>
                 </Name>
               </div>
               <Price>{item.price}</Price>
-              <Discount>{item.discount}</Discount>
-              <Count>{item.count}</Count>
+              <Discount>{item.price}</Discount>
+              <Count>{item.price}</Count>
+              <DeleteBtn onClick={() => {removeCart(item.id); removeItem();}}>X</DeleteBtn>
             </CartGrid>
           )}
         </CartContainer>
@@ -104,7 +94,7 @@ export default function Cart() {
           <Btn>주문 하기</Btn>
           <InvisibleSpace>
             <Total>
-              {totalPrice.toLocaleString()}원
+              {`$`+totalPrice}원
             </Total>
           </InvisibleSpace>
         </BtnDiv>

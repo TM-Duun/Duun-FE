@@ -8,16 +8,30 @@ import {Main1,New,NewText,Main2,Btns,Btn,Main3,CategoryImg,
 import HomeImg from "../../Components/Shared/HomeImg/HomeImg";
 import styled from "styled-components";
 import ChatBot from "../Chatbot/Chatbot";
-import useStoreHeart from "../../Store/StoreHeartBadge";
-import useStoreHome from "../../Store/StoreHome";
+import axios from "axios";
+
+interface Product {
+  id: number;
+  title: string;
+  price: string;
+  category: string;
+  image: string;
+}
 
 const btnItems = [
-  {name:"HOME",src:"/homedata/home.svg"},
-  {name:"NEW",src:"/homedata/new.svg"},
-  {name:"COATS",src:"/homedata/coats.svg"},
-  {name:"PANTS",src:"/homedata/pants.svg"},
-  {name:"SWEAT",src:"/homedata/sweat.svg"},
+  {name:"HOME", endpoint: ["women's clothing"]},
+  {name:"NEW", endpoint: ["jewelery"]},
+  {name:"COATS",endpoint: ["electronics"]},
+  {name:"PANTS",endpoint: ["jewelery"]},
+  {name:"SWEAT",endpoint: ["men's clothing"]},
 ];
+const btnSrc=[
+  "/homedata/home.svg",
+  "/homedata/new.svg",
+  "/homedata/coats.svg",
+  "/homedata/pants.svg",
+  "/homedata/sweat.svg",
+]
 
 const HWrapper = styled.div`
     min-height : 250vh;
@@ -46,13 +60,45 @@ const Maintext=[
 
 // 처음 main 화면 페이지
 export default function Home() {
-  const { selectedImageSet, setSelectedImageSet } = useStoreHome();
-  const [isChatbotOpen,setIsChatbotOpen]=useState(false);
-  const handleOpenChatbot=()=>setIsChatbotOpen(true);
-  const [ScrollBtn,setScrollBtn]=useState(false);
 
-  // scroll Y 좌표를 통한 맨 위로 보내는 버튼
+  const [selectedCategory, setSelectedCategory] = useState<string>('NEW');
+  // const { selectedImageSet, setSelectedImageSet } = useStoreHome();
+  const [isChatbotOpen,setIsChatbotOpen]=useState(false);
+  const [ScrollBtn,setScrollBtn]=useState(false);
+  // const {likedItems}=useStoreHeart();
+  const [selectedButton, setSelectedButton] = useState<number>(1);
+  const [selectedName, setSelectedName] = useState('NEW');
+  const [products, setProducts] = useState<Product[]>([]); // 상품 데이터를 저장할 상태
+
+  useEffect(() => {
+    // 상품 데이터를 가져오는 함수
+    const fetchProducts = async () => {
+
+      try {
+
+        const selectedEndpoints = btnItems.find(item => item.name === selectedCategory)?.endpoint || [];
+        const requests = selectedEndpoints.map(endpoint =>
+          axios.get<Product[]>(`https://fakestoreapi.com/products/category/${encodeURIComponent(endpoint)}`)
+        );
+
+        const responses = await Promise.all(requests);
+        const fetchedProducts = responses.flatMap(response => response.data.slice(0,4));
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    fetchProducts();
+  }, [selectedCategory]);
+
+  const handleCategoryClick = (index: number) => {
+    const category =btnItems[index];
+    setSelectedCategory(category.name);
+    setSelectedName(category.name);
+  };
+
   useEffect(()=>{
+    // scroll Y 좌표를 통한 맨 위로 보내는 버튼
     const checkScroll=()=>{
       if(!ScrollBtn && window.scrollY > window.outerHeight* 2 / 3) {
         setScrollBtn(true);
@@ -67,15 +113,14 @@ export default function Home() {
     }
   },[ScrollBtn]);
 
+  const handleOpenChatbot=()=>setIsChatbotOpen(true);
+
   const scrollToTop=()=>{
     window.scrollTo({
       top:0,
       behavior:"smooth"
     })
   };
-  const {likedItems}=useStoreHeart();
-  const [selectedButton, setSelectedButton] = useState<number>(1);
-  const [selectedName, setSelectedName] = useState('');
 
   return (
 
@@ -89,12 +134,12 @@ export default function Home() {
       <Main2>
         <NewDiv>
           <div>
-            <New>{selectedName || 'New'}</New>
+            <New>{selectedName}</New>
             <NewText>{Maintext[selectedButton]}</NewText>
           </div>
           <Details to="/category">
             자세히 보기
-            <BtnImg style={{width:"30px",height:"30px",marginLeft:"-5px"}} src="/homedata/small_arrow.svg"/>
+            <img style={{width:"30px",height:"30px",marginLeft:"-5px"}} src="/homedata/small_arrow.svg"/>
           </Details>
         </NewDiv>
         <Btns>
@@ -104,27 +149,30 @@ export default function Home() {
               key={index} 
               style={selectedButton ===index ?{backgroundColor:'#A4B9EF',color:'#3D5AF1'}:{}}
               onClick={() =>{ 
-                setSelectedImageSet(index);
+                handleCategoryClick(index)
                 setSelectedButton(index);
                 setSelectedName(item.name);
               }}
             >
               {item.name}
-              <BtnImg src={item.src}/>
+              <BtnImg URL={btnSrc[index]} 
+                style={selectedButton ===index ?{
+                  backgroundColor:'#3D5AF1'}:{}}
+              />
             </Btn>
             )}
           )}
-          <Btn style={{marginLeft:"auto", width:"40px",backgroundColor:"#DBE3F8"}}><BtnImg src="/homedata/down_arrow.svg"/></Btn>
+          <Btn style={{marginLeft:"auto", width:"40px",backgroundColor:"#DBE3F8"}}><img src="/homedata/down_arrow.svg"/></Btn>
         </Btns>
         <ImgRowDiv>
-          {selectedImageSet.map((src:string,index:number) =>{
-              const isLiked = likedItems.includes(index);
+          {products.map((item,index) =>{
               return(
                 <HomeImg
                   key={index}
-                  index={index}
-                  isLiked={isLiked}
-                  Image={src}
+                  id={item.id}
+                  image={item.image}
+                  title={item.title}
+                  price={item.price}
                   />
               )
           })}
@@ -153,7 +201,7 @@ export default function Home() {
                       <Span3>{item.duedate}</Span3>
                     </CouponText>
                   </Coupon1>
-                  <Coupon2><BtnImg style={{width:"25px",height:"25px"}} src="/homedata/download.svg"/></Coupon2>
+                  <Coupon2><img style={{width:"25px",height:"25px"}} src="/homedata/download.svg"/></Coupon2>
                 </Coupon>
                 {index < coupon.length-1 && <Line/>}
               </React.Fragment>

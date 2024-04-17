@@ -64,8 +64,8 @@ export const FnqBtn=styled.button`
     background-color: white;
     border: none;
     border-radius: 15px;
-    font-size: 12px;
-    padding:0 15px;
+    font-size: 11px;
+    padding:5px 15px;
     height:auto;
     min-height: 20px;
     margin: 0 15px 15px 0;

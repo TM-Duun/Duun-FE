@@ -4,9 +4,6 @@ import styled from "styled-components";
 import { MainDetailBtn,Span1,Span2 } from "./CarouselStyles";
 
 const CarouselContainer = styled.div`
-  /* .carousel .slide {
-    border-radius: 0 0 20px 20px;
-  } */
   border-radius: 0 0 20px 20px;
   overflow: hidden; 
 `;

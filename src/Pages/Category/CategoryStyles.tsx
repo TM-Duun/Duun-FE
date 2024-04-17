@@ -56,6 +56,7 @@ export const GridDiv = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    position: relative;
 `;
 
 export const GridHeader = styled.div`

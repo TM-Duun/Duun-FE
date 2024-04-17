@@ -39,16 +39,20 @@ export const CartGrid = styled.div`
     display: grid;
     text-align: center;
     align-items: center;
-    grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 3fr 1fr 1fr 1fr 0.3fr;
     margin-bottom: 70px;
     gap:60px;
     /* width: 100%; */
 `;
 
 export const Image=styled.img`
-    width: 25%;
-    height: auto;
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-right: 10px;
+
 `;
+
 export const Name=styled.div`
     text-align: left;
     flex-direction: column;
@@ -73,6 +77,15 @@ export const Discount = styled.span`
 `;
 
 export const Count = styled.span`
+`;
+
+export const DeleteBtn=styled.button`
+    background-color:#81a5ffc8 ;
+    border:none;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    color:white;
 `;
 export const BtnDiv = styled.div`
     display: flex;

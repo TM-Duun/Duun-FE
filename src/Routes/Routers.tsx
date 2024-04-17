@@ -62,7 +62,7 @@ export const routers = [
         Element: <Cart />
     },
     {
-        path:"/detail/:id",
+        path:"/detail/:index",
         Element: <Detail />
     },
     {

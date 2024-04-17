@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { GridCart, GridHeart, GridInImg, GridSpan, GridTextDiv, ImgContainer } from "./HomeImgStyles";
+import { GridHeart, GridInImg,ImgContainer } from "./HomeImgStyles";
 import useStoreHeart from "../../../Store/StoreHeartBadge";
-// import  useStore from "../../../Store/StoreCartBadge"
 
 const GridImage=styled.div`
     width:100%;
@@ -9,40 +8,43 @@ const GridImage=styled.div`
     border:none;
     border-radius: 20px;
     position: relative;
-    /* border:1px solid green; */
     overflow: hidden;
 `;
-export default function ShareGridImg({index,isLiked,Image}){
+
+interface ShareGridImgProps {
+    id: number; // 숫자 타입으로 명시
+    image: string; // 이미지 URL은 문자열
+    title: string; // 상품명은 문자열
+    price: string; // 가격도 문자열로 표현 (단위 포함 가능성 때문에)
+  }
+
+export default function ShareGridImg({id,image,title,price}: ShareGridImgProps){
 
     const {likedItems,addLike,removeLike}=useStoreHeart();
     // const addItem=useStore(state=>state.addItem);
+    const isLiked = likedItems.some(item => item.id === id);
+    likedItems.map(item =>{
+        console.log(item.id,id)
 
-    const handleHeartClick=(event:React.MouseEvent<HTMLImageElement>,index:number)=>{
+    })
+    const handleHeartClick=(event:React.MouseEvent<HTMLImageElement>)=>{
         event.stopPropagation();
         event.preventDefault();
-    
-        const isAlreadyLiked=likedItems.includes(index);
-        if (isAlreadyLiked) {
-            removeLike(index);
+
+        const product={id,image,title,price};
+
+        if (isLiked) {
+            removeLike(product);
         } else {
-          addLike(index);
+        addLike(product);
         }
       }
 
     return(
-        <GridImage key={index}>
+        <GridImage key={id}>
         <ImgContainer>
-            <GridHeart onClick={(e)=>handleHeartClick(e,index)} src={isLiked ? "/categorydata/pull_heart.svg" :"/heart.svg"}/>
-            <GridInImg src={Image}/>
+            <GridHeart onClick={(e)=>handleHeartClick(e)} src={isLiked ? "/categorydata/pull_heart.svg" :"/heart.svg"}/>
+            <GridInImg src={image}/>
         </ImgContainer>
-        {/* <GridTextDiv>
-            <GridSpan>
-            {item.name}<br/>
-            <p>{item.cost}</p>
-            </GridSpan>
-            <GridCart onClick={addItem}>
-                <img src="/categorydata/category_cart.svg"/>
-            </GridCart>
-        </GridTextDiv> */}
         </GridImage>
     )}

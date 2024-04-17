@@ -83,7 +83,7 @@ const onHandleLogin = async (e: React.MouseEvent) => {
   };
 
   try {
-    const result = await axios.post('http://3.35.52.219:8080/users/login', userLogin);
+    const result = await axios.post('http://15.164.220.84:8080/users/login', userLogin);
     console.log(result.data);
     navigate("/");
     // 여기에 로그인에 대한 post 요청

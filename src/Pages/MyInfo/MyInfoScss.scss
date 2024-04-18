@@ -1,0 +1,191 @@
+.overlay {
+    position : fixed;
+    top : 0;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    background-color : rgba(0, 0, 0, 0.3);
+}
+
+.newIdInput {
+    width : 200px;
+    height : 40px;
+    padding : 0 10px;
+    box-sizing : border-box;
+    border : 1px solid #ccc;
+    border-radius : 10px;
+    outline : none;
+}
+
+.btnBox {
+    width : 100%;
+    height : 50px;
+    display : flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap : 20px;
+    margin : 0;
+
+    .CPcheckBtn {
+        width : 100px;
+        height : 40px;
+        border : none;
+        outline : none;
+        border-radius : 10px;
+        background-color : #678fe2;
+        color : #fff;
+        cursor : pointer;
+        transition : all 0.3s ease;
+        display : flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .CPcancelBtn {
+        width : 100px;
+        height : 40px;
+        border : none;
+        outline : none;
+        border-radius : 10px;
+        border : 1px solid #678fe2;
+        background-color : #fff;
+        color : #678fe2;
+        cursor : pointer;
+        transition : all 0.3s ease;
+        display : flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.CPWrapper {
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+    width : 600px;
+    height : 450px;
+    background-color : white;
+    display : flex;
+    flex-direction : column;
+    justify-content : space-between;
+    margin : 0;
+    padding : 20px;
+    box-sizing : border-box;
+    animation : upAnime 0.3s ease;
+    transition : all 0.3s ease;
+}
+
+.CPTitle {
+    font-size : 36px;
+    font-weight : 600;
+    font-family : 'pretendard';
+    color : #678fe2;
+}
+
+.CPForm {
+    width : 100%;
+    height : 300px;
+    display : flex;
+    flex-direction : column;
+    justify-content : space-between;
+    align-items : center;
+    border-top : 2px solid #484545;
+    border-bottom : 2px solid #484545;
+}
+
+.CPBox {
+    width : 100%;
+    height : 100px;
+    display : flex;
+    align-items : center;
+    justify-content : flex-start;
+    gap : 30px;
+    margin : 0;
+    padding : 0;
+    border-bottom : 1px solid #c9c9c9;
+
+    p {
+        font-size : 20px;
+        font-weight : 500;
+        font-family : 'pretendard';
+        color : #678EF2;
+    }
+
+    input {
+        width : 400px;
+        height : 40px;
+        padding : 0 10px;
+        box-sizing : border-box;
+        border : 1px solid #ccc;
+        border-radius : 10px;
+        outline : none;
+    }
+}
+
+.NPBox {
+    width : 100%;
+    height : 100px;
+    display : flex;
+    align-items : center;
+    justify-content : flex-start;
+    gap : 30px;
+    margin : 0;
+    padding : 0;
+
+    p {
+        font-size : 20px;
+        font-weight : 500;
+        font-family : 'pretendard';
+        color : #678EF2;
+    }
+
+    input {
+        width : 400px;
+        height : 40px;
+        padding : 0 10px;
+        box-sizing : border-box;
+        border : 1px solid #ccc;
+        border-radius : 10px;
+        outline : none;
+    }
+}
+
+.NPConfirm {
+    width : 100%;
+    height : 100px;
+    display : flex;
+    align-items : center;
+    justify-content : flex-start;
+    gap : 30px;
+    margin : 0;
+    padding : 0;
+    border-bottom : 1px solid #c9c9c9;
+
+    p {
+        font-size : 20px;
+        font-weight : 500;
+        font-family : 'pretendard';
+        color : #678EF2;
+    }
+
+    input {
+        width : 400px;
+        height : 40px;
+        padding : 0 10px;
+        box-sizing : border-box;
+        border : 1px solid #ccc;
+        border-radius : 10px;
+        outline : none;
+    }
+}
+
+@keyframes upAnime {
+    0% {
+        opacity : 0;
+    }
+
+    100% {
+        opacity : 1;
+    }
+}
